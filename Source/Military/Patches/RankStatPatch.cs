@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using RimWorld;
@@ -16,34 +15,7 @@ namespace Military.Patches
             public bool nearSergeant;
             public bool nearLieutenant;
             public bool initialized;
-        }
-
-        public static void EnsureStatPartsInstalled()
-        {
-            AddPartIfMissing(StatDefOf.ShootingAccuracyPawn, typeof(StatPart_MilitaryShooting));
-            AddPartIfMissing(StatDefOf.MoveSpeed, typeof(StatPart_MilitaryMoveSpeed));
-            AddPartIfMissing(StatDefOf.AimingDelayFactor, typeof(StatPart_MilitaryAimingDelay));
-        }
-
-        private static void AddPartIfMissing(StatDef stat, Type partType)
-        {
-            if (stat == null)
-                return;
-
-            if (stat.parts == null)
-                stat.parts = new List<StatPart>();
-
-            for (int i = 0; i < stat.parts.Count; i++)
-            {
-                if (stat.parts[i]?.GetType() == partType)
-                    return;
-            }
-
-            StatPart part = Activator.CreateInstance(partType) as StatPart;
-            if (part == null)
-                return;
-
-            stat.parts.Add(part);
+            public int lastUpdatedTick;
         }
 
         public static bool TryGetRankedColonist(StatRequest req, out Pawn pawn, out MilitaryStatComp comp, out int rankIndex)
@@ -91,11 +63,15 @@ namespace Military.Patches
         {
             int pawnId = pawn.thingIDNumber;
             bool hasCached = auraCache.TryGetValue(pawnId, out CachedAura cached);
-            if (hasCached && cached.initialized && !pawn.IsHashIntervalTick(120))
+            if (hasCached
+                && cached.initialized
+                && Find.TickManager != null
+                && Find.TickManager.TicksGame - cached.lastUpdatedTick <= 120)
                 return cached;
 
             CachedAura result = default;
             result.initialized = true;
+            result.lastUpdatedTick = Find.TickManager?.TicksGame ?? 0;
 
             if (pawn.Map == null)
             {

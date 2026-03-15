@@ -9,6 +9,8 @@ namespace Military
     {
         public string rank = "";
         public int missionCount = 0;
+        public string squadId = "";
+        public bool isSquadLeader = false;
         public List<IntVec3> patrolWaypoints = new List<IntVec3>();
         public bool isPatrolling = false;
 
@@ -20,6 +22,8 @@ namespace Military
             base.PostExposeData();
             Scribe_Values.Look(ref rank, "rank", "");
             Scribe_Values.Look(ref missionCount, "missionCount", 0);
+            Scribe_Values.Look(ref squadId, "squadId", "");
+            Scribe_Values.Look(ref isSquadLeader, "isSquadLeader", false);
             Scribe_Collections.Look(ref patrolWaypoints, "patrolWaypoints", LookMode.Value);
             Scribe_Values.Look(ref isPatrolling, "isPatrolling", false);
             if (patrolWaypoints == null)
@@ -45,27 +49,40 @@ namespace Military
         }
 
         // Jobs that indicate a patrolling pawn drifted and should be nudged back.
-        private static readonly HashSet<string> PatrolIdleJobs = new HashSet<string>
-        {
-            "Wait",
-            "Wait_Wander",
-            "GotoWander",
-            "Clean",
-        };
+        private static HashSet<JobDef> patrolIdleJobs;
 
         // Jobs that indicate combat is over and patrol can safely resume.
         // Excludes Wait_Combat so we don't interrupt an active fight.
-        private static readonly HashSet<string> ResumeIdleJobs = new HashSet<string>
+        private static HashSet<JobDef> resumeIdleJobs;
+
+        private static void EnsureJobSetsInitialized()
         {
-            "Wait",
-            "Wait_Wander",
-            "GotoWander",
-            "Clean",
-        };
+            if (patrolIdleJobs != null && resumeIdleJobs != null)
+                return;
+
+            patrolIdleJobs = new HashSet<JobDef>
+            {
+                JobDefOf.Wait,
+                JobDefOf.Wait_Wander,
+                JobDefOf.GotoWander,
+                JobDefOf.Clean,
+                MilitaryJobDefOf.MilitaryPatrol,
+            };
+
+            resumeIdleJobs = new HashSet<JobDef>
+            {
+                JobDefOf.Wait,
+                JobDefOf.Wait_Wander,
+                JobDefOf.GotoWander,
+                JobDefOf.Clean,
+            };
+        }
 
         public override void CompTick()
         {
             base.CompTick();
+
+            EnsureJobSetsInitialized();
 
             if (parent is not Pawn pawn)
                 return;
@@ -94,14 +111,14 @@ namespace Military
             if (isPatrolling)
             {
                 // Patrolling but drifted to an idle job — restart patrol.
-                if (curDef != null && !PatrolIdleJobs.Contains(curDef.defName))
+                if (curDef != null && !patrolIdleJobs.Contains(curDef))
                     return;
             }
             else
             {
                 // Not patrolling but waypoints preserved — resume after combat
                 // only when the pawn is truly idle (not mid-fight).
-                if (curDef != null && !ResumeIdleJobs.Contains(curDef.defName))
+                if (curDef != null && !resumeIdleJobs.Contains(curDef))
                     return;
                 isPatrolling = true;
             }
