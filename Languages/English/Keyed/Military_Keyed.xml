@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Rank names -->
+  <Military_Rank_Recruit>Recruit</Military_Rank_Recruit>
+  <Military_Rank_Private>Private</Military_Rank_Private>
+  <Military_Rank_Corporal>Corporal</Military_Rank_Corporal>
+  <Military_Rank_Sergeant>Sergeant</Military_Rank_Sergeant>
+  <Military_Rank_Lieutenant>Lieutenant</Military_Rank_Lieutenant>
+
+  <!-- Gizmo labels -->
+  <Military_Gizmo_Promote>Promote</Military_Gizmo_Promote>
+  <Military_Gizmo_Demote>Demote</Military_Gizmo_Demote>
+  <Military_Gizmo_AssignPatrol>Assign Patrol</Military_Gizmo_AssignPatrol>
+  <Military_Gizmo_StopPatrol>Stop Patrol</Military_Gizmo_StopPatrol>
+
+  <!-- Gizmo descriptions -->
+  <Military_Gizmo_PromoteDesc>{0} → {1}</Military_Gizmo_PromoteDesc>
+  <Military_Gizmo_DemoteDesc>{0} → {1}</Military_Gizmo_DemoteDesc>
+  <Military_Gizmo_AssignPatrolDesc>Select a colonist to assign a patrol route</Military_Gizmo_AssignPatrolDesc>
+  <Military_Gizmo_StopPatrolDesc>Cancel this pawn's patrol route</Military_Gizmo_StopPatrolDesc>
+
+  <!-- Disabled reasons -->
+  <Military_DisabledMaxRank>Already at max rank</Military_DisabledMaxRank>
+  <Military_DisabledMinRank>Already at lowest rank</Military_DisabledMinRank>
+
+  <!-- Messages -->
+  <Military_PatrolAssigned>{0} has been assigned to patrol.</Military_PatrolAssigned>
+  <Military_CantWalkHere>Cannot walk here.</Military_CantWalkHere>
+  <Military_WaypointBegin>Select 4 waypoints for the patrol route. Right-click to finish early or cancel.</Military_WaypointBegin>
+  <Military_WaypointSet>Waypoint {0} set. Click to place next, or right-click to finalize.</Military_WaypointSet>
+  <Military_WaypointFinalizing>Waypoint {0} set. Finalizing patrol.</Military_WaypointFinalizing>
+  <Military_NeedAtLeast2Waypoints>Need at least 2 waypoints</Military_NeedAtLeast2Waypoints>
+  <Military_PatrolBroken>{0} broke patrol — enemy nearby!</Military_PatrolBroken>
+  <Military_RequiresKills>Requires {0} kills</Military_RequiresKills>
+  <Military_EligibleLabel>{0} is ready for promotion</Military_EligibleLabel>
+  <Military_EligibleText>{0} has enough combat experience to be promoted to {1}. Consider promoting them in the Military tab.</Military_EligibleText>
+  <Military_PromotedLabel>Promotion</Military_PromotedLabel>
+  <Military_PromotedText>{0} has been promoted to {1}.</Military_PromotedText>
+
+  <!-- Inspect string labels -->
+  <Military_InspectRank>Rank: {0}</Military_InspectRank>
+  <Military_InspectMissions>Kills: {0}</Military_InspectMissions>
+
+  <!-- Status column -->
+  <Military_Status_Idle>Idle</Military_Status_Idle>
+  <Military_Status_Fighting>Fighting</Military_Status_Fighting>
+  <Military_Status_Patrolling>Patrolling</Military_Status_Patrolling>
+
+  <!-- Rank stat bonuses -->
+  <Military_StatBonus_Private>Military rank bonus: +3% shooting accuracy</Military_StatBonus_Private>
+  <Military_StatBonus_Corporal>Corporal: +5% move speed</Military_StatBonus_Corporal>
+  <Military_StatBonus_Sergeant>Sergeant aura: +3% shooting accuracy</Military_StatBonus_Sergeant>
+  <Military_StatBonus_Lieutenant>Lieutenant aura: +5% aim time reduction</Military_StatBonus_Lieutenant>
+
+  <!-- Rank progress column -->
+  <Military_Rank_Progress_Tip>{0} → {1}: {2} / {3} kills</Military_Rank_Progress_Tip>
+
+  <!-- Patrol icon column -->
+  <Military_Patrol_StartTip>Click to start patrol</Military_Patrol_StartTip>
+  <Military_Patrol_StopTip>Click to stop patrol</Military_Patrol_StopTip>
+  <Military_Patrol_NoWaypointsTip>No patrol route set (need at least 2 waypoints)</Military_Patrol_NoWaypointsTip>
+
+</LanguageData>

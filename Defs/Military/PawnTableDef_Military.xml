@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <PawnTableDef>
+    <defName>MilitaryTable</defName>
+    <workerClass>PawnTable_PlayerPawns</workerClass>
+    <columns>
+      <li>MilitaryLabel</li>
+      <li>MilitaryRankName</li>
+      <li>MilitaryKills</li>
+      <li>MilitaryRankProgress</li>
+      <li>MilitaryStatus</li>
+      <li>MilitaryWeapon</li>
+      <li>MilitaryPatrolIcon</li>
+      <li>MilitaryActions</li>
+      <li>
+        <defName>RemainingSpace</defName>
+      </li>
+    </columns>
+  </PawnTableDef>
+</Defs>

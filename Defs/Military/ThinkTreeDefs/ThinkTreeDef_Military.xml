@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Injected into the 'Humanlike_PostDuty' subtree hook in the vanilla Humanlike
+    think tree. This node sits after drafted-order behavior but before
+    work/hauling/cleaning, exactly the right priority for auto-attack.
+  -->
+  <ThinkTreeDef>
+    <defName>Military_AutoAttack</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>900</insertPriority>
+    <thinkRoot Class="Military.JobGiver_MilitaryAutoAttack" />
+  </ThinkTreeDef>
+</Defs>
