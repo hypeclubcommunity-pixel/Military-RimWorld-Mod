@@ -6,6 +6,7 @@
     <columns>
       <li>MilitaryLabel</li>
       <li>MilitaryRankName</li>
+      <li>MilitarySquad</li>
       <li>MilitaryKills</li>
       <li>MilitaryRankProgress</li>
       <li>MilitaryStatus</li>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <Operation Class="PatchOperationAdd">
-    <xpath>Defs/StatDef[defName="ShootingAccuracyPawn"]/parts</xpath>
+    <xpath>Defs/StatDef[defName="ShootingAccuracyPawn"]</xpath>
     <value>
-      <li Class="Military.Patches.StatPart_MilitaryShooting"/>
+      <parts>
+        <li Class="Military.Patches.StatPart_MilitaryShooting"/>
+      </parts>
     </value>
   </Operation>
 

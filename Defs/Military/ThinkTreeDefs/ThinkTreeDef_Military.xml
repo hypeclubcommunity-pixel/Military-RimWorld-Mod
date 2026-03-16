@@ -11,4 +11,18 @@
     <insertPriority>900</insertPriority>
     <thinkRoot Class="Military.JobGiver_MilitaryAutoAttack" />
   </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_SquadAttackTarget</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>850</insertPriority>
+    <thinkRoot Class="Military.JobGiver_SquadAttackTarget" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_FollowSquadLeader</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>300</insertPriority>
+    <thinkRoot Class="Military.JobGiver_FollowSquadLeader" />
+  </ThinkTreeDef>
 </Defs>

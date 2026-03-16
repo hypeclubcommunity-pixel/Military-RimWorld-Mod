@@ -15,6 +15,13 @@
   </PawnColumnDef>
 
   <PawnColumnDef>
+    <defName>MilitarySquad</defName>
+    <workerClass>Military.PawnColumnWorker_Squad</workerClass>
+    <label>Squad</label>
+    <sortable>true</sortable>
+  </PawnColumnDef>
+
+  <PawnColumnDef>
     <defName>MilitaryKills</defName>
     <workerClass>Military.PawnColumnWorker_Kills</workerClass>
     <label>Kills</label>

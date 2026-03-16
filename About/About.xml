@@ -6,6 +6,7 @@
     <li>1.6</li>
   </supportedVersions>
   <packageId>military.rimworld</packageId>
+  <modVersion>0.2.0</modVersion>
   <description>The Military mod brings a full command structure to your RimWorld colony.
 
 Assign ranks from Recruit to Lieutenant and watch your soldiers earn promotions through real combat - kills gate progression, so only battle-hardened colonists climb the ranks.

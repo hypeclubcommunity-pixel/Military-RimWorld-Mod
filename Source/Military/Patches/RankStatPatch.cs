@@ -63,10 +63,11 @@ namespace Military.Patches
         {
             int pawnId = pawn.thingIDNumber;
             bool hasCached = auraCache.TryGetValue(pawnId, out CachedAura cached);
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
             if (hasCached
                 && cached.initialized
-                && Find.TickManager != null
-                && Find.TickManager.TicksGame - cached.lastUpdatedTick <= 120)
+                && currentTick >= cached.lastUpdatedTick
+                && currentTick - cached.lastUpdatedTick <= 120)
                 return cached;
 
             CachedAura result = default;
