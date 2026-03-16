@@ -14,6 +14,11 @@ namespace Military
         public List<IntVec3> patrolWaypoints = new List<IntVec3>();
         public bool isPatrolling = false;
 
+        public int bodyguardTargetId = -1;
+        public List<int> vipBodyguardIds = new List<int>();
+        public bool isDefending = false;
+        public List<IntVec3> defendArea = new List<IntVec3>();
+
         public bool IsPromotionAvailable =>
             !string.IsNullOrEmpty(rank) && MilitaryRanks.NextEligibleRank(rank, missionCount) != null;
 
@@ -26,8 +31,16 @@ namespace Military
             Scribe_Values.Look(ref isSquadLeader, "isSquadLeader", false);
             Scribe_Collections.Look(ref patrolWaypoints, "patrolWaypoints", LookMode.Value);
             Scribe_Values.Look(ref isPatrolling, "isPatrolling", false);
+            Scribe_Values.Look(ref bodyguardTargetId, "bodyguardTargetId", -1);
+            Scribe_Collections.Look(ref vipBodyguardIds, "vipBodyguardIds", LookMode.Value);
+            Scribe_Values.Look(ref isDefending, "isDefending", false);
+            Scribe_Collections.Look(ref defendArea, "defendArea", LookMode.Value);
             if (patrolWaypoints == null)
                 patrolWaypoints = new List<IntVec3>();
+            if (vipBodyguardIds == null)
+                vipBodyguardIds = new List<int>();
+            if (defendArea == null)
+                defendArea = new List<IntVec3>();
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -45,6 +58,16 @@ namespace Military
                     rank = "";
                     patrolWaypoints.Clear();
                 }
+
+                if (bodyguardTargetId != -1)
+                {
+                    Pawn vip = MilitaryUtility.FindPawnGlobal(bodyguardTargetId);
+                    if (vip == null)
+                        MilitaryUtility.ClearBodyguard(pawn);
+                }
+
+                if (isDefending && (defendArea == null || defendArea.Count == 0))
+                    isDefending = false;
             }
         }
 
@@ -153,6 +176,14 @@ namespace Military
                     yield return gizmo;
                 }
                 foreach (var gizmo in RankGizmo.GetPatrolGizmos(pawn))
+                {
+                    yield return gizmo;
+                }
+                foreach (var gizmo in RankGizmo.GetBodyguardGizmos(pawn))
+                {
+                    yield return gizmo;
+                }
+                foreach (var gizmo in RankGizmo.GetDefendAreaGizmos(pawn))
                 {
                     yield return gizmo;
                 }

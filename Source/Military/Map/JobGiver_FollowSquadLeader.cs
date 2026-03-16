@@ -20,6 +20,8 @@ namespace Military
             if (comp == null || string.IsNullOrEmpty(comp.squadId) || comp.isSquadLeader)
                 return null;
 
+            if (comp.bodyguardTargetId != -1) return null;
+
             GameComponent_MilitaryManager manager = GameComponent_MilitaryManager.Instance;
             if (manager == null)
                 return null;
@@ -29,7 +31,7 @@ namespace Military
                 return null;
 
             Pawn leader = squad.GetLeader(pawn.Map);
-            if (leader == null || leader.Downed || !leader.Spawned || leader.Map != pawn.Map)
+            if (leader == null || leader.Downed || leader.InMentalState || !leader.Spawned || leader.Map != pawn.Map)
                 return null;
 
             if (pawn.Position.InHorDistOf(leader.Position, MaxFollowDistance))

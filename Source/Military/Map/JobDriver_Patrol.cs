@@ -71,7 +71,7 @@ namespace Military
                 }
 
                 // If pawn has reached the current waypoint or is not moving, go to next
-                if (pawn.pather == null || !pawn.pather.Moving)
+                if (pawn.pather != null && !pawn.pather.Moving)
                 {
                     IntVec3 target = comp.patrolWaypoints[waypointIndex];
                     pawn.pather.StartPath(target, PathEndMode.OnCell);

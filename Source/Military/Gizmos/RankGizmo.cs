@@ -164,5 +164,147 @@ namespace Military
                 yield return assignPatrol;
             }
         }
+
+        public static IEnumerable<Gizmo> GetBodyguardGizmos(Pawn pawn)
+        {
+            if (pawn == null || !MilitaryUtility.IsEligible(pawn))
+                yield break;
+
+            MilitaryStatComp comp = MilitaryUtility.GetComp(pawn);
+            if (comp == null || string.IsNullOrEmpty(comp.rank))
+                yield break;
+
+            if (comp.rank == "Lieutenant")
+                yield break;
+
+            int rankIndex = MilitaryRanks.All.IndexOf(comp.rank);
+            int sergeantIndex = MilitaryRanks.All.IndexOf("Sergeant");
+            if (rankIndex < 0 || rankIndex > sergeantIndex)
+                yield break;
+
+            if (comp.bodyguardTargetId == -1)
+            {
+                var assign = new Command_Action
+                {
+                    defaultLabel = "Military_AssignBodyguard".Translate(),
+                    defaultDesc = "Military_AssignBodyguardDesc".Translate(),
+                    action = () =>
+                    {
+                        Find.Targeter.BeginTargeting(
+                            new TargetingParameters
+                            {
+                                canTargetPawns = true,
+                                canTargetBuildings = false,
+                                canTargetLocations = false,
+                                canTargetItems = false,
+                                validator = (TargetInfo info) =>
+                                    info.Thing is Pawn target
+                                    && target.Spawned
+                                    && target != pawn
+                                    && target.Faction == Faction.OfPlayer
+                            },
+                            (LocalTargetInfo targetInfo) =>
+                            {
+                                if (targetInfo.Thing is Pawn target)
+                                {
+                                    if (MilitaryUtility.AssignBodyguard(pawn, target))
+                                    {
+                                        Messages.Message("Military_BodyguardAssigned".Translate(pawn.LabelShort, target.LabelShort),
+                                            MessageTypeDefOf.PositiveEvent, false);
+                                    }
+                                }
+                            },
+                            pawn,
+                            null,
+                            null
+                        );
+                    }
+                };
+                yield return assign;
+            }
+            else
+            {
+                var stop = new Command_Action
+                {
+                    defaultLabel = "Military_StopBodyguard".Translate(),
+                    defaultDesc = "Military_StopBodyguardDesc".Translate(),
+                    action = () =>
+                    {
+                        MilitaryUtility.ClearBodyguard(pawn);
+                        Messages.Message("Military_BodyguardCleared".Translate(pawn.LabelShort),
+                            MessageTypeDefOf.NeutralEvent, false);
+                    }
+                };
+                yield return stop;
+            }
+        }
+
+        public static IEnumerable<Gizmo> GetDefendAreaGizmos(Pawn pawn)
+        {
+            if (pawn == null || !MilitaryUtility.IsEligible(pawn))
+                yield break;
+
+            MilitaryStatComp comp = MilitaryUtility.GetComp(pawn);
+            if (comp == null || string.IsNullOrEmpty(comp.rank))
+                yield break;
+
+            if (comp.rank == "Lieutenant")
+            {
+                var assignDefend = new Command_Action
+                {
+                    defaultLabel = "Military_AssignDefendArea".Translate(),
+                    defaultDesc = "Military_AssignDefendAreaDesc".Translate(),
+                    action = () =>
+                    {
+                        Find.Targeter.BeginTargeting(
+                            new TargetingParameters
+                            {
+                                canTargetPawns = true,
+                                canTargetBuildings = false,
+                                canTargetLocations = false,
+                                canTargetItems = false,
+                                validator = (TargetInfo info) =>
+                                {
+                                    if (info.Thing is not Pawn candidate)
+                                        return false;
+                                    if (!candidate.IsColonist || !MilitaryUtility.IsEligible(candidate))
+                                        return false;
+                                    MilitaryStatComp targetComp = MilitaryUtility.GetComp(candidate);
+                                    return targetComp != null && !string.IsNullOrEmpty(targetComp.rank);
+                                }
+                            },
+                            (LocalTargetInfo targetInfo) =>
+                            {
+                                if (targetInfo.Thing is Pawn selectedPawn)
+                                {
+                                    Designator_DefendArea.TargetPawn = selectedPawn;
+                                    Designator_DefendArea.Corner1 = null;
+                                    Find.DesignatorManager.Select(new Designator_DefendArea());
+                                    Messages.Message("Military_DefendAreaBegin".Translate(), MessageTypeDefOf.SilentInput, false);
+                                }
+                            },
+                            pawn,
+                            null,
+                            null
+                        );
+                    }
+                };
+                yield return assignDefend;
+            }
+
+            if (comp.isDefending)
+            {
+                var stopDefend = new Command_Action
+                {
+                    defaultLabel = "Military_StopDefending".Translate(),
+                    defaultDesc = "Military_StopDefendingDesc".Translate(),
+                    action = () =>
+                    {
+                        MilitaryUtility.ClearDefendArea(pawn);
+                    }
+                };
+                yield return stopDefend;
+            }
+        }
     }
 }

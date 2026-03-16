@@ -9,6 +9,9 @@ namespace Military
         private static readonly Color PatrolBlue = new Color(0.3f, 0.5f, 0.9f);
         private static readonly Color FightRed = new Color(0.9f, 0.2f, 0.2f);
         private static readonly Color IdleGrey = new Color(0.6f, 0.6f, 0.6f);
+        private static readonly Color VipGold = new Color(1f, 0.8f, 0f);
+        private static readonly Color DefendBlue = new Color(0.2f, 0.6f, 1f);
+        private static readonly Color BodyguardGreen = new Color(0.2f, 0.85f, 0.4f);
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
@@ -39,10 +42,43 @@ namespace Military
                 statusColor = IdleGrey;
             }
 
+            // Build suffix tags for protection roles
+            string suffix = null;
+            Color suffixColor = Color.white;
+            if (comp.vipBodyguardIds.Count > 0)
+            {
+                suffix = "Military_Status_VIP".Translate();
+                suffixColor = VipGold;
+            }
+            else if (comp.isDefending)
+            {
+                suffix = "Military_Status_Defending".Translate();
+                suffixColor = DefendBlue;
+            }
+            else if (comp.bodyguardTargetId != -1)
+            {
+                suffix = "Military_Status_Bodyguard".Translate();
+                suffixColor = BodyguardGreen;
+            }
+
             Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.MiddleCenter;
-            GUI.color = statusColor;
-            Widgets.Label(rect, statusText);
+
+            if (suffix == null)
+            {
+                GUI.color = statusColor;
+                Widgets.Label(rect, statusText);
+            }
+            else
+            {
+                // Split rect: status on left half, suffix on right half
+                Rect leftRect = new Rect(rect.x, rect.y, rect.width * 0.5f, rect.height);
+                Rect rightRect = new Rect(rect.x + rect.width * 0.5f, rect.y, rect.width * 0.5f, rect.height);
+                GUI.color = statusColor;
+                Widgets.Label(leftRect, statusText);
+                GUI.color = suffixColor;
+                Widgets.Label(rightRect, suffix);
+            }
 
             GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;

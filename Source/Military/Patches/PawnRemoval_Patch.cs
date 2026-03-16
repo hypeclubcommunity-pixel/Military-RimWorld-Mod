@@ -16,10 +16,15 @@ namespace Military
                 return;
 
             MilitaryStatComp comp = MilitaryUtility.GetComp(pawn);
-            if (comp == null || string.IsNullOrEmpty(comp.squadId))
+            if (comp == null)
                 return;
 
-            GameComponent_MilitaryManager.Instance?.OnPawnRemoved(pawn);
+            if (!string.IsNullOrEmpty(comp.squadId))
+                GameComponent_MilitaryManager.Instance?.OnPawnRemoved(pawn);
+
+            MilitaryUtility.OnVipRemoved(pawn);
+            MilitaryUtility.ClearBodyguard(pawn);
+            MilitaryUtility.ClearDefendArea(pawn);
         }
     }
 

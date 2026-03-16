@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Injected into the 'Humanlike_PostDuty' subtree hook in the vanilla Humanlike
+    think tree. This node sits after drafted-order behavior but before
+    work/hauling/cleaning, exactly the right priority for auto-attack.
+  -->
+  <ThinkTreeDef>
+    <defName>Military_AutoAttack</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>900</insertPriority>
+    <thinkRoot Class="Military.JobGiver_MilitaryAutoAttack" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_BodyguardThreatResponse</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>880</insertPriority>
+    <thinkRoot Class="Military.JobGiver_BodyguardThreatResponse" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_SquadAttackTarget</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>850</insertPriority>
+    <thinkRoot Class="Military.JobGiver_SquadAttackTarget" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_DefendArea</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>500</insertPriority>
+    <thinkRoot Class="Military.JobGiver_DefendArea" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_BodyguardFollow</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>320</insertPriority>
+    <thinkRoot Class="Military.JobGiver_BodyguardFollow" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_FollowSquadLeader</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>300</insertPriority>
+    <thinkRoot Class="Military.JobGiver_FollowSquadLeader" />
+  </ThinkTreeDef>
+</Defs>

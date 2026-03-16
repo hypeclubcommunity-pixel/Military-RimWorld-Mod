@@ -117,7 +117,8 @@ namespace Military
                 newComp.isSquadLeader = true;
             }
 
-            Log.Message($"[Military] {bestPawn.LabelShort} auto-promoted to leader of {squadName}");
+            if (Prefs.DevMode)
+                Log.Message($"[Military] {bestPawn.LabelShort} auto-promoted to leader of {squadName}");
         }
 
         private void ClearAllMemberLeaderFlags(Map map)

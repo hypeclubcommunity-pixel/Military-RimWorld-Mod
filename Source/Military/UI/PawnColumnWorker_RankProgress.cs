@@ -8,6 +8,8 @@ namespace Military
     {
         private static readonly Color BarFillColor = new Color(0.35f, 0.65f, 0.35f);
         private static readonly Color BarBgColor = new Color(0.15f, 0.15f, 0.15f);
+        private static readonly Texture2D BarFillTexture = SolidColorMaterials.NewSolidColorTexture(BarFillColor);
+        private static readonly Texture2D BarBgTexture = SolidColorMaterials.NewSolidColorTexture(BarBgColor);
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
@@ -46,7 +48,7 @@ namespace Military
             float barY = rect.y + (rect.height - barHeight) / 2f;
             Rect inset = new Rect(rect.x + (rect.width - barWidth) / 2f, barY, barWidth, barHeight);
 
-            Widgets.FillableBar(inset, fillPercent, SolidColorMaterials.NewSolidColorTexture(BarFillColor), SolidColorMaterials.NewSolidColorTexture(BarBgColor), doBorder: true);
+            Widgets.FillableBar(inset, fillPercent, BarFillTexture, BarBgTexture, doBorder: true);
 
             // Overlay label: "X / Y"
             Text.Font = GameFont.Tiny;

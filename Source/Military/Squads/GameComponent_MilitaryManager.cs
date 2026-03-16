@@ -45,7 +45,8 @@ namespace Military
             leaderComp.squadId = squad.squadId;
             leaderComp.isSquadLeader = true;
 
-            Log.Message($"[Military] Squad {squad.squadName} created with leader {leader.LabelShort}");
+            if (Prefs.DevMode)
+                Log.Message($"[Military] Squad {squad.squadName} created with leader {leader.LabelShort}");
             return squad;
         }
 
@@ -70,7 +71,8 @@ namespace Military
             }
 
             squads.Remove(squad);
-            Log.Message($"[Military] Squad {squad.squadName} disbanded");
+            if (Prefs.DevMode)
+                Log.Message($"[Military] Squad {squad.squadName} disbanded");
             return true;
         }
 
@@ -106,7 +108,8 @@ namespace Military
             comp.squadId = squad.squadId;
             comp.isSquadLeader = false;
 
-            Log.Message($"[Military] {pawn.LabelShort} added to squad {squad.squadName}");
+            if (Prefs.DevMode)
+                Log.Message($"[Military] {pawn.LabelShort} added to squad {squad.squadName}");
             return true;
         }
 
@@ -120,7 +123,8 @@ namespace Military
                 return false;
 
             ClearSquadData(pawn);
-            Log.Message($"[Military] {pawn.LabelShort} removed from squad {squad.squadName}");
+            if (Prefs.DevMode)
+                Log.Message($"[Military] {pawn.LabelShort} removed from squad {squad.squadName}");
             return true;
         }
 
@@ -182,7 +186,10 @@ namespace Military
 
             ClearSquadData(pawn);
             if (squad != null)
-                Log.Message($"[Military] {pawn.LabelShort} removed from squad on pawn loss");
+            {
+                if (Prefs.DevMode)
+                    Log.Message($"[Military] {pawn.LabelShort} removed from squad on pawn loss");
+            }
         }
 
         public override void ExposeData()

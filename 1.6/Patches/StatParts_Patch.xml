@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StatDef[defName="ShootingAccuracyPawn"]</xpath>
+    <value>
+      <parts>
+        <li Class="Military.Patches.StatPart_MilitaryShooting"/>
+      </parts>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StatDef[defName="MoveSpeed"]/parts</xpath>
+    <value>
+      <li Class="Military.Patches.StatPart_MilitaryMoveSpeed"/>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StatDef[defName="AimingDelayFactor"]/parts</xpath>
+    <value>
+      <li Class="Military.Patches.StatPart_MilitaryAimingDelay"/>
+    </value>
+  </Operation>
+</Patch>

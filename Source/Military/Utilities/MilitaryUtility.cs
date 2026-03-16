@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -5,8 +6,15 @@ using Verse;
 
 namespace Military
 {
+    [StaticConstructorOnStartup]
     public static class MilitaryUtility
     {
+        static MilitaryUtility()
+        {
+            _vipShieldIcon = ContentFinder<Texture2D>.Get("Military/UI/VipShield", false) ?? BaseContent.BadTex;
+            if (_vipShieldIcon != null)
+                _vipShieldIcon.filterMode = FilterMode.Point;
+        }
         public static MilitaryStatComp GetComp(Pawn pawn)
         {
             return pawn?.TryGetComp<MilitaryStatComp>();
@@ -97,6 +105,153 @@ namespace Military
         public static Texture2D GetRankTexture(string rank)
         {
             return ContentFinder<Texture2D>.Get("Military/Ranks/" + rank, false) ?? BaseContent.BadTex;
+        }
+
+        private static readonly Texture2D _vipShieldIcon;
+        public static Texture2D VipShieldIcon => _vipShieldIcon;
+
+        public static Pawn FindPawnGlobal(int pawnId)
+        {
+            if (pawnId < 0)
+                return null;
+
+            if (Find.Maps != null)
+            {
+                for (int i = 0; i < Find.Maps.Count; i++)
+                {
+                    Map map = Find.Maps[i];
+                    if (map?.mapPawns?.AllPawns == null)
+                        continue;
+
+                    IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawns;
+                    for (int j = 0; j < pawns.Count; j++)
+                    {
+                        if (pawns[j] != null && pawns[j].thingIDNumber == pawnId)
+                            return pawns[j];
+                    }
+                }
+            }
+
+            if (Find.WorldPawns != null)
+            {
+                List<Pawn> worldPawns = Find.WorldPawns.AllPawnsAliveOrDead;
+                for (int i = 0; i < worldPawns.Count; i++)
+                {
+                    if (worldPawns[i] != null && worldPawns[i].thingIDNumber == pawnId)
+                        return worldPawns[i];
+                }
+            }
+
+            return null;
+        }
+
+        public static bool AssignBodyguard(Pawn bodyguard, Pawn vip)
+        {
+            if (bodyguard == null || vip == null || bodyguard == vip)
+                return false;
+
+            MilitaryStatComp bgComp = GetComp(bodyguard);
+            MilitaryStatComp vipComp = GetComp(vip);
+            if (bgComp == null || vipComp == null)
+                return false;
+
+            if (string.IsNullOrEmpty(bgComp.rank))
+                return false;
+
+            int rankIndex = MilitaryRanks.All.IndexOf(bgComp.rank);
+            int sergeantIndex = MilitaryRanks.All.IndexOf("Sergeant");
+            if (rankIndex < 0 || rankIndex > sergeantIndex)
+                return false;
+
+            if (vipComp.vipBodyguardIds.Count >= 2)
+                return false;
+
+            if (bgComp.bodyguardTargetId != -1)
+                return false;
+
+            bgComp.bodyguardTargetId = vip.thingIDNumber;
+            vipComp.vipBodyguardIds.Add(bodyguard.thingIDNumber);
+
+            if (Prefs.DevMode) Log.Message($"[Military] {bodyguard.LabelShort} assigned as bodyguard for {vip.LabelShort}");
+            return true;
+        }
+
+        public static void ClearBodyguard(Pawn bodyguard)
+        {
+            if (bodyguard == null)
+                return;
+
+            MilitaryStatComp bgComp = GetComp(bodyguard);
+            if (bgComp == null)
+                return;
+
+            int vipId = bgComp.bodyguardTargetId;
+            if (vipId != -1)
+            {
+                Pawn vip = FindPawnGlobal(vipId);
+                if (vip != null)
+                {
+                    MilitaryStatComp vipComp = GetComp(vip);
+                    vipComp?.vipBodyguardIds.Remove(bodyguard.thingIDNumber);
+                }
+            }
+
+            bgComp.bodyguardTargetId = -1;
+            if (Prefs.DevMode) Log.Message($"[Military] {bodyguard.LabelShort} bodyguard assignment cleared");
+        }
+
+        public static void OnVipRemoved(Pawn vip)
+        {
+            if (vip == null)
+                return;
+
+            MilitaryStatComp vipComp = GetComp(vip);
+            if (vipComp == null || vipComp.vipBodyguardIds == null || vipComp.vipBodyguardIds.Count == 0)
+                return;
+
+            for (int i = vipComp.vipBodyguardIds.Count - 1; i >= 0; i--)
+            {
+                Pawn bg = FindPawnGlobal(vipComp.vipBodyguardIds[i]);
+                if (bg != null)
+                {
+                    MilitaryStatComp bgComp = GetComp(bg);
+                    if (bgComp != null)
+                        bgComp.bodyguardTargetId = -1;
+                }
+            }
+
+            vipComp.vipBodyguardIds.Clear();
+            if (Prefs.DevMode) Log.Message($"[Military] VIP {vip.LabelShort} removed \u2014 all bodyguards cleared");
+        }
+
+        public static void AssignDefendArea(Pawn pawn, List<IntVec3> cells)
+        {
+            if (pawn == null || cells == null)
+                return;
+
+            MilitaryStatComp comp = GetComp(pawn);
+            if (comp == null)
+                return;
+
+            comp.defendArea = new List<IntVec3>(cells);
+            comp.isDefending = true;
+
+            if (Prefs.DevMode) Log.Message($"[Military] {pawn.LabelShort} assigned to defend area ({cells.Count} cells)");
+        }
+
+        public static void ClearDefendArea(Pawn pawn)
+        {
+            if (pawn == null)
+                return;
+
+            MilitaryStatComp comp = GetComp(pawn);
+            if (comp == null)
+                return;
+
+            comp.defendArea.Clear();
+            comp.isDefending = false;
+
+            if (Prefs.DevMode) Log.Message($"[Military] {pawn.LabelShort} defend area cleared");
         }
     }
 }
