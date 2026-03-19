@@ -30,7 +30,7 @@ namespace Military
             for (int i = 0; i < allPawns.Count; i++)
             {
                 Pawn candidate = allPawns[i];
-                if (candidate == null || !candidate.RaceProps.Humanlike || candidate.Downed || !candidate.Spawned)
+                if (candidate == null || candidate == pawn || candidate == vip || candidate.Downed || !candidate.Spawned)
                     continue;
 
                 if (!candidate.HostileTo(Faction.OfPlayer))

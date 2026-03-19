@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <!-- Вкладка и интерфейс -->
+  <Military_Tab_Name>Военные</Military_Tab_Name>
+  <Military_Tab_Squads>Отряды</Military_Tab_Squads>
+
+  <!-- Заголовки столбцов -->
+  <Military_Col_Name>Имя</Military_Col_Name>
+  <Military_Col_Rank>Звание</Military_Col_Rank>
+  <Military_Col_Squad>Отряд</Military_Col_Squad>
+  <Military_Col_Kills>Убийства</Military_Col_Kills>
+  <Military_Col_Progress>Прогресс</Military_Col_Progress>
+  <Military_Col_Weapon>Оружие</Military_Col_Weapon>
+  <Military_Col_Patrol>Патруль</Military_Col_Patrol>
+  <Military_Col_Actions>Действия</Military_Col_Actions>
+
   <!-- Названия званий -->
   <Military_Rank_Recruit>Рекрут</Military_Rank_Recruit>
   <Military_Rank_Private>Рядовой</Military_Rank_Private>

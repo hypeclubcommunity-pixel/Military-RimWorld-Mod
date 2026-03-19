@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <!-- 标签页和界面标签 -->
+  <Military_Tab_Name>军事</Military_Tab_Name>
+  <Military_Tab_Squads>小队</Military_Tab_Squads>
+
+  <!-- 列标题 -->
+  <Military_Col_Name>姓名</Military_Col_Name>
+  <Military_Col_Rank>军衔</Military_Col_Rank>
+  <Military_Col_Squad>小队</Military_Col_Squad>
+  <Military_Col_Kills>击杀</Military_Col_Kills>
+  <Military_Col_Progress>进度</Military_Col_Progress>
+  <Military_Col_Weapon>武器</Military_Col_Weapon>
+  <Military_Col_Patrol>巡逻</Military_Col_Patrol>
+  <Military_Col_Actions>操作</Military_Col_Actions>
+
   <!-- 军衔名称 -->
   <Military_Rank_Recruit>新兵</Military_Rank_Recruit>
   <Military_Rank_Private>列兵</Military_Rank_Private>

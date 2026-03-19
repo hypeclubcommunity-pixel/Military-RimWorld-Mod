@@ -6,7 +6,7 @@ namespace Military
 {
     public class JobGiver_BodyguardFollow : ThinkNode_JobGiver
     {
-        private const float MaxFollowDistance = 8f;
+        private const int FollowExpiryTicks = 1800;
 
         protected override Job TryGiveJob(Pawn pawn)
         {
@@ -24,11 +24,11 @@ namespace Military
             if (vip.Downed || !vip.Spawned || vip.Map != pawn.Map)
                 return null;
 
-            if (pawn.Position.InHorDistOf(vip.Position, MaxFollowDistance))
+            if (pawn.CurJobDef == JobDefOf.Follow && pawn.CurJob?.targetA.Thing == vip)
                 return null;
 
             Job job = JobMaker.MakeJob(JobDefOf.Follow, vip);
-            job.expiryInterval = 180;
+            job.expiryInterval = FollowExpiryTicks;
             job.checkOverrideOnExpire = true;
             return job;
         }

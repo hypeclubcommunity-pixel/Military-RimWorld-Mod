@@ -3,7 +3,7 @@
 # ⚔️ Military — RimWorld Mod
 
 ![RimWorld](https://img.shields.io/badge/RimWorld-1.6-B22222?style=for-the-badge&logo=steam&logoColor=white)
-![Version](https://img.shields.io/badge/Version-0.4.1-1E90FF?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.5-1E90FF?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-2E8B57?style=for-the-badge)
 ![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20RU%20%7C%20ZH-orange?style=for-the-badge)
 ![Harmony](https://img.shields.io/badge/Requires-Harmony-9B59B6?style=for-the-badge)
@@ -226,7 +226,7 @@ A custom narrative scenario with 3 sequential missions against the **Helix Corpo
 |---|---|
 | **Objective** | Keep Silas Vane alive for 7 days |
 | **Fail Condition** | Vane is killed |
-| **Reward** | 1,000 silver |
+| **Reward** | 5,000 silver |
 
 ---
 
@@ -298,6 +298,12 @@ Mac:     ~/Library/Application Support/RimWorld/Mods/
 ---
 
 ## 📝 Changelog
+
+### v0.5
+- Fixed military responders and bodyguards dropping their duties and reassigning repeatedly
+- Added the military response system source and damage tracking patch to the repo
+- Completed and synced English, Russian, and Chinese localization coverage
+- Updated Mission 2 reward text to match the actual 5,000 silver reward
 
 ### v0.4.1
 - Added **Chinese Simplified** translation (full coverage)

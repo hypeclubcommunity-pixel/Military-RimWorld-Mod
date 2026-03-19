@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <!-- Tab and UI labels -->
+  <Military_Tab_Name>Military</Military_Tab_Name>
+  <Military_Tab_Squads>Squads</Military_Tab_Squads>
+
+  <!-- Column headers -->
+  <Military_Col_Name>Name</Military_Col_Name>
+  <Military_Col_Rank>Rank</Military_Col_Rank>
+  <Military_Col_Squad>Squad</Military_Col_Squad>
+  <Military_Col_Kills>Kills</Military_Col_Kills>
+  <Military_Col_Progress>Progress</Military_Col_Progress>
+  <Military_Col_Weapon>Weapon</Military_Col_Weapon>
+  <Military_Col_Patrol>Patrol</Military_Col_Patrol>
+  <Military_Col_Actions>Actions</Military_Col_Actions>
+
   <!-- Rank names -->
   <Military_Rank_Recruit>Recruit</Military_Rank_Recruit>
   <Military_Rank_Private>Private</Military_Rank_Private>
@@ -110,7 +124,7 @@
   <!-- Mission 2: Vanguard's Shadow -->
   <Military_Mission02_Title>Mission 2: Vanguard's Shadow</Military_Mission02_Title>
   <Military_Mission02_StartLabel>Friendly Contact</Military_Mission02_StartLabel>
-  <Military_Mission02_StartText>A figure approaches your position. He is calm. Well-dressed. Unhurried.\n\nHis name is Silas Vane — a senior intelligence officer who walked away from Helix Corporation three days ago and took their most sensitive data with him. He has come to you because you are the only asset he trusts.\n\nVane is not injured. He does not need saving. He needs time. Keep him alive on your map for 7 days while his extraction is arranged. Helix knows he is coming here. They will send people.\n\nReward: 1000 silver on successful extraction.</Military_Mission02_StartText>
+  <Military_Mission02_StartText>A figure approaches your position. He is calm. Well-dressed. Unhurried.\n\nHis name is Silas Vane — a senior intelligence officer who walked away from Helix Corporation three days ago and took their most sensitive data with him. He has come to you because you are the only asset he trusts.\n\nVane is not injured. He does not need saving. He needs time. Keep him alive on your map for 7 days while his extraction is arranged. Helix knows he is coming here. They will send people.\n\nReward: 5000 silver on successful extraction.</Military_Mission02_StartText>
   <Military_Mission02_ProtectText>Protect Silas Vane for 7 days</Military_Mission02_ProtectText>
   <Military_Mission02_SuccessLabel>Vane Extracted</Military_Mission02_SuccessLabel>
   <Military_Mission02_SuccessText>Silas Vane said his farewells quietly, like a man who has done this before. He thanked your operators by name, adjusted his coat, and walked off the edge of your map without looking back.\n\nThe intelligence he carried is now out of Helix's reach. Reward delivered. Mission complete.\n\nHelix Corporation will not forget what you did here.</Military_Mission02_SuccessText>

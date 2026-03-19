@@ -124,7 +124,7 @@
   <!-- 任务2：先锋之影 -->
   <Military_Mission02_Title>任务2：先锋之影</Military_Mission02_Title>
   <Military_Mission02_StartLabel>友方接触</Military_Mission02_StartLabel>
-  <Military_Mission02_StartText>一个身影接近你的阵地。他很镇定。衣着考究。不慌不忙。\n\n他叫赛拉斯·韦恩——三天前从螺旋公司出走的高级情报官，带走了他们最机密的数据。他来找你是因为你是他唯一信任的对象。\n\n韦恩没有受伤。他不需要救助。他需要时间。在你的地图上保护他7天直到撤离安排就绪。螺旋公司知道他要来这里。他们会派人来。\n\n奖励：成功撤离后获得1000白银。</Military_Mission02_StartText>
+  <Military_Mission02_StartText>一个身影接近你的阵地。他很镇定。衣着考究。不慌不忙。\n\n他叫赛拉斯·韦恩——三天前从螺旋公司出走的高级情报官，带走了他们最机密的数据。他来找你是因为你是他唯一信任的对象。\n\n韦恩没有受伤。他不需要救助。他需要时间。在你的地图上保护他7天直到撤离安排就绪。螺旋公司知道他要来这里。他们会派人来。\n\n奖励：成功撤离后获得5000白银。</Military_Mission02_StartText>
   <Military_Mission02_ProtectText>保护赛拉斯·韦恩7天</Military_Mission02_ProtectText>
   <Military_Mission02_SuccessLabel>韦恩已撤离</Military_Mission02_SuccessLabel>
   <Military_Mission02_SuccessText>赛拉斯·韦恩平静地告别，像一个做惯了这种事的人。他逐一感谢了你的特工，整理了外套，头也不回地走出了地图边缘。\n\n他携带的情报现在已超出螺旋公司的掌控。奖励已发放。任务完成。\n\n螺旋公司不会忘记你在这里所做的一切。</Military_Mission02_SuccessText>

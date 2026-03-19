@@ -25,26 +25,40 @@ namespace Military
             if (Widgets.ButtonInvisible(rect))
             {
                 List<FloatMenuOption> options = new List<FloatMenuOption>();
-                foreach (string r in MilitaryRanks.All)
+
+                if (!hasRank)
                 {
-                    string rank = r;
-                    if (MilitaryRanks.IsEligibleForRank(rank, comp.missionCount))
+                    string recruitRank = MilitaryRanks.Default;
+                    options.Add(new FloatMenuOption(MilitaryRanks.TranslatedName(recruitRank), () =>
                     {
-                        options.Add(new FloatMenuOption(MilitaryRanks.TranslatedName(rank), () =>
+                        MilitaryUtility.SetRank(pawn, recruitRank);
+                    }));
+                }
+                else
+                {
+                    string currentRank = comp.rank;
+                    string nextRank = MilitaryRanks.Next(currentRank);
+                    bool isMaxRank = currentRank == MilitaryRanks.All[MilitaryRanks.All.Count - 1];
+                    bool canPromote = !isMaxRank && MilitaryRanks.IsEligibleForRank(nextRank, comp.missionCount);
+
+                    if (isMaxRank)
+                    {
+                        options.Add(new FloatMenuOption("Military_DisabledMaxRank".Translate(), null));
+                    }
+                    else if (canPromote)
+                    {
+                        options.Add(new FloatMenuOption(MilitaryRanks.TranslatedName(nextRank), () =>
                         {
-                            string oldRank = comp.rank;
-                            MilitaryUtility.SetRank(pawn, rank);
-                            if (!string.IsNullOrEmpty(oldRank) && MilitaryRanks.All.IndexOf(rank) > MilitaryRanks.All.IndexOf(oldRank))
-                                MilitaryUtility.SendPromotionLetter(pawn, rank);
+                            MilitaryUtility.SetRank(pawn, nextRank);
+                            MilitaryUtility.SendPromotionLetter(pawn, nextRank);
                         }));
                     }
                     else
                     {
-                        int required = MilitaryRanks.KillThresholds[rank];
-                        string label = MilitaryRanks.TranslatedName(rank) + " (" + "Military_RequiresKills".Translate(required) + ")";
-                        options.Add(new FloatMenuOption(label, null));
+                        options.Add(new FloatMenuOption("Military_RequiresKills".Translate(MilitaryRanks.KillThresholds[nextRank]), null));
                     }
                 }
+
                 Find.WindowStack.Add(new FloatMenu(options));
             }
 
