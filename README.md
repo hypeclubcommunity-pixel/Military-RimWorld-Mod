@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="About/Preview.png" alt="Military banner" width="100%">
-
 # Military
 
 **Build a real chain of command for your RimWorld colony.**
