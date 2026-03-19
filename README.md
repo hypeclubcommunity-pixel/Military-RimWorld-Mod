@@ -2,6 +2,8 @@
 
 # ⚔️ Military — RimWorld Mod
 
+![Military v0.5 Banner](About/Preview.png)
+
 ![RimWorld](https://img.shields.io/badge/RimWorld-1.6-B22222?style=for-the-badge&logo=steam&logoColor=white)
 ![Version](https://img.shields.io/badge/Version-0.5-1E90FF?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-2E8B57?style=for-the-badge)
