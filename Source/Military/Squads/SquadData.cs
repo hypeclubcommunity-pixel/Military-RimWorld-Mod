@@ -117,6 +117,9 @@ namespace Military
                 newComp.isSquadLeader = true;
             }
 
+            if (MilitaryUtility.CanReceivePlayerColonistMemoryOnMap(bestPawn, map))
+                MilitaryUtility.TryGainMemory(bestPawn, MilitaryThoughtDefOf.Military_FieldPromotion);
+
             if (Prefs.DevMode)
                 Log.Message($"[Military] {bestPawn.LabelShort} auto-promoted to leader of {squadName}");
         }

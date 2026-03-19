@@ -19,6 +19,7 @@ namespace Military.Patches
         {
             public bool nearSergeant;
             public bool nearLieutenant;
+            public bool nearOwnLeader;
             public bool initialized;
             public int lastUpdatedTick;
         }
@@ -64,6 +65,13 @@ namespace Military.Patches
             return GetCachedAura(pawn).nearLieutenant;
         }
 
+        public static bool IsNearOwnSquadLeader(Pawn pawn)
+        {
+            if (pawn == null || !pawn.Spawned)
+                return false;
+            return GetCachedAura(pawn).nearOwnLeader;
+        }
+
         private static CachedAura GetCachedAura(Pawn pawn)
         {
             int pawnId = pawn.thingIDNumber;
@@ -83,6 +91,18 @@ namespace Military.Patches
             {
                 auraCache[pawnId] = result;
                 return result;
+            }
+
+            GameComponent_MilitaryManager manager = GameComponent_MilitaryManager.Instance;
+            SquadData squad = manager?.GetSquadOf(pawn);
+            Pawn ownLeader = squad?.GetLeader(pawn.Map);
+            if (ownLeader != null
+                && ownLeader != pawn
+                && MilitaryUtility.IsLivePlayerColonistOnMap(ownLeader, pawn.Map)
+                && !ownLeader.InMentalState
+                && pawn.Position.InHorDistOf(ownLeader.Position, 15f))
+            {
+                result.nearOwnLeader = true;
             }
 
             List<Pawn> mapPawns = pawn.Map.mapPawns.FreeColonistsSpawned;

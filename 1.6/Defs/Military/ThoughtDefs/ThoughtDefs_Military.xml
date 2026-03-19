@@ -7,22 +7,261 @@
       <li>
         <label>soldier</label>
         <description>Serving with pride as a Private.</description>
-        <baseMoodEffect>2</baseMoodEffect>
+        <baseMoodEffect>1</baseMoodEffect>
       </li>
       <li>
         <label>experienced soldier</label>
         <description>Proud to hold the rank of Corporal.</description>
-        <baseMoodEffect>4</baseMoodEffect>
+        <baseMoodEffect>2</baseMoodEffect>
       </li>
       <li>
         <label>veteran</label>
         <description>Honored to serve as a Sergeant.</description>
-        <baseMoodEffect>6</baseMoodEffect>
+        <baseMoodEffect>3</baseMoodEffect>
       </li>
       <li>
         <label>commanding officer</label>
         <description>Proud to lead as a Lieutenant.</description>
-        <baseMoodEffect>8</baseMoodEffect>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_UnderCommand</defName>
+    <workerClass>Military.ThoughtWorker_UnderCommand</workerClass>
+    <stages>
+      <li>
+        <label>under command</label>
+        <description>I feel steadier with my squad leader close by.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_LeaderlessUnit</defName>
+    <workerClass>Military.ThoughtWorker_LeaderlessUnit</workerClass>
+    <stages>
+      <li>
+        <label>leaderless unit</label>
+        <description>Our unit has no effective leader. That is unsettling.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_ProtectedByBodyguard</defName>
+    <workerClass>Military.ThoughtWorker_ProtectedByBodyguard</workerClass>
+    <stages>
+      <li>
+        <label>under protection</label>
+        <description>I feel safer with my bodyguard nearby.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_ProtectiveDuty</defName>
+    <workerClass>Military.ThoughtWorker_ProtectiveDuty</workerClass>
+    <stages>
+      <li>
+        <label>protective duty</label>
+        <description>I am where I need to be, guarding my assignment.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_LostSquadmate</defName>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>lost squadmate</label>
+        <description>A member of my squad died. The unit will not feel the same.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_LostSquadLeader</defName>
+    <durationDays>8</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>lost squad leader</label>
+        <description>Our squad leader died. The loss hits hard.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_FailedToProtectVip</defName>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>failed to protect VIP</label>
+        <description>I failed my protection duty when it mattered most.</description>
+        <baseMoodEffect>-7</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_AnsweredTheCall</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>answered the call</label>
+        <description>I stepped in when someone needed protection.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_Promoted</defName>
+    <durationDays>4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>promoted</label>
+        <description>I earned a promotion through service.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_Demoted</defName>
+    <durationDays>4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>demoted</label>
+        <description>I lost rank. That stings.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_FieldPromotion</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>field promotion</label>
+        <description>I was forced into command. The responsibility feels real.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_DrilledWithSquad</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>drilled with squad</label>
+        <description>Training alongside my unit sharpened our cohesion.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_TrainedUnderCommand</defName>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>trained under command</label>
+        <description>Training under the eye of command kept me focused.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_PatrolContact</defName>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>made patrol contact</label>
+        <description>I spotted danger while on patrol and reacted quickly.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_ServedTogether</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>Military.ThoughtWorker_ServedTogether</workerClass>
+    <stages>
+      <li>
+        <label>served together</label>
+        <baseOpinionOffset>5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_RespectsCommand</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>Military.ThoughtWorker_RespectsCommand</workerClass>
+    <stages>
+      <li>
+        <label>respects command</label>
+        <baseOpinionOffset>8</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_TrustedBodyguard</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>Military.ThoughtWorker_TrustedBodyguard</workerClass>
+    <stages>
+      <li>
+        <label>trusted bodyguard</label>
+        <baseOpinionOffset>6</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_EntrustedToProtect</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>Military.ThoughtWorker_EntrustedToProtect</workerClass>
+    <stages>
+      <li>
+        <label>entrusted to protect</label>
+        <baseOpinionOffset>4</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Military_ProtectedMe</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>protected me</label>
+        <baseOpinionOffset>8</baseOpinionOffset>
       </li>
     </stages>
   </ThoughtDef>

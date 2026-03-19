@@ -79,9 +79,28 @@ namespace Military
 
         public static void SetRank(Pawn pawn, string rank)
         {
-            var comp = GetComp(pawn);
-            if (comp != null && MilitaryRanks.IsValid(rank))
-                comp.rank = rank;
+            MilitaryStatComp comp = GetComp(pawn);
+            if (comp == null || !MilitaryRanks.IsValid(rank))
+                return;
+
+            string oldRank = comp.rank;
+            if (oldRank == rank)
+                return;
+
+            comp.rank = rank;
+
+            if (string.IsNullOrEmpty(oldRank) || pawn == null || pawn.Dead || pawn.needs?.mood?.thoughts?.memories == null)
+                return;
+
+            int oldRankIndex = MilitaryRanks.All.IndexOf(oldRank);
+            int newRankIndex = MilitaryRanks.All.IndexOf(rank);
+            if (oldRankIndex < 0 || newRankIndex < 0)
+                return;
+
+            if (newRankIndex > oldRankIndex)
+                TryGainMemory(pawn, MilitaryThoughtDefOf.Military_Promoted);
+            else if (newRankIndex < oldRankIndex)
+                TryGainMemory(pawn, MilitaryThoughtDefOf.Military_Demoted);
         }
 
         public static void SendEligibilityLetter(Pawn pawn, string nextRank)
@@ -145,6 +164,87 @@ namespace Military
             return null;
         }
 
+        public static bool IsLivePlayerColonistOnMap(Pawn pawn, Map map)
+        {
+            return pawn != null
+                && map != null
+                && !pawn.Dead
+                && !pawn.Downed
+                && pawn.Spawned
+                && pawn.Map == map
+                && pawn.Faction == Faction.OfPlayer
+                && pawn.IsColonist;
+        }
+
+        public static bool IsLivePawnOnMap(Pawn pawn, Map map)
+        {
+            return pawn != null
+                && map != null
+                && !pawn.Dead
+                && !pawn.Downed
+                && pawn.Spawned
+                && pawn.Map == map;
+        }
+
+        public static bool CanReceivePlayerColonistMemoryOnMap(Pawn pawn, Map map)
+        {
+            return pawn != null
+                && map != null
+                && !pawn.Dead
+                && pawn.Spawned
+                && pawn.Map == map
+                && pawn.Faction == Faction.OfPlayer
+                && pawn.IsColonist;
+        }
+
+        public static bool IsAssignedBodyguardPair(Pawn bodyguard, Pawn vip)
+        {
+            if (bodyguard == null || vip == null || bodyguard == vip)
+                return false;
+
+            MilitaryStatComp bodyguardComp = GetComp(bodyguard);
+            MilitaryStatComp vipComp = GetComp(vip);
+            if (bodyguardComp == null || vipComp == null)
+                return false;
+
+            return bodyguardComp.bodyguardTarget == vip
+                && vipComp.vipBodyguards != null
+                && vipComp.vipBodyguards.Contains(bodyguard);
+        }
+
+        private static Thought_Memory CreateMemoryThought(ThoughtDef thoughtDef)
+        {
+            if (thoughtDef == null)
+                return null;
+
+            // RimWorld's memory-compatible overload is MakeThought(def, stage).
+            return ThoughtMaker.MakeThought(thoughtDef, 0);
+        }
+
+        public static void TryGainMemory(Pawn pawn, ThoughtDef thoughtDef)
+        {
+            if (pawn == null || thoughtDef == null)
+                return;
+
+            Thought_Memory memory = CreateMemoryThought(thoughtDef);
+            if (memory == null)
+                return;
+
+            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(memory);
+        }
+
+        public static void TryGainSocialMemory(Pawn pawn, Pawn otherPawn, ThoughtDef thoughtDef)
+        {
+            if (pawn == null || otherPawn == null || thoughtDef == null || pawn == otherPawn)
+                return;
+
+            Thought_Memory memory = CreateMemoryThought(thoughtDef);
+            if (memory == null)
+                return;
+
+            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(memory, otherPawn);
+        }
+
         public static bool AssignBodyguard(Pawn bodyguard, Pawn vip)
         {
             if (bodyguard == null || vip == null || bodyguard == vip)
@@ -205,6 +305,9 @@ namespace Military
             if (vipComp == null || vipComp.vipBodyguards == null || vipComp.vipBodyguards.Count == 0)
                 return;
 
+            // Cleanup only. Do not attach mood/social effects here:
+            // non-death removal paths also call this method.
+
             for (int i = vipComp.vipBodyguards.Count - 1; i >= 0; i--)
             {
                 Pawn bg = vipComp.vipBodyguards[i];
@@ -264,4 +367,3 @@ namespace Military
         }
     }
 }
-

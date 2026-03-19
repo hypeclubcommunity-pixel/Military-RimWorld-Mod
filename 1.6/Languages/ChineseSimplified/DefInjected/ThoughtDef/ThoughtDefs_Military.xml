@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MilitaryRankMood.stages.0.label>士兵</MilitaryRankMood.stages.0.label>
+  <MilitaryRankMood.stages.0.description>以列兵身份服役让我感到自豪。</MilitaryRankMood.stages.0.description>
+  <MilitaryRankMood.stages.1.label>经验丰富的士兵</MilitaryRankMood.stages.1.label>
+  <MilitaryRankMood.stages.1.description>我为自己拥有下士军衔而自豪。</MilitaryRankMood.stages.1.description>
+  <MilitaryRankMood.stages.2.label>老兵</MilitaryRankMood.stages.2.label>
+  <MilitaryRankMood.stages.2.description>能以中士身份服役让我深感荣耀。</MilitaryRankMood.stages.2.description>
+  <MilitaryRankMood.stages.3.label>指挥官</MilitaryRankMood.stages.3.label>
+  <MilitaryRankMood.stages.3.description>作为中尉带队让我感到自豪。</MilitaryRankMood.stages.3.description>
+
+  <Military_UnderCommand.stages.0.label>受指挥</Military_UnderCommand.stages.0.label>
+  <Military_UnderCommand.stages.0.description>队长就在附近时，我更镇定。</Military_UnderCommand.stages.0.description>
+  <Military_LeaderlessUnit.stages.0.label>无指挥小队</Military_LeaderlessUnit.stages.0.label>
+  <Military_LeaderlessUnit.stages.0.description>我们的小队没有有效指挥官，这让人不安。</Military_LeaderlessUnit.stages.0.description>
+  <Military_ProtectedByBodyguard.stages.0.label>受到护卫</Military_ProtectedByBodyguard.stages.0.label>
+  <Military_ProtectedByBodyguard.stages.0.description>保镖在身边让我更有安全感。</Military_ProtectedByBodyguard.stages.0.description>
+  <Military_ProtectiveDuty.stages.0.label>护卫职责</Military_ProtectiveDuty.stages.0.label>
+  <Military_ProtectiveDuty.stages.0.description>我守在该守的位置上，保护我的目标。</Military_ProtectiveDuty.stages.0.description>
+
+  <Military_LostSquadmate.stages.0.label>失去队友</Military_LostSquadmate.stages.0.label>
+  <Military_LostSquadmate.stages.0.description>我们小队有一名成员阵亡了，队伍再也不会一样。</Military_LostSquadmate.stages.0.description>
+  <Military_LostSquadLeader.stages.0.label>失去队长</Military_LostSquadLeader.stages.0.label>
+  <Military_LostSquadLeader.stages.0.description>我们的队长阵亡了，这个打击很沉重。</Military_LostSquadLeader.stages.0.description>
+  <Military_FailedToProtectVip.stages.0.label>未能保护要员</Military_FailedToProtectVip.stages.0.label>
+  <Military_FailedToProtectVip.stages.0.description>在最关键的时候，我没能完成护卫职责。</Military_FailedToProtectVip.stages.0.description>
+  <Military_AnsweredTheCall.stages.0.label>响应求援</Military_AnsweredTheCall.stages.0.label>
+  <Military_AnsweredTheCall.stages.0.description>有人需要保护时，我站了出来。</Military_AnsweredTheCall.stages.0.description>
+
+  <Military_Promoted.stages.0.label>晋升</Military_Promoted.stages.0.label>
+  <Military_Promoted.stages.0.description>我凭借服役表现获得了晋升。</Military_Promoted.stages.0.description>
+  <Military_Demoted.stages.0.label>降级</Military_Demoted.stages.0.label>
+  <Military_Demoted.stages.0.description>我失去了军衔，这很难受。</Military_Demoted.stages.0.description>
+  <Military_FieldPromotion.stages.0.label>战地晋升</Military_FieldPromotion.stages.0.label>
+  <Military_FieldPromotion.stages.0.description>我被迫接过指挥权，这份责任很沉重。</Military_FieldPromotion.stages.0.description>
+  <Military_DrilledWithSquad.stages.0.label>与小队共同训练</Military_DrilledWithSquad.stages.0.label>
+  <Military_DrilledWithSquad.stages.0.description>与小队一起训练加强了我们的默契。</Military_DrilledWithSquad.stages.0.description>
+  <Military_TrainedUnderCommand.stages.0.label>在指挥下训练</Military_TrainedUnderCommand.stages.0.label>
+  <Military_TrainedUnderCommand.stages.0.description>在指挥官注视下训练让我更加专注。</Military_TrainedUnderCommand.stages.0.description>
+  <Military_PatrolContact.stages.0.label>巡逻接敌</Military_PatrolContact.stages.0.label>
+  <Military_PatrolContact.stages.0.description>我在巡逻中及时发现了威胁并作出反应。</Military_PatrolContact.stages.0.description>
+
+  <Military_ServedTogether.stages.0.label>并肩服役</Military_ServedTogether.stages.0.label>
+  <Military_RespectsCommand.stages.0.label>尊重指挥</Military_RespectsCommand.stages.0.label>
+  <Military_TrustedBodyguard.stages.0.label>值得信赖的保镖</Military_TrustedBodyguard.stages.0.label>
+  <Military_EntrustedToProtect.stages.0.label>被托付保护</Military_EntrustedToProtect.stages.0.label>
+  <Military_ProtectedMe.stages.0.label>保护了我</Military_ProtectedMe.stages.0.label>
+</LanguageData>

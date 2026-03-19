@@ -210,12 +210,66 @@ namespace Military
 
             ApplyRoomThought();
             IncrementSessionCount();
+            ApplyUnitTrainingThoughts();
 
             Messages.Message(
                 "Military_TrainComplete".Translate(pawn.LabelShort),
                 new LookTargets(pawn),
                 MessageTypeDefOf.PositiveEvent,
                 historical: false);
+        }
+
+        private void ApplyUnitTrainingThoughts()
+        {
+            Map map = pawn.MapHeld;
+            if (map == null)
+                return;
+
+            int day = GenDate.DayOfYear(Find.TickManager.TicksAbs, Find.WorldGrid.LongLatOf(map.Tile).x);
+            GameComponent_MilitaryManager manager = GameComponent_MilitaryManager.Instance;
+            SquadData squad = manager?.GetSquadOf(pawn);
+            if (squad == null)
+                return;
+
+            AwardDrilledWithSquadThought(manager, squad, map, day);
+
+            if (MilitaryUtility.CanReceivePlayerColonistMemoryOnMap(pawn, map)
+                && Patches.RankStatPatch.IsNearOwnSquadLeader(pawn))
+            {
+                MilitaryUtility.TryGainMemory(pawn, MilitaryThoughtDefOf.Military_TrainedUnderCommand);
+            }
+        }
+
+        private static void AwardDrilledWithSquadThought(GameComponent_MilitaryManager manager, SquadData squad, Map map, int day)
+        {
+            if (manager == null || squad == null || map == null)
+                return;
+
+            List<Pawn> trainedUnit = new List<Pawn>();
+            Pawn leader = squad.GetLeader(map);
+            TryAddTrainedPawn(trainedUnit, manager, leader, map, day);
+
+            List<Pawn> members = squad.GetMembers(map);
+            for (int i = 0; i < members.Count; i++)
+                TryAddTrainedPawn(trainedUnit, manager, members[i], map, day);
+
+            if (trainedUnit.Count < 2)
+                return;
+
+            for (int i = 0; i < trainedUnit.Count; i++)
+                MilitaryUtility.TryGainMemory(trainedUnit[i], MilitaryThoughtDefOf.Military_DrilledWithSquad);
+        }
+
+        private static void TryAddTrainedPawn(List<Pawn> trainedUnit, GameComponent_MilitaryManager manager, Pawn candidate, Map map, int day)
+        {
+            if (!MilitaryUtility.CanReceivePlayerColonistMemoryOnMap(candidate, map))
+                return;
+            if (trainedUnit.Contains(candidate))
+                return;
+            if (manager.GetTrainingSessions(candidate.thingIDNumber, day) <= 0)
+                return;
+
+            trainedUnit.Add(candidate);
         }
 
         private void ApplyRoomThought()

@@ -176,7 +176,7 @@ namespace Military
 
                 if (!IsThreatPawn(hostile, colonist))
                 {
-                    FinishAssignment(i, responder, now, true);
+                    FinishAssignment(i, responder, now, true, true);
                     continue;
                 }
 
@@ -198,7 +198,7 @@ namespace Military
                 if (now < assignment.lockUntilTick)
                     continue;
 
-                FinishAssignment(i, responder, now, true);
+                FinishAssignment(i, responder, now, true, true);
             }
         }
 
@@ -539,10 +539,13 @@ namespace Military
             return JobMaker.MakeJob(JobDefOf.AttackMelee, hostile);
         }
 
-        private void FinishAssignment(int index, Pawn responder, int now, bool applyCooldown)
+        private void FinishAssignment(int index, Pawn responder, int now, bool applyCooldown, bool awardGratitude)
         {
             ResponseAssignmentRecord assignment = assignments[index];
             SavedResponseStateRecord savedState = GetSavedState(assignment.responderId);
+
+            if (awardGratitude)
+                TryAwardResponseGratitude(assignment, responder, now);
 
             if (responder != null && responder.Spawned && !responder.Dead && !responder.Downed && responder.Map == map)
             {
@@ -568,6 +571,29 @@ namespace Military
 
             ClearSavedState(assignment.responderId);
             assignments.RemoveAt(index);
+        }
+
+        private void TryAwardResponseGratitude(ResponseAssignmentRecord assignment, Pawn responder, int now)
+        {
+            if (assignment == null || responder == null)
+                return;
+            if (!MilitaryUtility.IsLivePlayerColonistOnMap(responder, map))
+                return;
+
+            Pawn colonist = FindPawnForAssignment(assignment.colonistId);
+            if (!MilitaryUtility.IsLivePlayerColonistOnMap(colonist, map))
+                return;
+
+            Pawn hostile = FindPawnForAssignment(assignment.hostileId);
+            if (hostile == null && assignment.lastThreatTick <= 0)
+                return;
+
+            // Must have been a real recent threat during this assignment.
+            if (assignment.lastThreatTick <= 0 || now - assignment.lastThreatTick > AssignmentLockTicks)
+                return;
+
+            MilitaryUtility.TryGainMemory(responder, MilitaryThoughtDefOf.Military_AnsweredTheCall);
+            MilitaryUtility.TryGainSocialMemory(colonist, responder, MilitaryThoughtDefOf.Military_ProtectedMe);
         }
 
         private void AbortAssignment(int index, Pawn responder)
@@ -619,7 +645,7 @@ namespace Military
             for (int i = assignments.Count - 1; i >= 0; i--)
             {
                 Pawn responder = FindPawnForAssignment(assignments[i].responderId);
-                FinishAssignment(i, responder, now, false);
+                FinishAssignment(i, responder, now, false, false);
             }
         }
 

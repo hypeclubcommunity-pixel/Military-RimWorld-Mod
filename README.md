@@ -1,333 +1,182 @@
-<div align="center">
+# Military - RimWorld Mod
 
-# ⚔️ Military — RimWorld Mod
-
-![Military v0.5 Banner](About/Preview.png)
+![Military banner](About/Preview.png)
 
 ![RimWorld](https://img.shields.io/badge/RimWorld-1.6-B22222?style=for-the-badge&logo=steam&logoColor=white)
-![Version](https://img.shields.io/badge/Version-0.5-1E90FF?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.6-1E90FF?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-2E8B57?style=for-the-badge)
 ![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20RU%20%7C%20ZH-orange?style=for-the-badge)
 ![Harmony](https://img.shields.io/badge/Requires-Harmony-9B59B6?style=for-the-badge)
 
-<br/>
+A full military command structure for your RimWorld colony.
+Ranks. Squads. Patrols. Bodyguards. Response. Training. Scenario missions.
 
-**A full military command structure for your RimWorld colony.**  
-Ranks. Patrols. Bodyguards. Missions. Combat Progression.
+## Overview
 
-<br/>
+Military turns your colony's fighters into a structured military force with real hierarchy and tactical control. Soldiers earn promotions through combat, gain meaningful rank bonuses, can be organized into squads, and can be assigned to patrol routes, defend zones, bodyguard duty, and automatic threat response.
 
-[📦 Download Latest](../../releases/latest) · [🐛 Report Bug](../../issues) · [💡 Request Feature](../../issues) · [📖 Changelog](#-changelog)
+Version 0.6 deepens those systems with morale, mood, social, and command-presence effects so squads feel more immersive without adding extra UI or feature bloat.
 
-<br/>
+## Core Features
 
----
+- Rank system from Recruit to Lieutenant
+- Rank-based stat bonuses and command auras
+- Squad creation and leader-follow behavior
+- Patrol routes with hostile interruption and automatic resumption
+- Bodyguard duty for VIP protection
+- Defend-area assignments
+- Automatic response to hostile threats against colonists
+- Combat training dummies for melee, ranged, or both
+- Dedicated Military tab with rank, squad, weapon, patrol, and action controls
+- Phantom Strike Force scenario with 3 scripted missions
 
-</div>
+## v0.6 Highlights
 
-## 📋 Table of Contents
+- Rebalanced rank pride into a smaller, more natural passive mood effect
+- Added command-presence thoughts like `Under Command` and `Leaderless Unit`
+- Added squad relationship thoughts like `Served Together` and `Respects Command`
+- Added loss and duty memories like `Lost Squadmate`, `Lost Squad Leader`, `Failed to Protect VIP`, and `Answered the Call`
+- Added safe depth to existing systems:
+  - promotion and demotion memories
+  - field-promotion flavor on automatic squad leader succession
+  - training-based squad cohesion
+  - patrol contact memory
+  - bodyguard trust social effects
+- Kept all new effects event-driven and tied to existing systems
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Rank System](#-rank-system)
-- [Patrol System](#-patrol-system)
-- [Bodyguard & Defend System](#-bodyguard--defend-system)
-- [Military Tab](#-military-tab)
-- [Combat Training](#-combat-training)
-- [Phantom Strike Force Scenario](#-phantom-strike-force-scenario)
-- [Translations](#-translations)
-- [Requirements](#-requirements)
-- [Installation](#-installation)
-- [Compatibility](#-compatibility)
-- [Changelog](#-changelog)
+## Rank System
 
----
+Ranks are earned through real combat progression.
 
-## 🎯 Overview
+- Recruit: starting rank
+- Private: +3% shooting accuracy
+- Corporal: +5% move speed
+- Sergeant: +3% shooting accuracy aura for nearby allies
+- Lieutenant: -5% aim time aura for nearby allies
 
-**Military** transforms your colony's fighters into a structured fighting force with real hierarchy and tactical control. Soldiers earn promotions through combat kills, gain meaningful stat bonuses at each rank, and can be assigned to patrol routes, bodyguard duties, or defensive zones — all managed from a single dedicated Military tab.
+Promotions can also be managed from the Military tab.
 
-> *Only battle-hardened colonists climb the ranks. Every kill counts.*
+## Patrol, Bodyguard, and Response
 
----
+Patrols:
+- assign up to 4 waypoints
+- require at least 2 waypoints
+- break when enemies are detected nearby
+- resume automatically after combat if the route is still valid
 
-## ✨ Features
+Bodyguards:
+- assign a soldier to protect a specific VIP pawn
+- maximum 2 bodyguards per VIP
+- bodyguards follow and react to nearby threats
 
-<table>
-<tr>
-<td width="50%">
+Response system:
+- military pawns can automatically respond to hostile threats against colonists
+- responders are restored cleanly after assignments end
 
-**🎖️ Rank System**
-- 5 ranks from Recruit to Lieutenant
-- Promotions gated by real combat kills
-- Unique stat bonuses per rank
-- Aura effects for senior ranks
-- Mood buffs for ranked soldiers
-- Promote / demote from UI
+## Combat Training
 
-</td>
-<td width="50%">
+Training dummies support:
+- Train Combat
+- Train Melee
+- Train Ranged
+- Cancel Training
 
-**🗺️ Patrol System**
-- Assign patrol routes with up to 4 waypoints
-- Requires minimum 2 waypoints
-- Patrol breaks when enemy detected nearby
-- Start / stop from Military tab
-- Patrol status shown at a glance
+Training completion is tracked and now also supports light squad-cohesion flavor in v0.6.
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+## Phantom Strike Force Scenario
 
-**🛡️ Bodyguard & Defend**
-- Assign bodyguards to protect VIP pawns
-- Maximum 2 bodyguards per VIP
-- Define defend areas by clicking two corners
-- Remove assignments at any time
-- Status visible in Military tab
+A custom 3-mission narrative scenario against the Helix Corporation.
 
-</td>
-<td width="50%">
+Mission 1 - No Safe Ground
+- Eliminate the entire Helix advance team
+- Fail if any operator is lost
+- Reward: 300 wood, 200 steel, 10 components, 10 medicine
 
-**🏋️ Combat Training**
-- Assign training dummies for melee, ranged, or both
-- Daily training with completion tracking
-- Trains combat skills passively
-- Cancel training assignment anytime
+Mission 2 - Vanguard's Shadow
+- Keep Silas Vane alive for 7 days
+- Fail if Vane is killed
+- Reward: 5,000 silver
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+Mission 3 - Iron Verdict
+- Eliminate Director Kael Voss
+- Fail if your entire force is wiped out
+- Reward: 2,000 silver, 500 steel, 30 components, 20 glitterworld medicine
 
-**📊 Military Tab**
-- Full overview of all military pawns
-- Columns for rank, kills, progress, weapon, patrol
-- Quick actions inline per soldier
-- Promotion eligibility notifications
+## Translations
 
-</td>
-<td width="50%">
+- English: full
+- Russian: full
+- Chinese Simplified: full
 
-**🎮 Phantom Strike Scenario**
-- Custom 3-mission narrative scenario
-- Elite black-ops squad behind enemy lines
-- Custom faction: Helix Corporation
-- Unique rewards and fail conditions
+v0.6 translation coverage includes the new morale, mood, social, and command-presence thought text.
 
-</td>
-</tr>
-</table>
+## Requirements
 
----
+Required:
+- Harmony by pardeike
 
-## 🎖️ Rank System
+Optional:
+- [RH2] Rimmu-Nation2 - Clothing
 
-Ranks are earned through **real combat kills** — no grinding, no shortcuts. Each rank comes with a stat bonus and higher ranks grant auras affecting nearby allies.
+## Installation
 
-| Rank | Stat Bonus | Type |
-|------|-----------|------|
-| 🔵 **Recruit** | — | Starting rank |
-| 🟢 **Private** | +3% Shooting Accuracy | Personal |
-| 🟡 **Corporal** | +5% Move Speed | Personal |
-| 🟠 **Sergeant** | +3% Shooting Accuracy | **Aura** (nearby allies) |
-| 🔴 **Lieutenant** | −5% Aim Time | **Aura** (squad) |
+Manual install:
 
-> Promotion eligibility is shown as a notification and visible in the Military tab. You can also manually promote or demote any soldier at any time.
+1. Download the latest release from the GitHub Releases page.
+2. Extract the mod folder into your RimWorld `Mods` directory.
+3. Enable Harmony before this mod in the RimWorld mod manager.
 
----
+Common mod paths:
 
-## 🗺️ Patrol System
-
-Assign soldiers to walk a defined route automatically — they'll patrol indefinitely and break off to engage threats before returning to their post.
-
-**How it works:**
-1. Select a colonist in the Military tab
-2. Click **Assign Patrol**
-3. Click up to **4 waypoints** on the map (minimum 2 required)
-4. Right-click to finalize early
-5. The soldier walks the route on a loop
-6. If an enemy is detected nearby → patrol breaks → soldier engages → returns to patrol after
-
----
-
-## 🛡️ Bodyguard & Defend System
-
-**Bodyguard:**
-- Select a soldier → click **Assign Bodyguard** → select the VIP to protect
-- The soldier will follow and protect the VIP at all times
-- Each VIP can have a maximum of **2 bodyguards**
-- Remove anytime with **Stop Bodyguard**
-
-**Defend Area:**
-- Select a soldier → click **Assign Defend Area**
-- Click two corners on the map to define the zone
-- The soldier will hold and defend that area
-- Remove anytime with **Stop Defending**
-
----
-
-## 📊 Military Tab
-
-A dedicated tab gives you complete oversight of your entire fighting force in one place.
-
-| Column | Description |
-|--------|-------------|
-| **Name** | Soldier portrait and name |
-| **Rank** | Current military rank |
-| **Squad** | Assigned squad |
-| **Kills** | Total confirmed kills |
-| **Progress** | Kills toward next promotion |
-| **Weapon** | Currently equipped weapon |
-| **Patrol** | Patrol route status |
-| **Actions** | Promote, Demote, Patrol, Bodyguard, Defend |
-
----
-
-## 🏋️ Combat Training
-
-Place training dummies and assign soldiers to sharpen their skills daily.
-
-| Mode | Description |
-|------|-------------|
-| **Train Combat** | Both melee and ranged training |
-| **Train Melee** | Melee only |
-| **Train Ranged** | Ranged only |
-| **Cancel Training** | Remove designation |
-
-Soldiers receive a message when they've trained enough for the day. Training completion is tracked and logged.
-
----
-
-## 🎮 Phantom Strike Force Scenario
-
-> *Four elite black-ops soldiers. Their unit was wiped out. Dropped behind enemy lines with one order: survive and dominate.*
-
-A custom narrative scenario with 3 sequential missions against the **Helix Corporation** — a ruthless Erasure Division that does not negotiate, does not retreat, and does not stop.
-
----
-
-### Mission 1 — No Safe Ground
-
-> *Helix has triangulated your drop pod signature. A full eraser team is converging.*
-
-| | |
-|---|---|
-| **Objective** | Eliminate the entire Helix advance team |
-| **Fail Condition** | Lose any single operator |
-| **Reward** | 300 wood · 200 steel · 10 components · 10 medicine |
-
----
-
-### Mission 2 — Vanguard's Shadow
-
-> *Silas Vane, a Helix defector, arrives carrying their most sensitive data. He needs 7 days.*
-
-| | |
-|---|---|
-| **Objective** | Keep Silas Vane alive for 7 days |
-| **Fail Condition** | Vane is killed |
-| **Reward** | 5,000 silver |
-
----
-
-### Mission 3 — Iron Verdict
-
-> *Vane's files reveal the Helix forward base. Command has authorized a counter-strike.*
-
-| | |
-|---|---|
-| **Objective** | Eliminate Director Kael Voss (Helix Commander) |
-| **Fail Condition** | Entire force wiped out |
-| **Reward** | 2,000 silver · 500 steel · 30 components · 20 glitterworld medicine |
-
----
-
-## 🌍 Translations
-
-| Language | Status |
-|----------|--------|
-| 🇬🇧 English | ✅ Full |
-| 🇷🇺 Russian | ✅ Full |
-| 🇨🇳 Chinese Simplified | ✅ Full |
-
-Want to contribute a translation? Open a pull request with a new file under `Languages/[YourLanguage]/Keyed/`.
-
----
-
-## 📦 Requirements
-
-**Required:**
-| Mod | Link |
-|-----|------|
-| Harmony | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077) |
-
-**Optional:**
-| Mod | Purpose |
-|-----|---------|
-| [RH2] Rimmu-Nation² - Clothing | Enhanced Helix Corporation soldier appearance |
-
----
-
-## 💾 Installation
-
-**Steam Workshop:**
-1. Subscribe to the mod on Steam Workshop
-2. Enable it in the RimWorld mod manager
-3. Place it **after Harmony** in load order
-
-**Manual:**
-1. Download the latest release from the [Releases page](../../releases/latest)
-2. Extract into:
-```
+```text
 Windows: C:\Users\[Username]\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Mods\
 Linux:   ~/.config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios/Mods/
 Mac:     ~/Library/Application Support/RimWorld/Mods/
 ```
-3. Enable in the RimWorld mod manager
-4. Load **after Harmony**
 
----
+## Compatibility
 
-## ✅ Compatibility
+- RimWorld 1.6
+- Harmony required
+- Compatible with the optional Rimmu-Nation2 clothing integration
+- May conflict with mods that heavily replace pawn tables or military AI behavior
 
-- ✅ RimWorld **1.6**
-- ✅ Compatible with most combat mods
-- ✅ Compatible with Rimmu-Nation² clothing
-- ⚠️ May conflict with mods that heavily modify the pawn tab system
+## Changelog
 
----
+### v0.6
 
-## 📝 Changelog
+- Added morale, mood, social, and command-presence depth to the military systems
+- Added situational and memory thoughts for squads, leadership, losses, bodyguards, patrol contact, and successful response duty
+- Added promotion, demotion, and field-promotion flavor
+- Added training-based squad cohesion effects
+- Fixed response gratitude to award only on real successful completion
+- Fixed custom memory creation so new military memory thoughts are granted correctly
+- Corrected social thought definitions and tightened live-state validation
+- Synced release metadata and documentation for the v0.6 update
 
 ### v0.5
-- Fixed military responders and bodyguards dropping their duties and reassigning repeatedly
-- Added the military response system source and damage tracking patch to the repo
-- Completed and synced English, Russian, and Chinese localization coverage
-- Updated Mission 2 reward text to match the actual 5,000 silver reward
+
+- Fixed responder and bodyguard duty dropping and reassignment loops
+- Added the response system and damage-tracking source files
+- Synced English, Russian, and Chinese localization
+- Corrected Mission 2 reward text to 5,000 silver
+- Updated release metadata and documentation
 
 ### v0.4.1
-- Added **Chinese Simplified** translation (full coverage)
-- Added **Russian** translation (full coverage)
-- Covers all UI: tab name, column headers, ranks, missions, patrol, bodyguard, training
+
+- Added Chinese Simplified translation
+- Added Russian translation
 
 ### v0.4.0
+
 - Initial public release
-- Full rank system (Recruit → Lieutenant)
-- Patrol system with waypoints
-- Bodyguard and defend area system
-- Military tab with full pawn overview
-- Phantom Strike Force scenario (3 missions)
-- Combat training dummy system
-- Full English localization
+- Rank system
+- Patrol system
+- Bodyguard and defend-area system
+- Military tab
+- Phantom Strike Force scenario
+- Combat training system
 
----
+## Support
 
-<div align="center">
-
-Made with ❤️ for the RimWorld modding community
-
-⭐ If you enjoy this mod, leave a star on GitHub or a rating on the Workshop!
-
-</div>
+If you enjoy the mod, consider leaving feedback on GitHub, Steam Workshop, or Nexus Mods.

@@ -61,6 +61,7 @@ namespace Military
                         {
                             // End patrol job — auto-attack ThinkTree will handle engagement,
                             // watchdog will resume patrol after combat ends.
+                            MilitaryUtility.TryGainMemory(pawn, MilitaryThoughtDefOf.Military_PatrolContact);
                             Messages.Message(
                                 "Military_PatrolBroken".Translate(pawn.LabelShort),
                                 pawn, MessageTypeDefOf.CautionInput, false);

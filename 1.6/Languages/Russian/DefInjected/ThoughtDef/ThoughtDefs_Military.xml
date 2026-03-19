@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MilitaryRankMood.stages.0.label>солдат</MilitaryRankMood.stages.0.label>
+  <MilitaryRankMood.stages.0.description>Я с гордостью служу в звании рядового.</MilitaryRankMood.stages.0.description>
+  <MilitaryRankMood.stages.1.label>опытный солдат</MilitaryRankMood.stages.1.label>
+  <MilitaryRankMood.stages.1.description>Я горжусь званием капрала.</MilitaryRankMood.stages.1.description>
+  <MilitaryRankMood.stages.2.label>ветеран</MilitaryRankMood.stages.2.label>
+  <MilitaryRankMood.stages.2.description>Для меня честь служить сержантом.</MilitaryRankMood.stages.2.description>
+  <MilitaryRankMood.stages.3.label>командир</MilitaryRankMood.stages.3.label>
+  <MilitaryRankMood.stages.3.description>Я горжусь тем, что веду других как лейтенант.</MilitaryRankMood.stages.3.description>
+
+  <Military_UnderCommand.stages.0.label>под командованием</Military_UnderCommand.stages.0.label>
+  <Military_UnderCommand.stages.0.description>Рядом с командиром отряда я чувствую себя увереннее.</Military_UnderCommand.stages.0.description>
+  <Military_LeaderlessUnit.stages.0.label>отряд без командира</Military_LeaderlessUnit.stages.0.label>
+  <Military_LeaderlessUnit.stages.0.description>Наш отряд остался без дееспособного командира. Это тревожит.</Military_LeaderlessUnit.stages.0.description>
+  <Military_ProtectedByBodyguard.stages.0.label>под охраной</Military_ProtectedByBodyguard.stages.0.label>
+  <Military_ProtectedByBodyguard.stages.0.description>С телохранителем рядом я чувствую себя безопаснее.</Military_ProtectedByBodyguard.stages.0.description>
+  <Military_ProtectiveDuty.stages.0.label>охранная служба</Military_ProtectiveDuty.stages.0.label>
+  <Military_ProtectiveDuty.stages.0.description>Я на своём месте и прикрываю назначенного подопечного.</Military_ProtectiveDuty.stages.0.description>
+
+  <Military_LostSquadmate.stages.0.label>потеря товарища по отряду</Military_LostSquadmate.stages.0.label>
+  <Military_LostSquadmate.stages.0.description>Один из бойцов моего отряда погиб. Подразделение уже не будет прежним.</Military_LostSquadmate.stages.0.description>
+  <Military_LostSquadLeader.stages.0.label>потеря командира отряда</Military_LostSquadLeader.stages.0.label>
+  <Military_LostSquadLeader.stages.0.description>Командир нашего отряда погиб. Эта потеря ощущается особенно тяжело.</Military_LostSquadLeader.stages.0.description>
+  <Military_FailedToProtectVip.stages.0.label>не смог защитить VIP</Military_FailedToProtectVip.stages.0.label>
+  <Military_FailedToProtectVip.stages.0.description>В самый важный момент я не справился со своей охранной задачей.</Military_FailedToProtectVip.stages.0.description>
+  <Military_AnsweredTheCall.stages.0.label>откликнулся на угрозу</Military_AnsweredTheCall.stages.0.label>
+  <Military_AnsweredTheCall.stages.0.description>Я встал на защиту, когда кому-то понадобилась помощь.</Military_AnsweredTheCall.stages.0.description>
+
+  <Military_Promoted.stages.0.label>повышение</Military_Promoted.stages.0.label>
+  <Military_Promoted.stages.0.description>Я заслужил повышение своей службой.</Military_Promoted.stages.0.description>
+  <Military_Demoted.stages.0.label>понижение</Military_Demoted.stages.0.label>
+  <Military_Demoted.stages.0.description>Я потерял звание. Это тяжело.</Military_Demoted.stages.0.description>
+  <Military_FieldPromotion.stages.0.label>полевое повышение</Military_FieldPromotion.stages.0.label>
+  <Military_FieldPromotion.stages.0.description>Мне пришлось принять командование на себя. Ответственность ощущается остро.</Military_FieldPromotion.stages.0.description>
+  <Military_DrilledWithSquad.stages.0.label>тренировался с отрядом</Military_DrilledWithSquad.stages.0.label>
+  <Military_DrilledWithSquad.stages.0.description>Совместная подготовка укрепила наш отряд.</Military_DrilledWithSquad.stages.0.description>
+  <Military_TrainedUnderCommand.stages.0.label>тренировка под командованием</Military_TrainedUnderCommand.stages.0.label>
+  <Military_TrainedUnderCommand.stages.0.description>Тренировка под наблюдением командира помогла мне собраться.</Military_TrainedUnderCommand.stages.0.description>
+  <Military_PatrolContact.stages.0.label>контакт на патруле</Military_PatrolContact.stages.0.label>
+  <Military_PatrolContact.stages.0.description>Во время патруля я вовремя заметил угрозу и среагировал.</Military_PatrolContact.stages.0.description>
+
+  <Military_ServedTogether.stages.0.label>служили вместе</Military_ServedTogether.stages.0.label>
+  <Military_RespectsCommand.stages.0.label>уважает командование</Military_RespectsCommand.stages.0.label>
+  <Military_TrustedBodyguard.stages.0.label>доверенный телохранитель</Military_TrustedBodyguard.stages.0.label>
+  <Military_EntrustedToProtect.stages.0.label>мне доверили защиту</Military_EntrustedToProtect.stages.0.label>
+  <Military_ProtectedMe.stages.0.label>защитил меня</Military_ProtectedMe.stages.0.label>
+</LanguageData>
