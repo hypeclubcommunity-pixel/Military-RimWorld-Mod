@@ -10,6 +10,8 @@ namespace Military
     public class Window_SquadManager : Window
     {
         private string selectedSquadId;
+        private string squadNameBuffer;
+        private string squadNameBufferSquadId;
         private Vector2 leftScroll = Vector2.zero;
         private Vector2 rightScroll = Vector2.zero;
 
@@ -33,7 +35,9 @@ namespace Military
             }
 
             Text.Font = GameFont.Medium;
+            GUI.color = MilitaryTheme.SectionTitle;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 36f), "Military Squads");
+            GUI.color = Color.white;
             Text.Font = GameFont.Small;
 
             Rect contentRect = new Rect(inRect.x, inRect.y + 40f, inRect.width, inRect.height - 40f);
@@ -46,7 +50,7 @@ namespace Military
 
         private void DrawLeftPanel(Rect rect, GameComponent_MilitaryManager manager)
         {
-            Widgets.DrawMenuSection(rect);
+            DrawPanelShell(rect);
 
             Rect listRect = rect.ContractedBy(8f);
             float buttonsHeight = 35f;
@@ -66,10 +70,7 @@ namespace Military
                 Rect row = new Rect(0f, i * rowHeight, viewRect.width, rowHeight - 2f);
                 bool selected = squad != null && squad.squadId == selectedSquadId;
 
-                if (selected)
-                    Widgets.DrawHighlightSelected(row);
-                else if (Mouse.IsOver(row))
-                    Widgets.DrawHighlight(row);
+                DrawListRow(row, selected);
 
                 if (Widgets.ButtonInvisible(row))
                     selectedSquadId = squad?.squadId;
@@ -83,7 +84,9 @@ namespace Military
                 int memberCount = squad.memberPawnIds?.Count ?? 0;
                 string memberLabel = memberCount == 1 ? "member" : "members";
 
+                GUI.color = selected ? MilitaryTheme.TextPrimary : MilitaryTheme.TextMuted;
                 Widgets.Label(row.ContractedBy(4f), $"{squad.squadName} / {leaderName} / {memberCount} {memberLabel}");
+                GUI.color = Color.white;
             }
 
             Widgets.EndScrollView();
@@ -92,7 +95,7 @@ namespace Military
             Rect createRect = new Rect(rect.x + 8f, buttonY, 136f, 30f);
             Rect disbandRect = new Rect(createRect.xMax + 8f, buttonY, 136f, 30f);
 
-            if (Widgets.ButtonText(createRect, "+ Create Squad"))
+            if (DrawThemedButton(createRect, "+ Create Squad", MilitaryTheme.Promote))
             {
                 Find.WindowStack.Add(new Dialog_CreateSquad(created =>
                 {
@@ -102,26 +105,25 @@ namespace Military
             }
 
             SquadData selectedSquad = manager.GetSquadById(selectedSquadId);
-            if (selectedSquad == null)
-                GUI.color = Color.gray;
-
-            if (Widgets.ButtonText(disbandRect, "Disband") && selectedSquad != null)
+            Color disbandColor = selectedSquad == null ? MilitaryTheme.Disabled : MilitaryTheme.Demote;
+            if (DrawThemedButton(disbandRect, "Disband", disbandColor) && selectedSquad != null)
             {
                 manager.DisbandSquad(selectedSquad.squadId);
                 selectedSquadId = null;
             }
-            GUI.color = Color.white;
         }
 
         private void DrawRightPanel(Rect rect, GameComponent_MilitaryManager manager)
         {
-            Widgets.DrawMenuSection(rect);
+            DrawPanelShell(rect);
 
             EnsureValidSelection(manager);
             SquadData squad = manager.GetSquadById(selectedSquadId);
             if (squad == null)
             {
+                GUI.color = MilitaryTheme.TextMuted;
                 Widgets.Label(rect.ContractedBy(10f), "Select a squad from the left panel.");
+                GUI.color = Color.white;
                 return;
             }
 
@@ -131,20 +133,31 @@ namespace Military
 
             Map map = ResolveMap();
             float curY = 0f;
+            SyncSquadNameBuffer(squad);
 
+            GUI.color = MilitaryTheme.SectionTitle;
             Widgets.Label(new Rect(0f, curY, 100f, 28f), "Name:");
-            squad.squadName = Widgets.TextField(new Rect(104f, curY, 260f, 28f), squad.squadName ?? "");
+            GUI.color = Color.white;
+            string editedName = Widgets.TextField(new Rect(104f, curY, 260f, 28f), squadNameBuffer ?? "");
+            squadNameBuffer = editedName;
+            string trimmedName = editedName?.Trim();
+            if (!string.IsNullOrWhiteSpace(trimmedName))
+            {
+                squad.squadName = trimmedName;
+                if (trimmedName != editedName)
+                    squadNameBuffer = trimmedName;
+            }
             curY += 42f;
 
             Pawn leader = squad.GetLeader(map);
             if (leader == null)
             {
-                GUI.color = Color.red;
+                GUI.color = MilitaryTheme.Warning;
                 Widgets.Label(new Rect(0f, curY, viewRect.width, 28f), "No eligible leader \u2014 assign a Sergeant or Lieutenant");
                 GUI.color = Color.white;
                 curY += 34f;
 
-                if (Widgets.ButtonText(new Rect(0f, curY, 150f, 28f), "Assign Leader"))
+                if (DrawThemedButton(new Rect(0f, curY, 150f, 28f), "Assign Leader", MilitaryTheme.Promote))
                 {
                     List<FloatMenuOption> leaderOptions = BuildAssignLeaderOptions(manager, squad);
                     if (leaderOptions.Count == 0)
@@ -159,7 +172,9 @@ namespace Military
                 curY += 56f;
             }
 
+            GUI.color = MilitaryTheme.SectionTitle;
             Widgets.Label(new Rect(0f, curY, viewRect.width, 28f), "Members");
+            GUI.color = Color.white;
             curY += 30f;
 
             List<Pawn> members = squad.GetMembers(map);
@@ -173,8 +188,8 @@ namespace Military
             for (int i = members.Count; i < SquadData.MaxMembers; i++)
             {
                 Rect emptyRow = new Rect(0f, curY, viewRect.width, 44f);
-                Widgets.DrawHighlight(emptyRow);
-                GUI.color = Color.gray;
+                Widgets.DrawBoxSolid(emptyRow, MilitaryTheme.PanelFill);
+                GUI.color = MilitaryTheme.Disabled;
                 Widgets.Label(emptyRow.ContractedBy(8f), "Empty slot");
                 GUI.color = Color.white;
                 curY += 50f;
@@ -182,17 +197,14 @@ namespace Military
 
             Rect addRect = new Rect(0f, curY + 8f, 140f, 30f);
             bool canAdd = members.Count < SquadData.MaxMembers;
-            if (!canAdd)
-                GUI.color = Color.gray;
-
-            if (Widgets.ButtonText(addRect, "+ Add Member") && canAdd)
+            Color addColor = canAdd ? MilitaryTheme.Promote : MilitaryTheme.Disabled;
+            if (DrawThemedButton(addRect, "+ Add Member", addColor) && canAdd)
             {
                 List<FloatMenuOption> options = BuildAddMemberOptions(manager, squad);
                 if (options.Count == 0)
                     options.Add(new FloatMenuOption("No eligible colonists", null));
                 Find.WindowStack.Add(new FloatMenu(options));
             }
-            GUI.color = Color.white;
 
             Widgets.EndScrollView();
         }
@@ -324,6 +336,8 @@ namespace Military
             if (manager.squads == null || manager.squads.Count == 0)
             {
                 selectedSquadId = null;
+                squadNameBuffer = null;
+                squadNameBufferSquadId = null;
                 return;
             }
 
@@ -331,12 +345,30 @@ namespace Military
                 selectedSquadId = manager.squads.FirstOrDefault(s => s != null)?.squadId;
         }
 
+        private void SyncSquadNameBuffer(SquadData squad)
+        {
+            if (squad == null)
+            {
+                squadNameBuffer = null;
+                squadNameBufferSquadId = null;
+                return;
+            }
+
+            if (squad.squadId != squadNameBufferSquadId)
+            {
+                squadNameBufferSquadId = squad.squadId;
+                squadNameBuffer = squad.squadName ?? string.Empty;
+            }
+        }
+
         private void DrawPawnRow(Rect row, Pawn pawn, bool isLeader, Action onRemove)
         {
-            Widgets.DrawHighlight(row);
+            Widgets.DrawBoxSolid(row, MilitaryTheme.PanelFill);
             if (pawn == null)
             {
+                GUI.color = MilitaryTheme.TextMuted;
                 Widgets.Label(row.ContractedBy(8f), "Missing pawn");
+                GUI.color = Color.white;
                 return;
             }
 
@@ -365,8 +397,11 @@ namespace Military
 
             Rect nameRect = new Rect(textX, row.y + 4f, row.width - textX - 150f, 20f);
             Rect rankRect = new Rect(textX, row.y + 24f, row.width - textX - 150f, 20f);
+            GUI.color = isLeader ? MilitaryTheme.SectionTitle : MilitaryTheme.TextPrimary;
             Widgets.Label(nameRect, $"{pawn.LabelShort} ({role})");
+            GUI.color = MilitaryTheme.TextMuted;
             Widgets.Label(rankRect, rank);
+            GUI.color = Color.white;
 
             if (comp != null && !string.IsNullOrEmpty(comp.rank))
             {
@@ -377,9 +412,38 @@ namespace Military
             if (!isLeader && onRemove != null)
             {
                 Rect removeRect = new Rect(row.xMax - 72f, row.y + 9f, 68f, 30f);
-                if (Widgets.ButtonText(removeRect, "Remove"))
+                if (DrawThemedButton(removeRect, "Remove", MilitaryTheme.Demote))
                     onRemove();
             }
+        }
+
+        private static void DrawPanelShell(Rect rect)
+        {
+            Widgets.DrawBoxSolid(rect, MilitaryTheme.PanelBackground);
+
+            Rect inner = rect.ContractedBy(1f);
+            Widgets.DrawBoxSolid(inner, MilitaryTheme.PanelFill);
+            Widgets.DrawBoxSolid(new Rect(inner.x, inner.y, inner.width, 4f), MilitaryTheme.HeaderFill);
+            Widgets.DrawBoxSolid(new Rect(inner.x, inner.y, 1f, inner.height), MilitaryTheme.PanelTrim);
+            Widgets.DrawBoxSolid(new Rect(inner.xMax - 1f, inner.y, 1f, inner.height), MilitaryTheme.PanelTrim);
+            Widgets.DrawBoxSolid(new Rect(inner.x, inner.yMax - 1f, inner.width, 1f), MilitaryTheme.PanelTrim);
+        }
+
+        private static void DrawListRow(Rect row, bool selected)
+        {
+            if (selected)
+                Widgets.DrawBoxSolid(row, MilitaryTheme.RowSelected);
+            else if (Mouse.IsOver(row))
+                Widgets.DrawBoxSolid(row, MilitaryTheme.RowHover);
+        }
+
+        private static bool DrawThemedButton(Rect rect, string label, Color color)
+        {
+            Color oldColor = GUI.color;
+            GUI.color = color;
+            bool clicked = Widgets.ButtonText(rect, label);
+            GUI.color = oldColor;
+            return clicked;
         }
     }
 
@@ -412,13 +476,17 @@ namespace Military
 
             float curY = 0f;
 
+            GUI.color = MilitaryTheme.SectionTitle;
             Widgets.Label(new Rect(0f, curY, 120f, 28f), "Squad Name:");
+            GUI.color = Color.white;
             squadName = Widgets.TextField(new Rect(122f, curY, inRect.width - 122f, 28f), squadName ?? "");
             curY += 42f;
 
+            GUI.color = MilitaryTheme.SectionTitle;
             Widgets.Label(new Rect(0f, curY, 120f, 28f), "Leader:");
+            GUI.color = Color.white;
             string leaderLabel = selectedLeader != null ? selectedLeader.LabelShort : "Select leader";
-            if (Widgets.ButtonText(new Rect(122f, curY, 220f, 28f), leaderLabel))
+            if (DrawThemedButton(new Rect(122f, curY, 220f, 28f), leaderLabel, MilitaryTheme.Promote))
             {
                 List<FloatMenuOption> options = BuildLeaderOptions(manager);
                 if (options.Count == 0)
@@ -429,9 +497,17 @@ namespace Military
 
             Rect confirmRect = new Rect(0f, curY, 120f, 32f);
             Rect cancelRect = new Rect(130f, curY, 120f, 32f);
+            bool hasValidName = !string.IsNullOrWhiteSpace(squadName);
+            Color confirmColor = hasValidName ? MilitaryTheme.Promote : MilitaryTheme.Disabled;
 
-            if (Widgets.ButtonText(confirmRect, "Confirm"))
+            if (DrawThemedButton(confirmRect, "Confirm", confirmColor))
             {
+                if (!hasValidName)
+                {
+                    Messages.Message("Enter a squad name before creating a squad.", MessageTypeDefOf.RejectInput, false);
+                    return;
+                }
+
                 SquadData squad = manager.CreateSquad(squadName, selectedLeader);
                 if (squad != null)
                 {
@@ -444,7 +520,7 @@ namespace Military
                 }
             }
 
-            if (Widgets.ButtonText(cancelRect, "Cancel"))
+            if (DrawThemedButton(cancelRect, "Cancel", MilitaryTheme.NeutralButton))
                 Close();
         }
 
@@ -490,6 +566,15 @@ namespace Military
             }
 
             return options;
+        }
+
+        private static bool DrawThemedButton(Rect rect, string label, Color color)
+        {
+            Color oldColor = GUI.color;
+            GUI.color = color;
+            bool clicked = Widgets.ButtonText(rect, label);
+            GUI.color = oldColor;
+            return clicked;
         }
     }
 }

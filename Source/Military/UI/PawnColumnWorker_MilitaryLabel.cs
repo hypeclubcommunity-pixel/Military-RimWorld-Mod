@@ -10,11 +10,11 @@ namespace Military
         private const float PortraitSize = 40f;
         private const float PortraitGap = 4f;
 
-        private static readonly Color RankRecruit = new Color(0.5f, 0.5f, 0.5f);
-        private static readonly Color RankPrivate = new Color(0.2f, 0.6f, 0.2f);
-        private static readonly Color RankCorporal = new Color(0.2f, 0.4f, 0.8f);
-        private static readonly Color RankSergeant = new Color(0.8f, 0.5f, 0.1f);
-        private static readonly Color RankLieutenant = new Color(0.9f, 0.7f, 0.1f);
+        private static readonly Color RankRecruit = MilitaryTheme.RankRecruit;
+        private static readonly Color RankPrivate = MilitaryTheme.RankPrivate;
+        private static readonly Color RankCorporal = MilitaryTheme.RankCorporal;
+        private static readonly Color RankSergeant = MilitaryTheme.RankSergeant;
+        private static readonly Color RankLieutenant = MilitaryTheme.RankLieutenant;
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
@@ -82,7 +82,7 @@ namespace Military
                 "Corporal" => RankCorporal,
                 "Sergeant" => RankSergeant,
                 "Lieutenant" => RankLieutenant,
-                _ => Color.gray
+                _ => MilitaryTheme.Disabled
             };
         }
 

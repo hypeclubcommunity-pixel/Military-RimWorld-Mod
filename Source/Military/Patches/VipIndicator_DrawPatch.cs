@@ -25,7 +25,7 @@ namespace Military
             // Position icon above pawn label (label sits ~20px below center, icon goes above it)
             Rect iconRect = new Rect(screenPos.x - 8f, screenPos.y - 38f, 16f, 16f);
 
-            GUI.color = new Color(1f, 0.8f, 0f, 0.9f);
+            GUI.color = new Color(MilitaryTheme.Vip.r, MilitaryTheme.Vip.g, MilitaryTheme.Vip.b, 0.9f);
             GUI.DrawTexture(iconRect, MilitaryUtility.VipShieldIcon);
             GUI.color = Color.white;
         }

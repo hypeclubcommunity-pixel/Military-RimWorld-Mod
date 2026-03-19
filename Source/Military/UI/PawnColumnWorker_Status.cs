@@ -6,12 +6,12 @@ namespace Military
 {
     public class PawnColumnWorker_Status : PawnColumnWorker
     {
-        private static readonly Color PatrolBlue = new Color(0.3f, 0.5f, 0.9f);
-        private static readonly Color FightRed = new Color(0.9f, 0.2f, 0.2f);
-        private static readonly Color IdleGrey = new Color(0.6f, 0.6f, 0.6f);
-        private static readonly Color VipGold = new Color(1f, 0.8f, 0f);
-        private static readonly Color DefendBlue = new Color(0.2f, 0.6f, 1f);
-        private static readonly Color BodyguardGreen = new Color(0.2f, 0.85f, 0.4f);
+        private static readonly Color PatrolBlue = MilitaryTheme.Patrol;
+        private static readonly Color FightRed = MilitaryTheme.Fighting;
+        private static readonly Color IdleGrey = MilitaryTheme.Idle;
+        private static readonly Color VipGold = MilitaryTheme.Vip;
+        private static readonly Color DefendBlue = MilitaryTheme.Defend;
+        private static readonly Color BodyguardGreen = MilitaryTheme.Bodyguard;
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
@@ -36,29 +36,29 @@ namespace Military
                 statusText = "Military_Status_Patrolling".Translate();
                 statusColor = PatrolBlue;
             }
+            else if (comp.isDefending)
+            {
+                statusText = "Military_Status_Defending".Translate();
+                statusColor = DefendBlue;
+            }
+            else if (comp.bodyguardTarget != null)
+            {
+                statusText = "Military_Status_Bodyguard".Translate();
+                statusColor = BodyguardGreen;
+            }
             else
             {
                 statusText = "Military_Status_Idle".Translate();
                 statusColor = IdleGrey;
             }
 
-            // Build suffix tags for protection roles
+            // VIP is the only supplemental tag we keep beside the primary duty status.
             string suffix = null;
-            Color suffixColor = Color.white;
+            Color suffixColor = MilitaryTheme.TextPrimary;
             if (comp.vipBodyguards.Count > 0)
             {
                 suffix = "Military_Status_VIP".Translate();
                 suffixColor = VipGold;
-            }
-            else if (comp.isDefending)
-            {
-                suffix = "Military_Status_Defending".Translate();
-                suffixColor = DefendBlue;
-            }
-            else if (comp.bodyguardTarget != null)
-            {
-                suffix = "Military_Status_Bodyguard".Translate();
-                suffixColor = BodyguardGreen;
             }
 
             Text.Font = GameFont.Small;

@@ -16,7 +16,9 @@ namespace Military
                 return;
 
             Text.Anchor = TextAnchor.MiddleCenter;
+            GUI.color = comp.missionCount > 0 ? MilitaryTheme.AccentOlive : MilitaryTheme.TextMuted;
             Widgets.Label(rect, comp.missionCount.ToString());
+            GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
         }
 

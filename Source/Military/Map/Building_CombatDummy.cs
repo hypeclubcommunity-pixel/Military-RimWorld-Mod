@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace Military
@@ -39,6 +40,7 @@ namespace Military
             {
                 yield return new Command_Action
                 {
+                    icon = MilitaryTextures.CancelTraining,
                     defaultLabel = "Military_TrainCancel_Label".Translate(),
                     defaultDesc = "Military_TrainCancel_Desc".Translate(),
                     action = () => ClearDesignation()
@@ -51,6 +53,7 @@ namespace Military
         {
             var cmd = new Command_Action
             {
+                icon = ContentFinder<Texture2D>.Get(desDef.texturePath, false) ?? BaseContent.BadTex,
                 defaultLabel = label,
                 defaultDesc = desc,
                 action = () =>

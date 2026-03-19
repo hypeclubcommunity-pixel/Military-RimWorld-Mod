@@ -4,6 +4,7 @@
     <defName>MainButton_Military</defName>
     <label>Military</label>
     <tabWindowClass>Military.MainTabWindow_Military</tabWindowClass>
+    <iconPath>Military/UI/MainButton_Military</iconPath>
     <order>99</order>
   </MainButtonDef>
 </Defs>

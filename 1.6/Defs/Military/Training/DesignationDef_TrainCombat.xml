@@ -13,7 +13,7 @@
   <!-- Melee-only training -->
   <DesignationDef>
     <defName>Military_TrainMelee</defName>
-    <texturePath>Designations/Slaughter</texturePath>
+    <texturePath>Military/Training/TrainMeleeDesignator</texturePath>
     <targetType>Thing</targetType>
     <removeIfBuildingDespawned>true</removeIfBuildingDespawned>
     <designateCancelable>false</designateCancelable>
@@ -22,7 +22,7 @@
   <!-- Ranged-only training -->
   <DesignationDef>
     <defName>Military_TrainRanged</defName>
-    <texturePath>Designations/Hunt</texturePath>
+    <texturePath>Military/Training/TrainRangedDesignator</texturePath>
     <targetType>Thing</targetType>
     <removeIfBuildingDespawned>true</removeIfBuildingDespawned>
     <designateCancelable>false</designateCancelable>

@@ -10,9 +10,9 @@ namespace Military
         private const float ButtonHeight = 24f;
         private const float Spacing = 8f;
 
-        private static readonly Color PromoteGreenTint = new Color(0.6f, 1f, 0.6f);
-        private static readonly Color DisabledTint = new Color(0.55f, 0.55f, 0.55f);
-        private static readonly Color DemoteRedTint = new Color(1f, 0.6f, 0.6f);
+        private static readonly Color PromoteGreenTint = MilitaryTheme.Promote;
+        private static readonly Color DisabledTint = MilitaryTheme.Disabled;
+        private static readonly Color DemoteRedTint = MilitaryTheme.Demote;
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {

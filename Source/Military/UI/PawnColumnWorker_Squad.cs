@@ -15,7 +15,9 @@ namespace Military
             if (comp == null || string.IsNullOrEmpty(comp.squadId))
             {
                 Text.Anchor = TextAnchor.MiddleCenter;
+                GUI.color = MilitaryTheme.TextMuted;
                 Widgets.Label(rect, "-");
+                GUI.color = Color.white;
                 Text.Anchor = TextAnchor.UpperLeft;
                 return;
             }
@@ -24,7 +26,9 @@ namespace Military
             if (squad == null)
             {
                 Text.Anchor = TextAnchor.MiddleCenter;
+                GUI.color = MilitaryTheme.TextMuted;
                 Widgets.Label(rect, "-");
+                GUI.color = Color.white;
                 Text.Anchor = TextAnchor.UpperLeft;
                 return;
             }
@@ -33,7 +37,9 @@ namespace Military
             string label = $"[{squad.squadName}] {role}";
 
             Text.Anchor = TextAnchor.MiddleCenter;
+            GUI.color = comp.isSquadLeader ? MilitaryTheme.SectionTitle : MilitaryTheme.TextPrimary;
             Widgets.Label(rect, label);
+            GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
         }
 

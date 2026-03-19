@@ -36,6 +36,7 @@ namespace Military
             // Promote button
             var promote = new Command_Action
             {
+                icon = MilitaryTextures.Promote,
                 defaultLabel = "Military_Gizmo_Promote".Translate(),
                 defaultDesc = "Military_Gizmo_PromoteDesc".Translate(
                     MilitaryRanks.TranslatedName(currentRank),
@@ -59,6 +60,7 @@ namespace Military
             // Demote button
             var demote = new Command_Action
             {
+                icon = MilitaryTextures.Demote,
                 defaultLabel = "Military_Gizmo_Demote".Translate(),
                 defaultDesc = "Military_Gizmo_DemoteDesc".Translate(
                     MilitaryRanks.TranslatedName(currentRank),
@@ -89,6 +91,7 @@ namespace Military
             {
                 var stopPatrol = new Command_Action
                 {
+                    icon = MilitaryTextures.StopPatrol,
                     defaultLabel = "Military_Gizmo_StopPatrol".Translate(),
                     defaultDesc = "Military_Gizmo_StopPatrolDesc".Translate(),
                     action = () =>
@@ -109,6 +112,7 @@ namespace Military
             {
                 var assignPatrol = new Command_Action
                 {
+                    icon = MilitaryTextures.AssignPatrol,
                     defaultLabel = "Military_Gizmo_AssignPatrol".Translate(),
                     defaultDesc = "Military_Gizmo_AssignPatrolDesc".Translate(),
                     action = () =>
@@ -186,6 +190,7 @@ namespace Military
             {
                 var assign = new Command_Action
                 {
+                    icon = MilitaryTextures.AssignBodyguard,
                     defaultLabel = "Military_AssignBodyguard".Translate(),
                     defaultDesc = "Military_AssignBodyguardDesc".Translate(),
                     action = () =>
@@ -226,6 +231,7 @@ namespace Military
             {
                 var stop = new Command_Action
                 {
+                    icon = MilitaryTextures.StopBodyguard,
                     defaultLabel = "Military_StopBodyguard".Translate(),
                     defaultDesc = "Military_StopBodyguardDesc".Translate(),
                     action = () =>
@@ -252,6 +258,7 @@ namespace Military
             {
                 var assignDefend = new Command_Action
                 {
+                    icon = MilitaryTextures.AssignDefend,
                     defaultLabel = "Military_AssignDefendArea".Translate(),
                     defaultDesc = "Military_AssignDefendAreaDesc".Translate(),
                     action = () =>
@@ -296,6 +303,7 @@ namespace Military
             {
                 var stopDefend = new Command_Action
                 {
+                    icon = MilitaryTextures.StopDefend,
                     defaultLabel = "Military_StopDefending".Translate(),
                     defaultDesc = "Military_StopDefendingDesc".Translate(),
                     action = () =>

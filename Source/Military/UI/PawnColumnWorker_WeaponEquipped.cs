@@ -28,7 +28,9 @@ namespace Military
 
                 Rect labelRect = new Rect(iconRect.xMax + gap, rect.y, textWidth, rect.height);
                 Text.Anchor = TextAnchor.MiddleCenter;
+                GUI.color = MilitaryTheme.TextPrimary;
                 Widgets.Label(labelRect, label);
+                GUI.color = Color.white;
                 Text.Anchor = TextAnchor.UpperLeft;
 
                 TooltipHandler.TipRegion(rect, weapon.DescriptionFlavor ?? weapon.LabelCap);
@@ -37,7 +39,7 @@ namespace Military
             {
                 Text.Font = GameFont.Small;
                 Text.Anchor = TextAnchor.MiddleCenter;
-                GUI.color = new Color(0.5f, 0.5f, 0.5f);
+                GUI.color = MilitaryTheme.TextMuted;
                 Widgets.Label(rect, "-");
                 GUI.color = Color.white;
                 Text.Anchor = TextAnchor.UpperLeft;

@@ -64,6 +64,7 @@ namespace Military
 
             Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.MiddleCenter;
+            GUI.color = hasRank ? MilitaryTheme.TextPrimary : MilitaryTheme.TextMuted;
 
             if (hasRank)
             {
@@ -84,6 +85,7 @@ namespace Military
                 Widgets.Label(rect, displayText);
             }
 
+            GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
         }
 

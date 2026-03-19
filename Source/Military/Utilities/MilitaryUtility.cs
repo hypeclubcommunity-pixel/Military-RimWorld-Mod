@@ -11,7 +11,7 @@ namespace Military
     {
         static MilitaryUtility()
         {
-            _vipShieldIcon = ContentFinder<Texture2D>.Get("Military/UI/VipShield", false) ?? BaseContent.BadTex;
+            _vipShieldIcon = ContentFinder<Texture2D>.Get(MilitaryTheme.VipShieldTexturePath, false) ?? BaseContent.BadTex;
             if (_vipShieldIcon != null)
                 _vipShieldIcon.filterMode = FilterMode.Point;
         }
@@ -123,7 +123,7 @@ namespace Military
 
         public static Texture2D GetRankTexture(string rank)
         {
-            return ContentFinder<Texture2D>.Get("Military/Ranks/" + rank, false) ?? BaseContent.BadTex;
+            return ContentFinder<Texture2D>.Get(MilitaryTheme.RankTextureRootPath + rank, false) ?? BaseContent.BadTex;
         }
 
         private static readonly Texture2D _vipShieldIcon;

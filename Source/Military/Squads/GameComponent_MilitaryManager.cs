@@ -54,6 +54,10 @@ namespace Military
 
         public SquadData CreateSquad(string name, Pawn leader)
         {
+            string cleanedName = name?.Trim();
+            if (string.IsNullOrWhiteSpace(cleanedName))
+                return null;
+
             if (!SquadData.IsValidLeader(leader))
                 return null;
 
@@ -67,7 +71,7 @@ namespace Military
             SquadData squad = new SquadData
             {
                 squadId = Guid.NewGuid().ToString(),
-                squadName = string.IsNullOrWhiteSpace(name) ? "Unnamed Squad" : name,
+                squadName = cleanedName,
                 leaderPawnId = leader.thingIDNumber,
                 memberPawnIds = new List<int>()
             };

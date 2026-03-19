@@ -6,8 +6,8 @@ namespace Military
 {
     public class PawnColumnWorker_PatrolIcon : PawnColumnWorker
     {
-        private static readonly Color ActiveColor = new Color(0.3f, 0.7f, 1f);
-        private static readonly Color InactiveColor = new Color(0.35f, 0.35f, 0.35f);
+        private static readonly Color ActiveColor = MilitaryTheme.Patrol;
+        private static readonly Color InactiveColor = MilitaryTheme.Disabled;
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
@@ -30,7 +30,7 @@ namespace Military
             );
 
             GUI.color = isPatrolling ? ActiveColor : InactiveColor;
-            GUI.DrawTexture(iconRect, TexCommand.SquadAttack);
+            GUI.DrawTexture(iconRect, MilitaryTextures.PatrolColumn);
             GUI.color = Color.white;
 
             if (hasWaypoints)

@@ -7,10 +7,8 @@ namespace Military
     [StaticConstructorOnStartup]
     public class PawnColumnWorker_RankProgress : PawnColumnWorker
     {
-        private static readonly Color BarFillColor = new Color(0.35f, 0.65f, 0.35f);
-        private static readonly Color BarBgColor = new Color(0.15f, 0.15f, 0.15f);
-        private static readonly Texture2D BarFillTexture = SolidColorMaterials.NewSolidColorTexture(BarFillColor);
-        private static readonly Texture2D BarBgTexture = SolidColorMaterials.NewSolidColorTexture(BarBgColor);
+        private static readonly Texture2D BarFillTexture = MilitaryTheme.RankProgressFill;
+        private static readonly Texture2D BarBgTexture = MilitaryTheme.RankProgressBackground;
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
@@ -28,7 +26,7 @@ namespace Military
             {
                 Text.Font = GameFont.Tiny;
                 Text.Anchor = TextAnchor.MiddleCenter;
-                GUI.color = new Color(0.9f, 0.7f, 0.1f);
+                GUI.color = MilitaryTheme.Beige;
                 Widgets.Label(rect, "MAX");
                 GUI.color = Color.white;
                 Text.Anchor = TextAnchor.UpperLeft;
@@ -54,8 +52,9 @@ namespace Military
             // Overlay label: "X / Y"
             Text.Font = GameFont.Tiny;
             Text.Anchor = TextAnchor.MiddleCenter;
-            GUI.color = Color.white;
+            GUI.color = MilitaryTheme.TextPrimary;
             Widgets.Label(inset, $"{currentKills} / {nextThreshold}");
+            GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
 
             TooltipHandler.TipRegion(rect, $"{"Military_Rank_Progress_Tip".Translate(MilitaryRanks.TranslatedName(currentRank), MilitaryRanks.TranslatedName(nextRank), currentKills, nextThreshold)}");
