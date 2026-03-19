@@ -1,132 +1,179 @@
-# Military - RimWorld Mod
+<div align="center">
 
-![Military banner](About/Preview.png)
+<img src="About/Preview.png" alt="Military banner" width="100%">
 
-![RimWorld](https://img.shields.io/badge/RimWorld-1.6-B22222?style=for-the-badge&logo=steam&logoColor=white)
-![Version](https://img.shields.io/badge/Version-0.6-1E90FF?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-2E8B57?style=for-the-badge)
-![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20RU%20%7C%20ZH-orange?style=for-the-badge)
-![Harmony](https://img.shields.io/badge/Requires-Harmony-9B59B6?style=for-the-badge)
+# Military
 
-A full military command structure for your RimWorld colony.
-Ranks. Squads. Patrols. Bodyguards. Response. Training. Scenario missions.
+**Build a real chain of command for your RimWorld colony.**
 
-## Overview
+Ranks | Squads | Patrols | Bodyguards | Threat Response | Training | Scenario Operations
 
-Military turns your colony's fighters into a structured military force with real hierarchy and tactical control. Soldiers earn promotions through combat, gain meaningful rank bonuses, can be organized into squads, and can be assigned to patrol routes, defend zones, bodyguard duty, and automatic threat response.
+<p>
+  <img src="https://img.shields.io/badge/RimWorld-1.6-B22222?style=for-the-badge" alt="RimWorld 1.6">
+  <img src="https://img.shields.io/badge/Version-0.6-1E90FF?style=for-the-badge" alt="Version 0.6">
+  <img src="https://img.shields.io/badge/Requires-Harmony-6A5ACD?style=for-the-badge" alt="Requires Harmony">
+  <img src="https://img.shields.io/badge/Languages-EN%20%7C%20RU%20%7C%20ZH-D97706?style=for-the-badge" alt="Languages EN RU ZH">
+  <img src="https://img.shields.io/badge/License-MIT-2E8B57?style=for-the-badge" alt="MIT License">
+</p>
 
-Version 0.6 deepens those systems with morale, mood, social, and command-presence effects so squads feel more immersive without adding extra UI or feature bloat.
+**[Latest Release](../../releases/latest)** | **[Issues](../../issues)** | **[Feature Requests](../../issues)** | **[v0.6 Highlights](#v06-highlights)**
 
-## Core Features
+</div>
 
-- Rank system from Recruit to Lieutenant
-- Rank-based stat bonuses and command auras
-- Squad creation and leader-follow behavior
-- Patrol routes with hostile interruption and automatic resumption
-- Bodyguard duty for VIP protection
-- Defend-area assignments
-- Automatic response to hostile threats against colonists
-- Combat training dummies for melee, ranged, or both
-- Dedicated Military tab with rank, squad, weapon, patrol, and action controls
-- Phantom Strike Force scenario with 3 scripted missions
+---
+
+> Military turns your combat colonists into a structured fighting force with rank progression, squad leadership, tactical assignments, and a stronger morale and identity layer built around the systems already in the mod.
+
+## Why Military Feels Different
+
+Military is built around **discipline, command, and battlefield roles** rather than raw stat inflation.
+
+- Promote soldiers through real combat progression
+- Organize colonists into squads with leaders and followers
+- Assign patrol routes, defend areas, and VIP protection
+- React automatically to hostile threats against colonists
+- Add morale, memory, and social depth to military service
+
+## Core Pillars
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### Command
+
+- 5-rank progression from Recruit to Lieutenant
+- Rank bonuses and leadership auras
+- Promotion and demotion control
+- Better command presence in v0.6
+
+</td>
+<td width="33%" valign="top">
+
+### Tactical Duty
+
+- Squad management
+- Patrol routes with waypoint control
+- Bodyguard and defend-area assignments
+- Automatic response to nearby threats
+
+</td>
+<td width="33%" valign="top">
+
+### Immersion
+
+- Morale and mood effects
+- Social thoughts tied to service and command
+- Squad loss and protection memories
+- Training and field-duty flavor
+
+</td>
+</tr>
+</table>
 
 ## v0.6 Highlights
 
-- Rebalanced rank pride into a smaller, more natural passive mood effect
-- Added command-presence thoughts like `Under Command` and `Leaderless Unit`
-- Added squad relationship thoughts like `Served Together` and `Respects Command`
-- Added loss and duty memories like `Lost Squadmate`, `Lost Squad Leader`, `Failed to Protect VIP`, and `Answered the Call`
-- Added safe depth to existing systems:
-  - promotion and demotion memories
-  - field-promotion flavor on automatic squad leader succession
-  - training-based squad cohesion
-  - patrol contact memory
-  - bodyguard trust social effects
-- Kept all new effects event-driven and tied to existing systems
+| New in v0.6 | Why it matters |
+| --- | --- |
+| Morale and command-presence thoughts | Squads feel more human, reactive, and structured |
+| Squad-loss and response-duty memories | Combat outcomes leave lasting impact |
+| Promotion, demotion, and field-promotion flavor | Military hierarchy feels more alive |
+| Training cohesion effects | Training supports unit identity, not just skill gain |
+| Bodyguard trust and protection flavor | Escort duty feels more meaningful |
+| Memory and response logic fixes | New thoughts now grant correctly and safely |
 
-## Rank System
+## What You Can Do
 
-Ranks are earned through real combat progression.
+### Rank and Command
 
-- Recruit: starting rank
-- Private: +3% shooting accuracy
-- Corporal: +5% move speed
-- Sergeant: +3% shooting accuracy aura for nearby allies
-- Lieutenant: -5% aim time aura for nearby allies
+| Rank | Bonus | Type |
+| --- | --- | --- |
+| Recruit | None | Starting rank |
+| Private | +3% shooting accuracy | Personal |
+| Corporal | +5% move speed | Personal |
+| Sergeant | +3% shooting accuracy | Aura |
+| Lieutenant | -5% aim time | Aura |
 
-Promotions can also be managed from the Military tab.
+Promotions are earned through military progression, and senior ranks help shape how squads perform and feel in the field.
 
-## Patrol, Bodyguard, and Response
+### Squad Leadership
 
-Patrols:
-- assign up to 4 waypoints
-- require at least 2 waypoints
-- break when enemies are detected nearby
-- resume automatically after combat if the route is still valid
+- Create squads and assign leaders
+- Keep soldiers organized under a clear command structure
+- Benefit from command-presence effects in active units
+- Feel the consequences when squadmates or leaders are lost
 
-Bodyguards:
-- assign a soldier to protect a specific VIP pawn
-- maximum 2 bodyguards per VIP
-- bodyguards follow and react to nearby threats
+### Patrols, Defense, and Bodyguards
 
-Response system:
-- military pawns can automatically respond to hostile threats against colonists
-- responders are restored cleanly after assignments end
+#### Patrols
 
-## Combat Training
+- Set up routes with up to 4 waypoints
+- Minimum 2 waypoints required
+- Patrols break for nearby hostiles
+- Troops resume patrol after combat when the route is still valid
 
-Training dummies support:
+#### Defend Area
+
+- Mark a zone with two map corners
+- Assign soldiers to hold and defend that area
+
+#### Bodyguard Duty
+
+- Assign up to 2 bodyguards per VIP
+- Escort and protect key pawns
+- Gain extra military flavor from trust and protection effects
+
+### Automatic Threat Response
+
+- Military pawns can respond to hostile threats against colonists
+- Response assignments restore cleanly after completion
+- Successful protection duty now has proper memory and social payoff
+
+### Combat Training
+
 - Train Combat
 - Train Melee
 - Train Ranged
 - Cancel Training
 
-Training completion is tracked and now also supports light squad-cohesion flavor in v0.6.
+Training supports daily practice and now adds light squad-cohesion flavor in v0.6.
 
 ## Phantom Strike Force Scenario
 
-A custom 3-mission narrative scenario against the Helix Corporation.
+Three linked military missions are included:
 
-Mission 1 - No Safe Ground
-- Eliminate the entire Helix advance team
-- Fail if any operator is lost
-- Reward: 300 wood, 200 steel, 10 components, 10 medicine
-
-Mission 2 - Vanguard's Shadow
-- Keep Silas Vane alive for 7 days
-- Fail if Vane is killed
-- Reward: 5,000 silver
-
-Mission 3 - Iron Verdict
-- Eliminate Director Kael Voss
-- Fail if your entire force is wiped out
-- Reward: 2,000 silver, 500 steel, 30 components, 20 glitterworld medicine
+| Mission | Objective | Failure Condition | Reward |
+| --- | --- | --- | --- |
+| No Safe Ground | Eliminate the Helix advance team | Lose any operator | 300 wood, 200 steel, 10 components, 10 medicine |
+| Vanguard's Shadow | Keep Silas Vane alive for 7 days | Vane is killed | 5,000 silver |
+| Iron Verdict | Eliminate Director Kael Voss | Entire force wiped out | 2,000 silver, 500 steel, 30 components, 20 glitterworld medicine |
 
 ## Translations
 
-- English: full
-- Russian: full
-- Chinese Simplified: full
+| Language | Status |
+| --- | --- |
+| English | Full |
+| Russian | Full |
+| Chinese Simplified | Full |
 
-v0.6 translation coverage includes the new morale, mood, social, and command-presence thought text.
+v0.6 includes localization support for the newer morale, mood, social, and command-presence thoughts as well.
 
 ## Requirements
 
-Required:
+**Required**
+
 - Harmony by pardeike
 
-Optional:
+**Optional**
+
 - [RH2] Rimmu-Nation2 - Clothing
 
 ## Installation
 
-Manual install:
-
-1. Download the latest release from the GitHub Releases page.
-2. Extract the mod folder into your RimWorld `Mods` directory.
-3. Enable Harmony before this mod in the RimWorld mod manager.
-
-Common mod paths:
+1. Download the latest release from GitHub or Nexus Mods.
+2. Extract the `Military` folder into your RimWorld `Mods` directory.
+3. Enable **Harmony** before this mod.
+4. Start a new game or load an existing save.
 
 ```text
 Windows: C:\Users\[Username]\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\Mods\
@@ -139,20 +186,23 @@ Mac:     ~/Library/Application Support/RimWorld/Mods/
 - RimWorld 1.6
 - Harmony required
 - Compatible with the optional Rimmu-Nation2 clothing integration
-- May conflict with mods that heavily replace pawn tables or military AI behavior
+- May conflict with mods that heavily replace military AI, pawn-table flows, or command behaviors
 
 ## Changelog
 
 ### v0.6
 
 - Added morale, mood, social, and command-presence depth to the military systems
-- Added situational and memory thoughts for squads, leadership, losses, bodyguards, patrol contact, and successful response duty
+- Added new thoughts for squad cohesion, leadership, losses, bodyguard trust, patrol contact, and successful response duty
 - Added promotion, demotion, and field-promotion flavor
 - Added training-based squad cohesion effects
-- Fixed response gratitude to award only on real successful completion
-- Fixed custom memory creation so new military memory thoughts are granted correctly
-- Corrected social thought definitions and tightened live-state validation
-- Synced release metadata and documentation for the v0.6 update
+- Fixed custom military memory creation so new memory thoughts are granted correctly
+- Fixed response gratitude so it only awards on true successful completion
+- Corrected social thought setup and tightened live-state and same-map validation
+- Updated translations, metadata, documentation, and preview art
+
+<details>
+<summary><strong>Older Versions</strong></summary>
 
 ### v0.5
 
@@ -177,6 +227,8 @@ Mac:     ~/Library/Application Support/RimWorld/Mods/
 - Phantom Strike Force scenario
 - Combat training system
 
+</details>
+
 ## Support
 
-If you enjoy the mod, consider leaving feedback on GitHub, Steam Workshop, or Nexus Mods.
+If you enjoy the mod, leave feedback on GitHub, Nexus Mods, or wherever you follow the project. That helps shape the next update.
