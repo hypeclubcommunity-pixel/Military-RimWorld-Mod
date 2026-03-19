@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Вкладка и интерфейс -->
+  <Military_Tab_Name>Военные</Military_Tab_Name>
+  <Military_Tab_Squads>Отряды</Military_Tab_Squads>
+
+  <!-- Заголовки столбцов -->
+  <Military_Col_Name>Имя</Military_Col_Name>
+  <Military_Col_Rank>Звание</Military_Col_Rank>
+  <Military_Col_Squad>Отряд</Military_Col_Squad>
+  <Military_Col_Kills>Убийства</Military_Col_Kills>
+  <Military_Col_Progress>Прогресс</Military_Col_Progress>
+  <Military_Col_Weapon>Оружие</Military_Col_Weapon>
+  <Military_Col_Patrol>Патруль</Military_Col_Patrol>
+  <Military_Col_Actions>Действия</Military_Col_Actions>
+
+  <!-- Названия званий -->
+  <Military_Rank_Recruit>Рекрут</Military_Rank_Recruit>
+  <Military_Rank_Private>Рядовой</Military_Rank_Private>
+  <Military_Rank_Corporal>Капрал</Military_Rank_Corporal>
+  <Military_Rank_Sergeant>Сержант</Military_Rank_Sergeant>
+  <Military_Rank_Lieutenant>Лейтенант</Military_Rank_Lieutenant>
+
+  <!-- Кнопки -->
+  <Military_Gizmo_Promote>Повысить</Military_Gizmo_Promote>
+  <Military_Gizmo_Demote>Понизить</Military_Gizmo_Demote>
+  <Military_Gizmo_AssignPatrol>Назначить патруль</Military_Gizmo_AssignPatrol>
+  <Military_Gizmo_StopPatrol>Остановить патруль</Military_Gizmo_StopPatrol>
+
+  <!-- Описания кнопок -->
+  <Military_Gizmo_PromoteDesc>{0} -> {1}</Military_Gizmo_PromoteDesc>
+  <Military_Gizmo_DemoteDesc>{0} -> {1}</Military_Gizmo_DemoteDesc>
+  <Military_Gizmo_AssignPatrolDesc>Выберите колониста для назначения маршрута патрулирования</Military_Gizmo_AssignPatrolDesc>
+  <Military_Gizmo_StopPatrolDesc>Отменить маршрут патрулирования этого колониста</Military_Gizmo_StopPatrolDesc>
+
+  <!-- Причины недоступности -->
+  <Military_DisabledMaxRank>Уже максимальное звание</Military_DisabledMaxRank>
+  <Military_DisabledMinRank>Уже минимальное звание</Military_DisabledMinRank>
+
+  <!-- Сообщения -->
+  <Military_PatrolAssigned>{0} назначен на патрулирование.</Military_PatrolAssigned>
+  <Military_CantWalkHere>Невозможно пройти.</Military_CantWalkHere>
+  <Military_WaypointBegin>Выберите 4 точки маршрута патрулирования. Правый клик для завершения или отмены.</Military_WaypointBegin>
+  <Military_WaypointSet>Точка {0} установлена. Нажмите для следующей или правый клик для завершения.</Military_WaypointSet>
+  <Military_WaypointFinalizing>Точка {0} установлена. Завершение маршрута.</Military_WaypointFinalizing>
+  <Military_NeedAtLeast2Waypoints>Необходимо минимум 2 точки</Military_NeedAtLeast2Waypoints>
+  <Military_PatrolBroken>{0} прервал патруль — враг поблизости!</Military_PatrolBroken>
+  <Military_RequiresKills>Требуется {0} убийств</Military_RequiresKills>
+  <Military_EligibleLabel>{0} готов к повышению</Military_EligibleLabel>
+  <Military_EligibleText>{0} накопил достаточно боевого опыта для повышения до {1}. Рассмотрите повышение во вкладке «Военные».</Military_EligibleText>
+  <Military_PromotedLabel>Повышение</Military_PromotedLabel>
+  <Military_PromotedText>{0} повышен до звания {1}.</Military_PromotedText>
+
+  <!-- Инспекция -->
+  <Military_InspectRank>Звание: {0}</Military_InspectRank>
+  <Military_InspectMissions>Убийства: {0}</Military_InspectMissions>
+  <Military_Inspect_Guarding>Охраняет: {0}</Military_Inspect_Guarding>
+  <Military_Inspect_ProtectedBy>Охраняется: {0} ({1}/2)</Military_Inspect_ProtectedBy>
+
+  <!-- Статус -->
+  <Military_Status_Idle>В ожидании</Military_Status_Idle>
+  <Military_Status_Fighting>В бою</Military_Status_Fighting>
+  <Military_Status_Patrolling>Патрулирование</Military_Status_Patrolling>
+
+  <!-- Бонусы званий -->
+  <Military_StatBonus_Private>Бонус звания: +3% точность стрельбы</Military_StatBonus_Private>
+  <Military_StatBonus_Corporal>Капрал: +5% скорость передвижения</Military_StatBonus_Corporal>
+  <Military_StatBonus_Sergeant>Аура сержанта: +3% точность стрельбы</Military_StatBonus_Sergeant>
+  <Military_StatBonus_Lieutenant>Аура лейтенанта: -5% время прицеливания</Military_StatBonus_Lieutenant>
+
+  <!-- Прогресс звания -->
+  <Military_Rank_Progress_Tip>{0} -> {1}: {2} / {3} убийств</Military_Rank_Progress_Tip>
+
+  <!-- Подсказки патруля -->
+  <Military_Patrol_StartTip>Нажмите для начала патруля</Military_Patrol_StartTip>
+  <Military_Patrol_StopTip>Нажмите для остановки патруля</Military_Patrol_StopTip>
+  <Military_Patrol_NoWaypointsTip>Маршрут патруля не задан (нужно минимум 2 точки)</Military_Patrol_NoWaypointsTip>
+
+  <!-- Статусы системы защиты -->
+  <Military_Status_VIP>VIP</Military_Status_VIP>
+  <Military_Status_Defending>Обороняется</Military_Status_Defending>
+  <Military_Status_Bodyguard>Телохранитель</Military_Status_Bodyguard>
+
+  <!-- Система защиты -->
+  <Military_AssignBodyguard>Назначить телохранителя</Military_AssignBodyguard>
+  <Military_AssignBodyguardDesc>Приказать этому колонисту охранять указанного.</Military_AssignBodyguardDesc>
+  <Military_StopBodyguard>Снять телохранителя</Military_StopBodyguard>
+  <Military_StopBodyguardDesc>Отменить обязанности телохранителя.</Military_StopBodyguardDesc>
+  <Military_BodyguardAssigned>{0} теперь охраняет {1}.</Military_BodyguardAssigned>
+  <Military_BodyguardCleared>{0} прекратил охрану.</Military_BodyguardCleared>
+  <Military_AssignDefendArea>Назначить зону обороны</Military_AssignDefendArea>
+  <Military_AssignDefendAreaDesc>Выберите военного, затем нажмите два угла для определения зоны обороны.</Military_AssignDefendAreaDesc>
+  <Military_StopDefending>Прекратить оборону</Military_StopDefending>
+  <Military_StopDefendingDesc>Отменить назначенную зону обороны.</Military_StopDefendingDesc>
+  <Military_DefendAreaBegin>Нажмите на первый угол зоны обороны.</Military_DefendAreaBegin>
+  <Military_DefendAreaCorner1>Первый угол установлен. Нажмите на второй угол для завершения.</Military_DefendAreaCorner1>
+  <Military_DefendAreaAssigned>{0} назначена зона обороны.</Military_DefendAreaAssigned>
+
+  <!-- Сценарий «Фантомный ударный отряд» -->
+  <Military_Scenario_PhantomStrike_Title>Фантомный ударный отряд</Military_Scenario_PhantomStrike_Title>
+  <Military_Scenario_PhantomStrike_Desc>Четыре элитных бойца спецподразделения. Их отряд уничтожен. Теперь их сбрасывают глубоко в тыл врага с единственным приказом: выжить и доминировать.</Military_Scenario_PhantomStrike_Desc>
+  <Military_Scenario_PhantomStrike_StartMessage>Ваш ударный отряд приземлился. Четыре оперативника, нет поддержки, нет эвакуации.\n\nНазначьте телохранителей, задайте маршруты патрулирования и превратите ваш отряд в неудержимую силу. Повышения приходят быстро — заслужите их.</Military_Scenario_PhantomStrike_StartMessage>
+
+  <!-- Миссия 1: Нет безопасного места -->
+  <Military_Mission01_Title>Миссия 1: Нет безопасного места</Military_Mission01_Title>
+  <Military_Mission01_StartLabel>Тебе не убежать</Military_Mission01_StartLabel>
+  <Military_Mission01_StartText>Три недели с тех пор, как вы ушли в тень. Четыре оперативника, нет эвакуации, нет сети поддержки. Вы думали, что оторвались от них. Вы ошибались.\n\nОтдел Ликвидации корпорации «Хеликс» определил сигнатуру ваших капсул. Полноценная группа ликвидации приближается к вашей позиции прямо сейчас. Приготовьтесь к контакту.\n\nУничтожьте каждого из них. Потеряете одного оперативника — и всё кончено.</Military_Mission01_StartText>
+  <Military_Mission01_SuccessLabel>Зона очищена</Military_Mission01_SuccessLabel>
+  <Military_Mission01_SuccessText>Передовой отряд «Хеликс» уничтожен. Зона высадки безопасна.\n\nАвтоматический запас материалов сброшен на вашу позицию:\n- 300 дерева\n- 200 стали\n- 10 компонентов\n- 10 лекарств\n\nСтройте быстро. «Хеликс» долго не будет молчать.\n\nОжидайте. Поступает новая разведка.</Military_Mission01_SuccessText>
+  <Military_Mission01_FailLabel>Отряд потерян</Military_Mission01_FailLabel>
+  <Military_Mission01_FailText>Оперативник потерян. «Хеликс» достиг своей цели. Фантомного ударного отряда больше не существует.\n\nКорпорация «Хеликс» считает дело закрытым.</Military_Mission01_FailText>
+
+  <!-- Событие Миссии 1 -->
+  <Military_M1_BurnedLabel>Контакт неизбежен</Military_M1_BurnedLabel>
+  <Military_M1_BurnedText>Они отследили сигнатуру ваших капсул. Отдел Ликвидации «Хеликс» продвигается к вашей позиции прямо сейчас. Это их работа — найти, зафиксировать и уничтожить. Займите укрытия и приготовьтесь к бою. Каждая секунда на счету.</Military_M1_BurnedText>
+
+  <!-- Фракция «Хеликс» -->
+  <Military_HelixCorp_Name>Корпорация «Хеликс»</Military_HelixCorp_Name>
+  <Military_HelixCorp_Desc>Отдел Ликвидации. Они не ведут переговоров. Они не отступают. Они ликвидируют.</Military_HelixCorp_Desc>
+  <Military_HelixCorp_RaidLabel>Ликвидационная группа «Хеликс»</Military_HelixCorp_RaidLabel>
+  <Military_HelixCorp_RaidText>Ликвидационная группа «Хеликс» отправлена по вашим координатам. Это не рейдеры. Это профессионалы, посланные завершить вашу операцию. Приготовьтесь к координированной атаке.</Military_HelixCorp_RaidText>
+
+  <!-- Миссия 2: Тень авангарда -->
+  <Military_Mission02_Title>Миссия 2: Тень авангарда</Military_Mission02_Title>
+  <Military_Mission02_StartLabel>Дружественный контакт</Military_Mission02_StartLabel>
+  <Military_Mission02_StartText>К вашей позиции приближается фигура. Он спокоен. Хорошо одет. Не торопится.\n\nЕго зовут Сайлас Вейн — старший офицер разведки, который три дня назад ушёл из корпорации «Хеликс» и забрал их самые секретные данные. Он пришёл к вам, потому что вы — единственный, кому он доверяет.\n\nВейн не ранен. Ему не нужно спасение. Ему нужно время. Защищайте его на вашей карте в течение 7 дней, пока не будет организована его эвакуация. «Хеликс» знает, что он идёт сюда. Они пришлют людей.\n\nНаграда: 1000 серебра после успешной эвакуации.</Military_Mission02_StartText>
+  <Military_Mission02_ProtectText>Защищайте Сайласа Вейна 7 дней</Military_Mission02_ProtectText>
+  <Military_Mission02_SuccessLabel>Вейн эвакуирован</Military_Mission02_SuccessLabel>
+  <Military_Mission02_SuccessText>Сайлас Вейн попрощался тихо, как человек, который делал это не раз. Он поблагодарил ваших оперативников по имени, поправил пальто и ушёл за край карты не оглядываясь.\n\nРазведданные, которые он нёс, теперь вне досягаемости «Хеликс». Награда доставлена. Миссия выполнена.\n\nКорпорация «Хеликс» не забудет, что вы здесь сделали.</Military_Mission02_SuccessText>
+  <Military_Mission02_FailLabel>Авангард потерян</Military_Mission02_FailLabel>
+  <Military_Mission02_FailText>Сайлас Вейн мёртв. Разведданные утеряны. Корпорация «Хеликс» будет считать, что виноваты вы.\n\nОни не пришлют ещё одну группу ликвидации. Они пришлют всё, что у них есть.</Military_Mission02_FailText>
+
+  <!-- Рейд «Хеликс» во время Миссии 2 -->
+  <Military_M2_RaidLabel>Протокол ликвидации активирован</Military_M2_RaidLabel>
+  <Military_M2_RaidText>Корпорация «Хеликс» подтвердила местоположение Сайласа Вейна. На этот раз они не посылают разведчиков.\n\nРазвёрнута ликвидационная группа — специально созданная для уничтожения высоко ценных целей на укреплённых позициях. Защищайте Вейна любой ценой. Не позволяйте им добраться до него.</Military_M2_RaidText>
+
+  <!-- Система боевой подготовки -->
+  <Military_TrainCombat_Label>Боевая подготовка</Military_TrainCombat_Label>
+  <Military_TrainCombat_Desc>Назначить этот манекен для ближнего и дальнего боя.</Military_TrainCombat_Desc>
+  <Military_TrainMelee_Label>Тренировка ближнего боя</Military_TrainMelee_Label>
+  <Military_TrainMelee_Desc>Назначить этот манекен только для тренировки ближнего боя.</Military_TrainMelee_Desc>
+  <Military_TrainRanged_Label>Тренировка стрельбы</Military_TrainRanged_Label>
+  <Military_TrainRanged_Desc>Назначить этот манекен только для тренировки стрельбы.</Military_TrainRanged_Desc>
+  <Military_TrainCancel_Label>Отменить тренировку</Military_TrainCancel_Label>
+  <Military_TrainCancel_Desc>Убрать назначение тренировки с этого манекена.</Military_TrainCancel_Desc>
+  <Military_TrainedEnoughToday>{0} достаточно тренировался сегодня.</Military_TrainedEnoughToday>
+  <Military_TrainComplete>{0} завершил боевую подготовку.</Military_TrainComplete>
+
+  <!-- Миссия 3: Железный приговор -->
+  <Military_Mission03_Title>Миссия 3: Железный приговор</Military_Mission03_Title>
+  <Military_Mission03_StartLabel>Разведка Вейна</Military_Mission03_StartLabel>
+  <Military_Mission03_StartText>Файлы данных Сайласа Вейна расшифрованы. Они содержат координаты передовой оперативной базы «Хеликс» в вашем секторе — отправной точки каждой ликвидационной группы, посланной против вас.\n\nКомандование разрешило контрнаступление. Торговец оружием — старый знакомый Вейна — в пути с оружием, бронёй, медикаментами и наёмниками. Он прибудет в течение дня. Тратьте серебро с умом.\n\nНо «Хеликс» перехватил ту же передачу. Они знают, что у вас есть данные. Ждать они не будут.\n\nГотовьтесь к полномасштабному штурму. Уничтожьте командира «Хеликс», чтобы сломить их хватку над сектором.</Military_Mission03_StartText>
+  <Military_Mission03_SuccessLabel>Сектор очищен</Military_Mission03_SuccessLabel>
+  <Military_Mission03_SuccessText>Директор Каэль Восс мёртв. Тело командира «Хеликс» лежит в пыли рядом с обломками его штурмового отряда.\n\nИх передовая оперативная база замолчала. Подкреплений не будет. Ни ликвидационных групп. Ни ночных рейдов.\n\nВпервые с момента высадки небо тихое. Вы больше не добыча.\n\nНаграда доставлена:\n- 2 000 серебра\n- 500 стали\n- 30 компонентов\n- 20 глиттермировых лекарств\n\nФантомный ударный отряд победил.</Military_Mission03_SuccessText>
+  <Military_Mission03_FailLabel>Полная потеря</Military_Mission03_FailLabel>
+  <Military_Mission03_FailText>Весь ваш отряд уничтожен. Фантомного ударного отряда больше не существует.\n\nКорпорация «Хеликс» считает вопрос окончательно решённым. Директор Восс получит награду.</Military_Mission03_FailText>
+
+  <!-- Торговец оружием Миссии 3 -->
+  <Military_M3_TraderLabel>Торговец оружием прибывает</Military_M3_TraderLabel>
+  <Military_M3_TraderText>Прибыл старый контакт Сайласа Вейна — вольный торговец оружием, связанный с каждым чёрным рынком сектора.\n\nОн везёт оружие военного класса, броню, медикаменты, боевые стимуляторы и наёмников. Он принимает серебро.\n\nТратьте с умом. Это последнее снабжение перед бурей.</Military_M3_TraderText>
+
+  <!-- Волны Миссии 3 -->
+  <Military_M3_Wave1Label>Обнаружены разведчики «Хеликс»</Military_M3_Wave1Label>
+  <Military_M3_Wave1Text>Датчики обнаружили движение на периметре. Разведывательная группа «Хеликс» развёрнута для проверки вашей обороны. Они вас прощупывают.\n\nЭто не основной штурм. Но он приближается.</Military_M3_Wave1Text>
+  <Military_M3_Wave2Label>Основные силы приближаются</Military_M3_Wave2Label>
+  <Military_M3_Wave2Text>Разведчики доложили. «Хеликс» больше не прощупывает. Полноценный штурмовой отряд продвигается к вашей позиции — тяжело вооружённый, тяжело бронированный и быстрый.\n\nЭто не последняя волна. Командир наблюдает. Ждёт.</Military_M3_Wave2Text>
+  <Military_M3_Wave3Label>КОМАНДИР ПРИБЫЛ</Military_M3_Wave3Label>
+  <Military_M3_Wave3Text>Директор Каэль Восс вышел на поле боя лично. Командир «Хеликс» ведёт последнюю штурмовую волну — крупнейшие силы, когда-либо развёрнутые против вас.\n\nОн в силовой броне. У него лучшее оружие. И у него прямой приказ от руководства «Хеликс» покончить с этим.\n\nУбейте командира — и наступление рухнет. Проиграйте — и всё, что вы построили, умрёт вместе с вами.</Military_M3_Wave3Text>
+
+</LanguageData>

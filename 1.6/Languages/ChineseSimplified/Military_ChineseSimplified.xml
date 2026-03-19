@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 标签页和界面标签 -->
+  <Military_Tab_Name>军事</Military_Tab_Name>
+  <Military_Tab_Squads>小队</Military_Tab_Squads>
+
+  <!-- 列标题 -->
+  <Military_Col_Name>姓名</Military_Col_Name>
+  <Military_Col_Rank>军衔</Military_Col_Rank>
+  <Military_Col_Squad>小队</Military_Col_Squad>
+  <Military_Col_Kills>击杀</Military_Col_Kills>
+  <Military_Col_Progress>进度</Military_Col_Progress>
+  <Military_Col_Weapon>武器</Military_Col_Weapon>
+  <Military_Col_Patrol>巡逻</Military_Col_Patrol>
+  <Military_Col_Actions>操作</Military_Col_Actions>
+
+  <!-- 军衔名称 -->
+  <Military_Rank_Recruit>新兵</Military_Rank_Recruit>
+  <Military_Rank_Private>列兵</Military_Rank_Private>
+  <Military_Rank_Corporal>下士</Military_Rank_Corporal>
+  <Military_Rank_Sergeant>中士</Military_Rank_Sergeant>
+  <Military_Rank_Lieutenant>中尉</Military_Rank_Lieutenant>
+
+  <!-- 按钮标签 -->
+  <Military_Gizmo_Promote>晋升</Military_Gizmo_Promote>
+  <Military_Gizmo_Demote>降级</Military_Gizmo_Demote>
+  <Military_Gizmo_AssignPatrol>分配巡逻</Military_Gizmo_AssignPatrol>
+  <Military_Gizmo_StopPatrol>停止巡逻</Military_Gizmo_StopPatrol>
+
+  <!-- 按钮描述 -->
+  <Military_Gizmo_PromoteDesc>{0} -> {1}</Military_Gizmo_PromoteDesc>
+  <Military_Gizmo_DemoteDesc>{0} -> {1}</Military_Gizmo_DemoteDesc>
+  <Military_Gizmo_AssignPatrolDesc>选择一名殖民者分配巡逻路线</Military_Gizmo_AssignPatrolDesc>
+  <Military_Gizmo_StopPatrolDesc>取消该棋子的巡逻路线</Military_Gizmo_StopPatrolDesc>
+
+  <!-- 禁用原因 -->
+  <Military_DisabledMaxRank>已达最高军衔</Military_DisabledMaxRank>
+  <Military_DisabledMinRank>已是最低军衔</Military_DisabledMinRank>
+
+  <!-- 消息 -->
+  <Military_PatrolAssigned>{0}已被分配巡逻任务。</Military_PatrolAssigned>
+  <Military_CantWalkHere>无法通行。</Military_CantWalkHere>
+  <Military_WaypointBegin>选择4个巡逻路径点。右键完成或取消。</Military_WaypointBegin>
+  <Military_WaypointSet>路径点{0}已设置。点击放置下一个，或右键完成。</Military_WaypointSet>
+  <Military_WaypointFinalizing>路径点{0}已设置。正在完成巡逻路线。</Military_WaypointFinalizing>
+  <Military_NeedAtLeast2Waypoints>至少需要2个路径点</Military_NeedAtLeast2Waypoints>
+  <Military_PatrolBroken>{0}中断巡逻——附近发现敌人！</Military_PatrolBroken>
+  <Military_RequiresKills>需要{0}次击杀</Military_RequiresKills>
+  <Military_EligibleLabel>{0}已准备好晋升</Military_EligibleLabel>
+  <Military_EligibleText>{0}已经积累了足够的战斗经验，可以晋升为{1}。请考虑在军事面板中为其晋升。</Military_EligibleText>
+  <Military_PromotedLabel>晋升</Military_PromotedLabel>
+  <Military_PromotedText>{0}已晋升为{1}。</Military_PromotedText>
+
+  <!-- 检查信息标签 -->
+  <Military_InspectRank>军衔：{0}</Military_InspectRank>
+  <Military_InspectMissions>击杀数：{0}</Military_InspectMissions>
+  <Military_Inspect_Guarding>保护中：{0}</Military_Inspect_Guarding>
+  <Military_Inspect_ProtectedBy>受保护：{0}（{1}/2）</Military_Inspect_ProtectedBy>
+
+  <!-- 状态栏 -->
+  <Military_Status_Idle>待命</Military_Status_Idle>
+  <Military_Status_Fighting>战斗中</Military_Status_Fighting>
+  <Military_Status_Patrolling>巡逻中</Military_Status_Patrolling>
+
+  <!-- 军衔属性加成 -->
+  <Military_StatBonus_Private>军衔加成：射击精度+3%</Military_StatBonus_Private>
+  <Military_StatBonus_Corporal>下士：移动速度+5%</Military_StatBonus_Corporal>
+  <Military_StatBonus_Sergeant>中士光环：射击精度+3%</Military_StatBonus_Sergeant>
+  <Military_StatBonus_Lieutenant>中尉光环：瞄准时间减少5%</Military_StatBonus_Lieutenant>
+
+  <!-- 晋升进度 -->
+  <Military_Rank_Progress_Tip>{0} -> {1}：{2} / {3} 次击杀</Military_Rank_Progress_Tip>
+
+  <!-- 巡逻图标提示 -->
+  <Military_Patrol_StartTip>点击开始巡逻</Military_Patrol_StartTip>
+  <Military_Patrol_StopTip>点击停止巡逻</Military_Patrol_StopTip>
+  <Military_Patrol_NoWaypointsTip>未设置巡逻路线（至少需要2个路径点）</Military_Patrol_NoWaypointsTip>
+
+  <!-- 保护系统状态 -->
+  <Military_Status_VIP>要人</Military_Status_VIP>
+  <Military_Status_Defending>防守中</Military_Status_Defending>
+  <Military_Status_Bodyguard>保镖</Military_Status_Bodyguard>
+
+  <!-- 保护系统 -->
+  <Military_AssignBodyguard>分配保镖</Military_AssignBodyguard>
+  <Military_AssignBodyguardDesc>命令该棋子保护目标人员。</Military_AssignBodyguardDesc>
+  <Military_StopBodyguard>撤销保镖</Military_StopBodyguard>
+  <Military_StopBodyguardDesc>取消保镖任务。</Military_StopBodyguardDesc>
+  <Military_BodyguardAssigned>{0}现在正在保护{1}。</Military_BodyguardAssigned>
+  <Military_BodyguardCleared>{0}已停止保护职责。</Military_BodyguardCleared>
+  <Military_AssignDefendArea>分配防守区域</Military_AssignDefendArea>
+  <Military_AssignDefendAreaDesc>选择一名军事人员，然后点击两个角落来定义防守区域。</Military_AssignDefendAreaDesc>
+  <Military_StopDefending>停止防守</Military_StopDefending>
+  <Military_StopDefendingDesc>取消该棋子的防守区域。</Military_StopDefendingDesc>
+  <Military_DefendAreaBegin>点击防守区域的第一个角落。</Military_DefendAreaBegin>
+  <Military_DefendAreaCorner1>第一个角落已设置。点击第二个角落完成区域。</Military_DefendAreaCorner1>
+  <Military_DefendAreaAssigned>{0}已被分配防守区域。</Military_DefendAreaAssigned>
+
+  <!-- 幻影突击队剧本 -->
+  <Military_Scenario_PhantomStrike_Title>幻影突击队</Military_Scenario_PhantomStrike_Title>
+  <Military_Scenario_PhantomStrike_Desc>四名精英黑色行动士兵。他们的部队被歼灭。现在他们被空投到敌后地区，只有一个命令：生存并征服。</Military_Scenario_PhantomStrike_Desc>
+  <Military_Scenario_PhantomStrike_StartMessage>你的突击队已着陆。四名特工，没有支援，没有撤离。\n\n分配保镖，设置巡逻路线，将你的小队打造成不可阻挡的力量。晋升来得很快——去争取吧。</Military_Scenario_PhantomStrike_StartMessage>
+
+  <!-- 任务1：无处安全 -->
+  <Military_Mission01_Title>任务1：无处安全</Military_Mission01_Title>
+  <Military_Mission01_StartLabel>你无处可逃</Military_Mission01_StartLabel>
+  <Military_Mission01_StartText>自你隐匿以来已过三周。四名特工，没有撤离，没有支援网络。你以为已经甩掉了他们。你错了。\n\n螺旋公司的抹杀师已经定位到你的空投信号。一支完整的抹杀小队正在向你集结。准备接敌。\n\n消灭他们每一个人。失去一名特工则任务失败。</Military_Mission01_StartText>
+  <Military_Mission01_SuccessLabel>区域安全</Military_Mission01_SuccessLabel>
+  <Military_Mission01_SuccessText>螺旋公司先遣队已被消灭。着陆区安全。\n\n自动补给物资已空投到你的位置：\n- 300 木材\n- 200 钢铁\n- 10 零部件\n- 10 药物\n\n抓紧建设。螺旋公司不会沉默太久。\n\n待命。新情报即将到来。</Military_Mission01_SuccessText>
+  <Military_Mission01_FailLabel>突击队覆灭</Military_Mission01_FailLabel>
+  <Military_Mission01_FailText>一名特工阵亡。螺旋公司达成了目标。幻影突击队已不复存在。\n\n螺旋公司认为此事已结案。</Military_Mission01_FailText>
+
+  <!-- 任务1叙事事件 -->
+  <Military_M1_BurnedLabel>即将接敌</Military_M1_BurnedLabel>
+  <Military_M1_BurnedText>他们追踪到了你的空投信号。螺旋公司抹杀师正在向你逼近。这就是他们的职责——发现、锁定、终结。立即进入战斗准备。每一秒都至关重要。</Military_M1_BurnedText>
+
+  <!-- 螺旋公司派系 -->
+  <Military_HelixCorp_Name>螺旋公司</Military_HelixCorp_Name>
+  <Military_HelixCorp_Desc>抹杀师。他们不谈判。他们不撤退。他们只负责抹杀。</Military_HelixCorp_Desc>
+  <Military_HelixCorp_RaidLabel>螺旋公司抹杀队</Military_HelixCorp_RaidLabel>
+  <Military_HelixCorp_RaidText>一支螺旋公司抹杀小队已派往你的坐标。他们不是普通劫掠者。他们是专门被派来终结你行动的专业人员。准备迎接协调攻击。</Military_HelixCorp_RaidText>
+
+  <!-- 任务2：先锋之影 -->
+  <Military_Mission02_Title>任务2：先锋之影</Military_Mission02_Title>
+  <Military_Mission02_StartLabel>友方接触</Military_Mission02_StartLabel>
+  <Military_Mission02_StartText>一个身影接近你的阵地。他很镇定。衣着考究。不慌不忙。\n\n他叫赛拉斯·韦恩——三天前从螺旋公司出走的高级情报官，带走了他们最机密的数据。他来找你是因为你是他唯一信任的对象。\n\n韦恩没有受伤。他不需要救助。他需要时间。在你的地图上保护他7天直到撤离安排就绪。螺旋公司知道他要来这里。他们会派人来。\n\n奖励：成功撤离后获得1000白银。</Military_Mission02_StartText>
+  <Military_Mission02_ProtectText>保护赛拉斯·韦恩7天</Military_Mission02_ProtectText>
+  <Military_Mission02_SuccessLabel>韦恩已撤离</Military_Mission02_SuccessLabel>
+  <Military_Mission02_SuccessText>赛拉斯·韦恩平静地告别，像一个做惯了这种事的人。他逐一感谢了你的特工，整理了外套，头也不回地走出了地图边缘。\n\n他携带的情报现在已超出螺旋公司的掌控。奖励已发放。任务完成。\n\n螺旋公司不会忘记你在这里所做的一切。</Military_Mission02_SuccessText>
+  <Military_Mission02_FailLabel>先锋已失</Military_Mission02_FailLabel>
+  <Military_Mission02_FailText>赛拉斯·韦恩已死。情报文件已丢失。螺旋公司会认为是你造成的。\n\n他们不会再派一支抹杀队。他们会派出一切。</Military_Mission02_FailText>
+
+  <!-- 任务2中期螺旋公司突袭 -->
+  <Military_M2_RaidLabel>抹杀协议已启动</Military_M2_RaidLabel>
+  <Military_M2_RaidText>螺旋公司已确认赛拉斯·韦恩的位置。这次他们不是派侦察兵。\n\n一支抹杀队已部署——专门用于在防御阵地中终结高价值目标。不惜一切代价保护韦恩。不要让他们接近他。</Military_M2_RaidText>
+
+  <!-- 战斗训练系统 -->
+  <Military_TrainCombat_Label>战斗训练</Military_TrainCombat_Label>
+  <Military_TrainCombat_Desc>指定此训练假人进行近战和远程训练。</Military_TrainCombat_Desc>
+  <Military_TrainMelee_Label>近战训练</Military_TrainMelee_Label>
+  <Military_TrainMelee_Desc>指定此训练假人仅进行近战训练。</Military_TrainMelee_Desc>
+  <Military_TrainRanged_Label>射击训练</Military_TrainRanged_Label>
+  <Military_TrainRanged_Desc>指定此训练假人仅进行射击训练。</Military_TrainRanged_Desc>
+  <Military_TrainCancel_Label>取消训练</Military_TrainCancel_Label>
+  <Military_TrainCancel_Desc>移除此训练假人的训练指定。</Military_TrainCancel_Desc>
+  <Military_TrainedEnoughToday>{0}今天已训练足够。</Military_TrainedEnoughToday>
+  <Military_TrainComplete>{0}完成了战斗训练。</Military_TrainComplete>
+
+  <!-- 任务3：铁锤裁决 -->
+  <Military_Mission03_Title>任务3：铁锤裁决</Military_Mission03_Title>
+  <Military_Mission03_StartLabel>韦恩的情报</Military_Mission03_StartLabel>
+  <Military_Mission03_StartText>赛拉斯·韦恩的数据文件已被解密。其中包含螺旋公司在你所在区域的前沿作战基地的坐标——他们派出的每一支抹杀队的出发点。\n\n指挥部已授权反击行动。一名军火商——韦恩的旧识——正携带武器、装甲、药物和可招募人员赶来。他将在一天内抵达。明智地使用你的白银。\n\n但螺旋公司截获了同一份情报。他们知道你有数据。他们不会等了。\n\n准备迎接全面攻击。消灭螺旋公司指挥官即可打破他们对该区域的控制。</Military_Mission03_StartText>
+  <Military_Mission03_SuccessLabel>区域肃清</Military_Mission03_SuccessLabel>
+  <Military_Mission03_SuccessText>凯尔·沃斯司令已死。螺旋公司指挥官的尸体倒在废墟之中。\n\n他们的前沿作战基地已经沉寂。没有援军到来。没有抹杀队。没有午夜突袭。\n\n自你着陆以来，天空第一次安静了。你不再是猎物。\n\n奖励已发放：\n- 2,000 白银\n- 500 钢铁\n- 30 零部件\n- 20 闪世界药物\n\n幻影突击队已获胜。</Military_Mission03_SuccessText>
+  <Military_Mission03_FailLabel>全军覆没</Military_Mission03_FailLabel>
+  <Military_Mission03_FailText>你的整支部队已被歼灭。幻影突击队不复存在。\n\n螺旋公司认为此事已被永久解决。沃斯司令将获得嘉奖。</Military_Mission03_FailText>
+
+  <!-- 任务3军火商 -->
+  <Military_M3_TraderLabel>军火商来了</Military_M3_TraderLabel>
+  <Military_M3_TraderText>赛拉斯·韦恩的一位老联系人已到达——一名自由军火商，与该区域每个黑市都有联系。\n\n他携带了军用级武器、装甲、药物、战斗药品和可招募人员。他接受白银。\n\n明智消费。这是风暴来临前的最后一次补给。</Military_M3_TraderText>
+
+  <!-- 任务3波次信件 -->
+  <Military_M3_Wave1Label>检测到螺旋公司侦察兵</Military_M3_Wave1Label>
+  <Military_M3_Wave1Text>前方传感器检测到周边有动静。一支螺旋公司侦察队已部署来试探你的防御。他们在试探你。\n\n这不是主攻。但它要来了。</Military_M3_Wave1Text>
+  <Military_M3_Wave2Label>主力部队逼近</Military_M3_Wave2Label>
+  <Military_M3_Wave2Text>侦察兵已回报。螺旋公司不再试探了。一支全面突击部队正向你的位置推进——重武装、重装甲、行动迅速。\n\n这不是最后一波。指挥官在观望。在等待。</Military_M3_Wave2Text>
+  <Military_M3_Wave3Label>指挥官来了</Military_M3_Wave3Label>
+  <Military_M3_Wave3Text>凯尔·沃斯司令亲自上阵。螺旋公司指挥官正率领最后的突击波——他们对你发动过的最大规模部队。\n\n他穿着动力装甲。他携带着他们最好的武器。他有螺旋公司总部的直接命令来终结此事。\n\n杀死指挥官，攻势就会崩溃。失败，你所建立的一切都会随你而亡。</Military_M3_Wave3Text>
+
+</LanguageData>
