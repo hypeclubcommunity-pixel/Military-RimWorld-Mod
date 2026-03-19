@@ -38,6 +38,22 @@ namespace Military
             { "Lieutenant", 35 }
         };
 
+        public static readonly Dictionary<string, float> TrainingMultipliers = new Dictionary<string, float>
+        {
+            { "Recruit", 1.0f },
+            { "Private", 1.1f },
+            { "Corporal", 1.2f },
+            { "Sergeant", 1.3f },
+            { "Lieutenant", 1.5f }
+        };
+
+        public static float GetTrainingMultiplier(string rank)
+        {
+            if (!string.IsNullOrEmpty(rank) && TrainingMultipliers.TryGetValue(rank, out float mult))
+                return mult;
+            return 1.0f;
+        }
+
         public static bool IsEligibleForRank(string rank, int kills)
         {
             return KillThresholds.TryGetValue(rank, out int threshold) && kills >= threshold;

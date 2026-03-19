@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Mission 3: Iron Verdict
+    Auto-accepted after M2 completes (triggered by GameComponent_MilitaryManager).
+    Root generates all QuestParts in C# (QuestNode_Mission03).
+
+    Timeline (from m3StartTick):
+      0 ticks       → Quest launched + opening letter
+      60,000 ticks  → Arms dealer caravan arrives (1 day)
+      240,000 ticks → Wave 1 scout team (500 pts) + warning letter
+      300,000 ticks → Wave 2 main force (900 pts) + letter
+      360,000 ticks → Wave 3 final assault with Commander (1400 pts) + letter
+
+    Signals:
+      PhantomStrike.Mission03.Success → rewards + quest end (Success)
+      PhantomStrike.Mission03.Fail    → fail letter + quest end (Fail)
+
+    Win: Eliminate the Helix Commander pawn
+    Fail: ALL player colonists die
+  -->
+  <QuestScriptDef>
+    <defName>Quest_Mission03_IronVerdict</defName>
+    <label>Mission 3: Iron Verdict</label>
+    <description>Helix Corporation is launching a full-scale assault on your position. Eliminate the Helix Commander to break their offensive. An arms dealer will arrive to help you prepare.</description>
+    <autoAccept>true</autoAccept>
+    <randomlySelectable>false</randomlySelectable>
+    <sendAvailableLetter>false</sendAvailableLetter>
+    <root Class="Military.QuestNode_Mission03" />
+  </QuestScriptDef>
+
+</Defs>

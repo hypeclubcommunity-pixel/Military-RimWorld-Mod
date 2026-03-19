@@ -1,3 +1,4 @@
+using Military.Patches;
 using Verse;
 
 namespace Military
@@ -7,6 +8,7 @@ namespace Military
     {
         static MilitaryStartup()
         {
+            RankStatPatch.ClearCache();
         }
     }
 }

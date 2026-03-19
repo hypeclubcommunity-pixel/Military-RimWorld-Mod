@@ -202,18 +202,41 @@ namespace Military
             List<FloatMenuOption> options = new List<FloatMenuOption>();
             List<Pawn> pawns = PawnsFinder.AllMaps_FreeColonists.ToList();
 
+            List<Pawn> candidates = new List<Pawn>();
             for (int i = 0; i < pawns.Count; i++)
             {
                 Pawn pawn = pawns[i];
                 if (!SquadData.IsValidLeader(pawn))
+                    continue;
+                if (!MilitaryUtility.IsEligible(pawn))
                     continue;
 
                 SquadData existing = manager.GetSquadOf(pawn);
                 if (existing != null && existing.leaderPawnId == pawn.thingIDNumber)
                     continue;
 
-                Pawn captured = pawn;
-                MilitaryStatComp comp = MilitaryUtility.GetComp(captured);
+                candidates.Add(pawn);
+            }
+
+            bool hasLieutenant = false;
+            for (int i = 0; i < candidates.Count; i++)
+            {
+                MilitaryStatComp lComp = MilitaryUtility.GetComp(candidates[i]);
+                if (lComp != null && lComp.rank == "Lieutenant")
+                {
+                    hasLieutenant = true;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < candidates.Count; i++)
+            {
+                Pawn candidate = candidates[i];
+                MilitaryStatComp comp = MilitaryUtility.GetComp(candidate);
+                if (hasLieutenant && (comp == null || comp.rank != "Lieutenant"))
+                    continue;
+
+                Pawn captured = candidate;
                 string label = $"{captured.LabelShort} ({comp?.rank})";
                 options.Add(new FloatMenuOption(label, () =>
                 {
@@ -430,16 +453,39 @@ namespace Military
             List<FloatMenuOption> options = new List<FloatMenuOption>();
             List<Pawn> pawns = PawnsFinder.AllMaps_FreeColonists.ToList();
 
+            List<Pawn> candidates = new List<Pawn>();
             for (int i = 0; i < pawns.Count; i++)
             {
                 Pawn pawn = pawns[i];
                 if (!SquadData.IsValidLeader(pawn))
                     continue;
-
+                if (!MilitaryUtility.IsEligible(pawn))
+                    continue;
                 if (manager.GetSquadOf(pawn) != null)
                     continue;
 
-                Pawn captured = pawn;
+                candidates.Add(pawn);
+            }
+
+            bool hasLieutenant = false;
+            for (int i = 0; i < candidates.Count; i++)
+            {
+                MilitaryStatComp lComp = MilitaryUtility.GetComp(candidates[i]);
+                if (lComp != null && lComp.rank == "Lieutenant")
+                {
+                    hasLieutenant = true;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < candidates.Count; i++)
+            {
+                Pawn candidate = candidates[i];
+                MilitaryStatComp comp = MilitaryUtility.GetComp(candidate);
+                if (hasLieutenant && (comp == null || comp.rank != "Lieutenant"))
+                    continue;
+
+                Pawn captured = candidate;
                 options.Add(new FloatMenuOption(captured.LabelShort, () => selectedLeader = captured));
             }
 

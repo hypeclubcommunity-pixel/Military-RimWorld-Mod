@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Arms dealer trader for Mission 3 prep phase.
+       Sells specific high-tier weapons, armor, medicine and 3 recruitable pawns.
+       Players spend their 5000 silver M2 reward here. -->
+  <TraderKindDef>
+    <defName>Military_ArmsDealer</defName>
+    <label>military arms dealer</label>
+    <requestable>false</requestable>
+    <commonality>0</commonality>
+    <stockGenerators>
+
+      <!-- ═══ HIGH-TIER RANGED WEAPONS ═══ -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_ChargeRifle</thingDef>
+        <countRange>2~3</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_ChargeLance</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_Minigun</thingDef>
+        <countRange>1~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_SniperRifle</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_AssaultRifle</thingDef>
+        <countRange>2~3</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_ChainShotgun</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_LMG</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gun_DoomsdayRocket</thingDef>
+        <countRange>1~1</countRange>
+      </li>
+
+      <!-- ═══ MELEE WEAPONS ═══ -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MeleeWeapon_LongSword</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MeleeWeapon_Mace</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+
+      <!-- ═══ ARMOR ═══ -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_PowerArmor</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_PowerArmorHelmet</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_FlakVest</thingDef>
+        <countRange>2~4</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_FlakJacket</thingDef>
+        <countRange>2~3</countRange>
+      </li>
+
+      <!-- ═══ MEDICINE ═══ -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MedicineIndustrial</thingDef>
+        <countRange>20~30</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MedicineUltratech</thingDef>
+        <countRange>5~10</countRange>
+      </li>
+
+      <!-- ═══ COMBAT DRUGS ═══ -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>GoJuice</thingDef>
+        <countRange>8~15</countRange>
+      </li>
+
+      <!-- ═══ COMPONENTS ═══ -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>ComponentIndustrial</thingDef>
+        <countRange>15~25</countRange>
+      </li>
+
+      <!-- ═══ RECRUITABLE MERCENARIES (3 pawns) ═══ -->
+      <li Class="StockGenerator_Slaves">
+        <countRange>3~3</countRange>
+      </li>
+
+    </stockGenerators>
+  </TraderKindDef>
+
+</Defs>

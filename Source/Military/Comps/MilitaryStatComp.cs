@@ -14,8 +14,8 @@ namespace Military
         public List<IntVec3> patrolWaypoints = new List<IntVec3>();
         public bool isPatrolling = false;
 
-        public int bodyguardTargetId = -1;
-        public List<int> vipBodyguardIds = new List<int>();
+        public Pawn bodyguardTarget;
+        public List<Pawn> vipBodyguards = new List<Pawn>();
         public bool isDefending = false;
         public List<IntVec3> defendArea = new List<IntVec3>();
 
@@ -31,14 +31,14 @@ namespace Military
             Scribe_Values.Look(ref isSquadLeader, "isSquadLeader", false);
             Scribe_Collections.Look(ref patrolWaypoints, "patrolWaypoints", LookMode.Value);
             Scribe_Values.Look(ref isPatrolling, "isPatrolling", false);
-            Scribe_Values.Look(ref bodyguardTargetId, "bodyguardTargetId", -1);
-            Scribe_Collections.Look(ref vipBodyguardIds, "vipBodyguardIds", LookMode.Value);
+            Scribe_References.Look(ref bodyguardTarget, "bodyguardTarget");
+            Scribe_Collections.Look(ref vipBodyguards, "vipBodyguards", LookMode.Reference);
             Scribe_Values.Look(ref isDefending, "isDefending", false);
             Scribe_Collections.Look(ref defendArea, "defendArea", LookMode.Value);
             if (patrolWaypoints == null)
                 patrolWaypoints = new List<IntVec3>();
-            if (vipBodyguardIds == null)
-                vipBodyguardIds = new List<int>();
+            if (vipBodyguards == null)
+                vipBodyguards = new List<Pawn>();
             if (defendArea == null)
                 defendArea = new List<IntVec3>();
         }
@@ -59,12 +59,8 @@ namespace Military
                     patrolWaypoints.Clear();
                 }
 
-                if (bodyguardTargetId != -1)
-                {
-                    Pawn vip = MilitaryUtility.FindPawnGlobal(bodyguardTargetId);
-                    if (vip == null)
-                        MilitaryUtility.ClearBodyguard(pawn);
-                }
+                if (bodyguardTarget != null && (bodyguardTarget.Dead || bodyguardTarget.Destroyed))
+                    MilitaryUtility.ClearBodyguard(pawn);
 
                 if (isDefending && (defendArea == null || defendArea.Count == 0))
                     isDefending = false;
@@ -157,7 +153,18 @@ namespace Military
             {
                 string rankLine = "Military_InspectRank".Translate(MilitaryRanks.TranslatedName(rank));
                 string missionLine = "Military_InspectMissions".Translate(missionCount);
-                return $"{rankLine}\n{missionLine}";
+                string result = $"{rankLine}\n{missionLine}";
+
+                if (bodyguardTarget != null)
+                    result += "\n" + "Military_Inspect_Guarding".Translate(bodyguardTarget.LabelShort);
+
+                if (vipBodyguards.Count > 0)
+                {
+                    string names = string.Join(", ", vipBodyguards.ConvertAll(p => p.LabelShort));
+                    result += "\n" + "Military_Inspect_ProtectedBy".Translate(names, vipBodyguards.Count);
+                }
+
+                return result;
             }
             return null;
         }

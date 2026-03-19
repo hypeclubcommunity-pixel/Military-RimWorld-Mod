@@ -182,7 +182,7 @@ namespace Military
             if (rankIndex < 0 || rankIndex > sergeantIndex)
                 yield break;
 
-            if (comp.bodyguardTargetId == -1)
+            if (comp.bodyguardTarget == null)
             {
                 var assign = new Command_Action
                 {

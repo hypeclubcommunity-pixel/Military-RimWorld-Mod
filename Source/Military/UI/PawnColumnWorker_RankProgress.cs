@@ -4,6 +4,7 @@ using Verse;
 
 namespace Military
 {
+    [StaticConstructorOnStartup]
     public class PawnColumnWorker_RankProgress : PawnColumnWorker
     {
         private static readonly Color BarFillColor = new Color(0.35f, 0.65f, 0.35f);

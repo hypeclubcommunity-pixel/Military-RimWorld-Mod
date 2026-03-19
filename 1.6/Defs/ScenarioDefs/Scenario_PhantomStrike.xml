@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ScenPartDef for custom military rank assignment at game start -->
+  <ScenPartDef>
+    <defName>Military_SetMilitaryRanks</defName>
+    <label>set military ranks</label>
+    <scenPartClass>Military.ScenPart_SetMilitaryRanks</scenPartClass>
+    <category>Fixed</category>
+    <summaryPriority>100</summaryPriority>
+    <selectionWeight>0</selectionWeight>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <!--
+    Phantom Strike Force scenario.
+
+    DESIGN NOTES — what vanilla ScenParts cannot do:
+    * Per-pawn skills/traits/backstories: Not possible via XML.
+      The player must configure these in the pawn editor at game start.
+      Target builds are documented below for reference only.
+    * Threat scale multiplier: No vanilla ScenPart exists.
+      Use Storyteller difficulty settings (recommend Blood and Dust).
+    * Per-pawn starting equipment: No vanilla ScenPart.
+      Armor and weapons are placed as starting items on the ground.
+    * Never-flee behavior: Already handled by MilitaryStatComp.CompTick
+      for all ranked pawns — active once ranks are assigned by the custom ScenPart.
+
+    TARGET OPERATOR BUILDS (configure in pawn editor):
+    Operator 1 — Squad Leader:
+      Shooting 18**, Melee 14*, Construction 4, Mining 4, Cooking 6,
+      Medicine 8*, Social 6, Intellectual 8. Traits: Tough, Trigger-happy.
+    Operator 2 — Sniper:
+      Shooting 17**, Melee 10, Construction 3, Medicine 6, Intellectual 6.
+      Traits: Careful Shooter, Night Owl.
+    Operator 3 — Brawler:
+      Shooting 14*, Melee 16**, Construction 5, Medicine 5.
+      Traits: Brawler, Tough.
+    Operator 4 — Support:
+      Shooting 15*, Melee 12*, Medicine 12**, Cooking 8, Social 8.
+      Traits: Fast Learner, Industrious.
+    (* = passion, ** = burning passion)
+  -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Scenario_PhantomStrike</defName>
+    <label>Phantom Strike Force</label>
+    <description>Four elite black-ops soldiers. Their unit was wiped out. Now they are drop-podded deep behind enemy lines with one order: survive and dominate.</description>
+    <scenario>
+      <summary>4 elite pre-ranked operators. Drop-pod start. No base. Extreme raids from day one. Fast promotions through combat.</summary>
+      <playerFaction>
+        <factionDef>PlayerColony</factionDef>
+      </playerFaction>
+      <parts>
+
+        <!-- 4 starting pawns, 10 choices -->
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>4</pawnCount>
+          <pawnChoiceCount>10</pawnChoiceCount>
+        </li>
+
+        <!-- Drop pod arrival -->
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <method>DropPods</method>
+          <visible>false</visible>
+        </li>
+
+        <!-- Weapons -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gun_ChargeRifle</thingDef>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gun_Minigun</thingDef>
+          <count>1</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gun_ChainShotgun</thingDef>
+          <count>1</count>
+        </li>
+
+        <!-- Armor (4 sets — one per operator) -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Apparel_PowerArmor</thingDef>
+          <count>4</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Apparel_PowerArmorHelmet</thingDef>
+          <count>4</count>
+        </li>
+
+        <!-- Drugs -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>GoJuice</thingDef>
+          <count>8</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Penoxycyline</thingDef>
+          <count>12</count>
+        </li>
+
+        <!-- Medicine -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineUltratech</thingDef>
+          <count>6</count>
+        </li>
+
+        <!-- Materials -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Plasteel</thingDef>
+          <count>40</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentSpacer</thingDef>
+          <count>8</count>
+        </li>
+
+        <!-- Emergency rations only — no economy -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Kibble</thingDef>
+          <count>80</count>
+        </li>
+
+        <!-- Assign military ranks at game start -->
+        <li Class="Military.ScenPart_SetMilitaryRanks">
+          <def>Military_SetMilitaryRanks</def>
+        </li>
+
+        <!-- Start Mission 1 quest -->
+        <li Class="Military.ScenPart_StartingQuest">
+          <def>Military_StartingQuest</def>
+          <questScriptDef>Quest_Mission01_CrashAndRegroup</questScriptDef>
+        </li>
+
+        <!-- Start Mission 2 quest (delayed 1 week after Mission 1) -->
+        <li Class="Military.ScenPart_StartingQuest_M2">
+          <def>Military_StartingQuest_M2</def>
+          <questScriptDef>Quest_Mission02_VanguardsShadow</questScriptDef>
+        </li>
+
+        <!-- Game start dialog -->
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <textKey>Military_Scenario_PhantomStrike_StartMessage</textKey>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

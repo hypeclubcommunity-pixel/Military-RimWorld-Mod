@@ -10,6 +10,11 @@ namespace Military.Patches
         // Cached nearby commander data per pawn, refreshed only on IsHashIntervalTick(120).
         private static readonly Dictionary<int, CachedAura> auraCache = new Dictionary<int, CachedAura>();
 
+        public static void ClearCache()
+        {
+            auraCache.Clear();
+        }
+
         private struct CachedAura
         {
             public bool nearSergeant;

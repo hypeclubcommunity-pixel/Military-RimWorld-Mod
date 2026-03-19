@@ -18,11 +18,11 @@ namespace Military
                 return null;
 
             MilitaryStatComp comp = MilitaryUtility.GetComp(pawn);
-            if (comp == null || comp.bodyguardTargetId == -1)
+            if (comp == null || comp.bodyguardTarget == null)
                 return null;
 
-            Pawn vip = MilitaryUtility.FindPawnGlobal(comp.bodyguardTargetId);
-            if (vip == null || vip.Downed || !vip.Spawned || vip.Map != pawn.Map)
+            Pawn vip = comp.bodyguardTarget;
+            if (vip.Downed || !vip.Spawned || vip.Map != pawn.Map)
                 return null;
 
             IReadOnlyList<Pawn> allPawns = pawn.Map.mapPawns.AllPawnsSpawned;

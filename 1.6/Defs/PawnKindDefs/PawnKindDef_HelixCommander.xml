@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Helix Commander — Unique boss pawn for Mission 3 wave 3 -->
+  <PawnKindDef ParentName="PirateBase">
+    <defName>HelixCorp_Commander</defName>
+    <label>Helix Commander</label>
+    <race>Human</race>
+    <combatPower>350</combatPower>
+    <gearHealthRange>1.0~1.0</gearHealthRange>
+    <apparelMoney>2500~5000</apparelMoney>
+    <apparelTags>
+      <li>IndustrialMilitaryAdvanced</li>
+      <li>PowerArmor</li>
+    </apparelTags>
+    <apparelColor>(0.05, 0.05, 0.12)</apparelColor>
+    <apparelAllowHeadgearChance>1.0</apparelAllowHeadgearChance>
+    <weaponMoney>1500~3000</weaponMoney>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>GunHeavy</li>
+    </weaponTags>
+    <techHediffsChance>0.6</techHediffsChance>
+    <techHediffsMoney>500~2000</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialResistanceRange>20~30</initialResistanceRange>
+    <initialWillRange>8~12</initialWillRange>
+    <biocodeWeaponChance>1.0</biocodeWeaponChance>
+  </PawnKindDef>
+
+</Defs>

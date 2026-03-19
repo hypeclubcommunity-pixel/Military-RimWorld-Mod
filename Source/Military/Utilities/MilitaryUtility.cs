@@ -163,14 +163,14 @@ namespace Military
             if (rankIndex < 0 || rankIndex > sergeantIndex)
                 return false;
 
-            if (vipComp.vipBodyguardIds.Count >= 2)
+            if (vipComp.vipBodyguards.Count >= 2)
                 return false;
 
-            if (bgComp.bodyguardTargetId != -1)
+            if (bgComp.bodyguardTarget != null)
                 return false;
 
-            bgComp.bodyguardTargetId = vip.thingIDNumber;
-            vipComp.vipBodyguardIds.Add(bodyguard.thingIDNumber);
+            bgComp.bodyguardTarget = vip;
+            vipComp.vipBodyguards.Add(bodyguard);
 
             if (Prefs.DevMode) Log.Message($"[Military] {bodyguard.LabelShort} assigned as bodyguard for {vip.LabelShort}");
             return true;
@@ -185,18 +185,14 @@ namespace Military
             if (bgComp == null)
                 return;
 
-            int vipId = bgComp.bodyguardTargetId;
-            if (vipId != -1)
+            Pawn vip = bgComp.bodyguardTarget;
+            if (vip != null)
             {
-                Pawn vip = FindPawnGlobal(vipId);
-                if (vip != null)
-                {
-                    MilitaryStatComp vipComp = GetComp(vip);
-                    vipComp?.vipBodyguardIds.Remove(bodyguard.thingIDNumber);
-                }
+                MilitaryStatComp vipComp = GetComp(vip);
+                vipComp?.vipBodyguards.Remove(bodyguard);
             }
 
-            bgComp.bodyguardTargetId = -1;
+            bgComp.bodyguardTarget = null;
             if (Prefs.DevMode) Log.Message($"[Military] {bodyguard.LabelShort} bodyguard assignment cleared");
         }
 
@@ -206,21 +202,21 @@ namespace Military
                 return;
 
             MilitaryStatComp vipComp = GetComp(vip);
-            if (vipComp == null || vipComp.vipBodyguardIds == null || vipComp.vipBodyguardIds.Count == 0)
+            if (vipComp == null || vipComp.vipBodyguards == null || vipComp.vipBodyguards.Count == 0)
                 return;
 
-            for (int i = vipComp.vipBodyguardIds.Count - 1; i >= 0; i--)
+            for (int i = vipComp.vipBodyguards.Count - 1; i >= 0; i--)
             {
-                Pawn bg = FindPawnGlobal(vipComp.vipBodyguardIds[i]);
+                Pawn bg = vipComp.vipBodyguards[i];
                 if (bg != null)
                 {
                     MilitaryStatComp bgComp = GetComp(bg);
                     if (bgComp != null)
-                        bgComp.bodyguardTargetId = -1;
+                        bgComp.bodyguardTarget = null;
                 }
             }
 
-            vipComp.vipBodyguardIds.Clear();
+            vipComp.vipBodyguards.Clear();
             if (Prefs.DevMode) Log.Message($"[Military] VIP {vip.LabelShort} removed \u2014 all bodyguards cleared");
         }
 
@@ -252,6 +248,19 @@ namespace Military
             comp.isDefending = false;
 
             if (Prefs.DevMode) Log.Message($"[Military] {pawn.LabelShort} defend area cleared");
+        }
+
+        public static void DropStacks(Map map, ThingDef def, int totalCount)
+        {
+            int limit = def.stackLimit > 0 ? def.stackLimit : totalCount;
+            while (totalCount > 0)
+            {
+                int batch = System.Math.Min(totalCount, limit);
+                Thing t = ThingMaker.MakeThing(def, null);
+                t.stackCount = batch;
+                GenThing.TryDropAndSetForbidden(t, map.Center, map, ThingPlaceMode.Near, out _, false);
+                totalCount -= batch;
+            }
         }
     }
 }

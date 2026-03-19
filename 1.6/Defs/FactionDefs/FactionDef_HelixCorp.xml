@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <FactionDef ParentName="OutlanderRoughBase">
+    <defName>HelixCorporation</defName>
+    <label>Helix Corporation</label>
+    <description>A ruthless mega-corporation controlling orbital defense contracts across the sector. Their black-ops division known as The Erasure eliminates liabilities with surgical precision. Cold. Professional. Relentless. Once you are on their list you do not come off it.</description>
+    <permanentEnemy>true</permanentEnemy>
+    <naturalEnemy>true</naturalEnemy>
+    <techLevel>Spacer</techLevel>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <maxCountAtGameStart>1</maxCountAtGameStart>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <factionIconPath>Military/UI/HelixCorpIcon</factionIconPath>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Offworld</li>
+          <li>Military</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <pawnGroupMakers>
+      <!-- Fallback vanilla soldiers: very low commonality so they are almost never
+           picked when Rimmu-Nation soldiers are also available in the pool. -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>1</commonality>
+        <options>
+          <HelixCorp_Soldier>1</HelixCorp_Soldier>
+          <HelixCorp_HeavySoldier>0.4</HelixCorp_HeavySoldier>
+        </options>
+      </li>
+      <!-- Rimmu-Nation soldiers: high commonality so they are always preferred
+           when the mod is loaded (100 vs 1). -->
+      <li MayRequire="CP.RimmuNation.2.Clothing">
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <HelixCorp_Soldier_RN>1</HelixCorp_Soldier_RN>
+          <HelixCorp_HeavySoldier_RN>0.4</HelixCorp_HeavySoldier_RN>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+</Defs>
+

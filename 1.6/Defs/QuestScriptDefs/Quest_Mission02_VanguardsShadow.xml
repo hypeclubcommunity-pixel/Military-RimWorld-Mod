@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ScenPartDef for starting Mission 2 with delay -->
+  <ScenPartDef>
+    <defName>Military_StartingQuest_M2</defName>
+    <label>starting mission 2 quest</label>
+    <scenPartClass>Military.ScenPart_StartingQuest_M2</scenPartClass>
+    <category>Fixed</category>
+    <summaryPriority>85</summaryPriority>
+    <selectionWeight>0</selectionWeight>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <!--
+    Mission 2: Vanguard's Shadow
+    Auto-accepted after 1-2 weeks following Mission 1 completion.
+    Root generates all QuestParts in C# (QuestNode_Mission02).
+
+    Signal wiring:
+      InitiateSignal ─┬─ Opening letter
+                      ├─ Delay 7 days → timerCompleteSignal
+                      └─ Death watch → failSignal
+
+      PhantomStrike.Mission02.TimerComplete → success letter, +1000 silver, Vane extraction
+      PhantomStrike.Mission02.VaneDead      → fail letter, quest end (Fail)
+      PhantomStrike.Mission03.Start         → global chain signal (fired after rewards)
+  -->
+  <QuestScriptDef>
+    <defName>Quest_Mission02_VanguardsShadow</defName>
+    <label>Mission 2: Vanguard's Shadow</label>
+    <description>Protect Colonel Silas Vane for 7 days. Eraser teams will stop at nothing to silence him.</description>
+    <autoAccept>true</autoAccept>
+    <randomlySelectable>false</randomlySelectable>
+    <sendAvailableLetter>false</sendAvailableLetter>
+    <root Class="Military.QuestNode_Mission02" />
+  </QuestScriptDef>
+
+</Defs>

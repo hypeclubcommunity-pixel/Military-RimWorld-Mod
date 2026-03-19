@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <JobDef>
+    <defName>Military_TrainCombat</defName>
+    <driverClass>Military.JobDriver_TrainCombat</driverClass>
+    <reportString>training combat on dummy.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <playerInterruptible>true</playerInterruptible>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    <collideWithPawns>false</collideWithPawns>
+  </JobDef>
+
+</Defs>

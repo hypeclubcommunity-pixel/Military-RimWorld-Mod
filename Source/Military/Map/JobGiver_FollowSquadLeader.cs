@@ -20,7 +20,7 @@ namespace Military
             if (comp == null || string.IsNullOrEmpty(comp.squadId) || comp.isSquadLeader)
                 return null;
 
-            if (comp.bodyguardTargetId != -1) return null;
+            if (comp.bodyguardTarget != null) return null;
 
             GameComponent_MilitaryManager manager = GameComponent_MilitaryManager.Instance;
             if (manager == null)

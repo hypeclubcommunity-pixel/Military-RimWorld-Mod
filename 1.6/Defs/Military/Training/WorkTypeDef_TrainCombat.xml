@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <WorkTypeDef>
+    <defName>Military_TrainCombat</defName>
+    <labelShort>Train Combat</labelShort>
+    <pawnLabel>combat trainer</pawnLabel>
+    <gerundLabel>training combat</gerundLabel>
+    <description>Train shooting and melee skills on a combat dummy. Designate a combat dummy with the Train Combat order, then prioritize this work type.</description>
+    <verb>train combat</verb>
+    <naturalPriority>480</naturalPriority>
+    <alwaysStartActive>true</alwaysStartActive>
+    <disabledForSlaves>true</disabledForSlaves>
+    <relevantSkills>
+      <li>Melee</li>
+      <li>Shooting</li>
+    </relevantSkills>
+    <workTags>
+      <li>Violent</li>
+    </workTags>
+  </WorkTypeDef>
+
+</Defs>

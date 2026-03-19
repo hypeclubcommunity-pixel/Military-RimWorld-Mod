@@ -34,6 +34,20 @@
   </ThinkTreeDef>
 
   <ThinkTreeDef>
+    <defName>Military_AutoRescue</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>450</insertPriority>
+    <thinkRoot Class="Military.JobGiver_AutoRescue" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>Military_AutoCapture</defName>
+    <insertTag>Humanlike_PostDuty</insertTag>
+    <insertPriority>420</insertPriority>
+    <thinkRoot Class="Military.JobGiver_AutoCapture" />
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
     <defName>Military_BodyguardFollow</defName>
     <insertTag>Humanlike_PostDuty</insertTag>
     <insertPriority>320</insertPriority>

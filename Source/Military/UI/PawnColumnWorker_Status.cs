@@ -45,7 +45,7 @@ namespace Military
             // Build suffix tags for protection roles
             string suffix = null;
             Color suffixColor = Color.white;
-            if (comp.vipBodyguardIds.Count > 0)
+            if (comp.vipBodyguards.Count > 0)
             {
                 suffix = "Military_Status_VIP".Translate();
                 suffixColor = VipGold;
@@ -55,7 +55,7 @@ namespace Military
                 suffix = "Military_Status_Defending".Translate();
                 suffixColor = DefendBlue;
             }
-            else if (comp.bodyguardTargetId != -1)
+            else if (comp.bodyguardTarget != null)
             {
                 suffix = "Military_Status_Bodyguard".Translate();
                 suffixColor = BodyguardGreen;

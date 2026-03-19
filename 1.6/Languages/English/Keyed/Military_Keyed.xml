@@ -15,8 +15,8 @@
   <Military_Gizmo_StopPatrol>Stop Patrol</Military_Gizmo_StopPatrol>
 
   <!-- Gizmo descriptions -->
-  <Military_Gizmo_PromoteDesc>{0} → {1}</Military_Gizmo_PromoteDesc>
-  <Military_Gizmo_DemoteDesc>{0} → {1}</Military_Gizmo_DemoteDesc>
+  <Military_Gizmo_PromoteDesc>{0} -> {1}</Military_Gizmo_PromoteDesc>
+  <Military_Gizmo_DemoteDesc>{0} -> {1}</Military_Gizmo_DemoteDesc>
   <Military_Gizmo_AssignPatrolDesc>Select a colonist to assign a patrol route</Military_Gizmo_AssignPatrolDesc>
   <Military_Gizmo_StopPatrolDesc>Cancel this pawn's patrol route</Military_Gizmo_StopPatrolDesc>
 
@@ -31,7 +31,7 @@
   <Military_WaypointSet>Waypoint {0} set. Click to place next, or right-click to finalize.</Military_WaypointSet>
   <Military_WaypointFinalizing>Waypoint {0} set. Finalizing patrol.</Military_WaypointFinalizing>
   <Military_NeedAtLeast2Waypoints>Need at least 2 waypoints</Military_NeedAtLeast2Waypoints>
-  <Military_PatrolBroken>{0} broke patrol — enemy nearby!</Military_PatrolBroken>
+  <Military_PatrolBroken>{0} broke patrol - enemy nearby!</Military_PatrolBroken>
   <Military_RequiresKills>Requires {0} kills</Military_RequiresKills>
   <Military_EligibleLabel>{0} is ready for promotion</Military_EligibleLabel>
   <Military_EligibleText>{0} has enough combat experience to be promoted to {1}. Consider promoting them in the Military tab.</Military_EligibleText>
@@ -41,6 +41,8 @@
   <!-- Inspect string labels -->
   <Military_InspectRank>Rank: {0}</Military_InspectRank>
   <Military_InspectMissions>Kills: {0}</Military_InspectMissions>
+  <Military_Inspect_Guarding>Guarding: {0}</Military_Inspect_Guarding>
+  <Military_Inspect_ProtectedBy>Protected by: {0} ({1}/2)</Military_Inspect_ProtectedBy>
 
   <!-- Status column -->
   <Military_Status_Idle>Idle</Military_Status_Idle>
@@ -54,7 +56,7 @@
   <Military_StatBonus_Lieutenant>Lieutenant aura: +5% aim time reduction</Military_StatBonus_Lieutenant>
 
   <!-- Rank progress column -->
-  <Military_Rank_Progress_Tip>{0} → {1}: {2} / {3} kills</Military_Rank_Progress_Tip>
+  <Military_Rank_Progress_Tip>{0} -> {1}: {2} / {3} kills</Military_Rank_Progress_Tip>
 
   <!-- Patrol icon column -->
   <Military_Patrol_StartTip>Click to start patrol</Military_Patrol_StartTip>
@@ -80,5 +82,76 @@
   <Military_DefendAreaBegin>Click the first corner of the defend area.</Military_DefendAreaBegin>
   <Military_DefendAreaCorner1>First corner set. Click the second corner to complete the area.</Military_DefendAreaCorner1>
   <Military_DefendAreaAssigned>{0} has been assigned a defend area.</Military_DefendAreaAssigned>
+
+  <!-- Phantom Strike Force scenario -->
+  <Military_Scenario_PhantomStrike_Title>Phantom Strike Force</Military_Scenario_PhantomStrike_Title>
+  <Military_Scenario_PhantomStrike_Desc>Four elite black-ops soldiers. Their unit was wiped out. Now they are drop-podded deep behind enemy lines with one order: survive and dominate.</Military_Scenario_PhantomStrike_Desc>
+  <Military_Scenario_PhantomStrike_StartMessage>Your strike team has landed. Four operators, no support, no extraction.\n\nAssign bodyguards, set patrol routes, and build your squad into an unstoppable force. Promotions come fast - earn them.</Military_Scenario_PhantomStrike_StartMessage>
+
+  <!-- Mission 1: No Safe Ground -->
+  <Military_Mission01_Title>Mission 1: No Safe Ground</Military_Mission01_Title>
+  <Military_Mission01_StartLabel>You Can't Run Forever</Military_Mission01_StartLabel>
+  <Military_Mission01_StartText>Three weeks since you went dark. Four operators, no extraction, no support network. You thought you had shaken them. You were wrong.\n\nHelix Corporation's Erasure Division has triangulated your drop pod signature. A full eraser team is converging on your position right now. Prepare for contact.\n\nEliminate every last one of them. Lose a single operator and it is over.</Military_Mission01_StartText>
+  <Military_Mission01_SuccessLabel>Zone Clear</Military_Mission01_SuccessLabel>
+  <Military_Mission01_SuccessText>The Helix advance team has been eliminated. The landing zone is clear.\n\nAn automated supply cache has been airdropped to your position:\n- 300 wood\n- 200 steel\n- 10 components\n- 10 medicine\n\nBuild fast. Helix will not stay quiet for long.\n\nStand by. New intelligence incoming.</Military_Mission01_SuccessText>
+  <Military_Mission01_FailLabel>Strike Team Lost</Military_Mission01_FailLabel>
+  <Military_Mission01_FailText>An operator was lost. Helix accomplished their objective. The Phantom Strike Force is gone.\n\nHelix Corporation considers this matter closed.</Military_Mission01_FailText>
+
+  <!-- Mission 1 narrative events (opening cinematic) -->
+  <Military_M1_BurnedLabel>Contact Imminent</Military_M1_BurnedLabel>
+  <Military_M1_BurnedText>They tracked your drop pod signature. Helix Corporation Erasure Division is moving on your position right now. This is what they do — they find, they fix, and they finish. Take cover and prepare to engage. Every second counts.</Military_M1_BurnedText>
+
+  <!-- Helix Corporation faction -->
+  <Military_HelixCorp_Name>Helix Corporation</Military_HelixCorp_Name>
+  <Military_HelixCorp_Desc>The Erasure Division. They do not negotiate. They do not retreat. They erase.</Military_HelixCorp_Desc>
+  <Military_HelixCorp_RaidLabel>Helix Eraser Team</Military_HelixCorp_RaidLabel>
+  <Military_HelixCorp_RaidText>A Helix Corporation Eraser team has been dispatched to your coordinates. These are not raiders. These are professionals sent to terminate your operation. Prepare for a coordinated assault.</Military_HelixCorp_RaidText>
+
+  <!-- Mission 2: Vanguard's Shadow -->
+  <Military_Mission02_Title>Mission 2: Vanguard's Shadow</Military_Mission02_Title>
+  <Military_Mission02_StartLabel>Friendly Contact</Military_Mission02_StartLabel>
+  <Military_Mission02_StartText>A figure approaches your position. He is calm. Well-dressed. Unhurried.\n\nHis name is Silas Vane — a senior intelligence officer who walked away from Helix Corporation three days ago and took their most sensitive data with him. He has come to you because you are the only asset he trusts.\n\nVane is not injured. He does not need saving. He needs time. Keep him alive on your map for 7 days while his extraction is arranged. Helix knows he is coming here. They will send people.\n\nReward: 1000 silver on successful extraction.</Military_Mission02_StartText>
+  <Military_Mission02_ProtectText>Protect Silas Vane for 7 days</Military_Mission02_ProtectText>
+  <Military_Mission02_SuccessLabel>Vane Extracted</Military_Mission02_SuccessLabel>
+  <Military_Mission02_SuccessText>Silas Vane said his farewells quietly, like a man who has done this before. He thanked your operators by name, adjusted his coat, and walked off the edge of your map without looking back.\n\nThe intelligence he carried is now out of Helix's reach. Reward delivered. Mission complete.\n\nHelix Corporation will not forget what you did here.</Military_Mission02_SuccessText>
+  <Military_Mission02_FailLabel>Vanguard Lost</Military_Mission02_FailLabel>
+  <Military_Mission02_FailText>Silas Vane is dead. The intelligence files are gone. Helix Corporation will assume you were responsible.\n\nThey will not send another eraser team. They will send everything they have.</Military_Mission02_FailText>
+
+  <!-- Mission 2 mid-protection Helix raid -->
+  <Military_M2_RaidLabel>Erasure Protocol Activated</Military_M2_RaidLabel>
+  <Military_M2_RaidText>Helix Corporation has confirmed Silas Vane's location. They are not sending scouts this time.\n\nAn Erasure team has been deployed — purpose-built to terminate high-value targets in defended positions. Protect Vane at all costs. Do not let them reach him.</Military_M2_RaidText>
+
+  <!-- Combat Training system -->
+  <Military_TrainCombat_Label>Train Combat</Military_TrainCombat_Label>
+  <Military_TrainCombat_Desc>Designate this dummy for both melee and ranged training.</Military_TrainCombat_Desc>
+  <Military_TrainMelee_Label>Train Melee</Military_TrainMelee_Label>
+  <Military_TrainMelee_Desc>Designate this dummy for melee training only.</Military_TrainMelee_Desc>
+  <Military_TrainRanged_Label>Train Ranged</Military_TrainRanged_Label>
+  <Military_TrainRanged_Desc>Designate this dummy for ranged training only.</Military_TrainRanged_Desc>
+  <Military_TrainCancel_Label>Cancel Training</Military_TrainCancel_Label>
+  <Military_TrainCancel_Desc>Remove training designation from this dummy.</Military_TrainCancel_Desc>
+  <Military_TrainedEnoughToday>{0} has trained enough for today.</Military_TrainedEnoughToday>
+  <Military_TrainComplete>{0} completed combat training.</Military_TrainComplete>
+
+  <!-- Mission 3: Iron Verdict -->
+  <Military_Mission03_Title>Mission 3: Iron Verdict</Military_Mission03_Title>
+  <Military_Mission03_StartLabel>Vane's Intelligence</Military_Mission03_StartLabel>
+  <Military_Mission03_StartText>Silas Vane's data files have been decoded. They contain the coordinates of Helix Corporation's forward operating base in your sector — the staging point for every eraser team they have sent against you.\n\nCommand has authorized a counter-strike posture. An arms dealer — one of Vane's old associates — is en route with weapons, armor, medicine, and recruitable personnel. He will arrive within the day. Use your silver wisely.\n\nBut Helix has intercepted the same transmission. They know you have the data. They are not going to wait.\n\nPrepare for a full-scale assault. Eliminate the Helix Commander to break their grip on this sector.</Military_Mission03_StartText>
+  <Military_Mission03_SuccessLabel>Sector Clear</Military_Mission03_SuccessLabel>
+  <Military_Mission03_SuccessText>Director Kael Voss is dead. The Helix Commander's body lies in the dirt alongside the wreckage of his assault force.\n\nTheir forward operating base has gone dark. No reinforcements are coming. No eraser teams. No more midnight raids.\n\nFor the first time since you landed, the sky is quiet. You are no longer prey.\n\nReward delivered:\n- 2,000 silver\n- 500 steel\n- 30 components\n- 20 glitterworld medicine\n\nThe Phantom Strike Force has won.</Military_Mission03_SuccessText>
+  <Military_Mission03_FailLabel>Total Loss</Military_Mission03_FailLabel>
+  <Military_Mission03_FailText>Your entire force has been wiped out. The Phantom Strike Force no longer exists.\n\nHelix Corporation considers the matter permanently resolved. Director Voss will receive a commendation.</Military_Mission03_FailText>
+
+  <!-- M3 Arms Dealer -->
+  <Military_M3_TraderLabel>Arms Dealer Incoming</Military_M3_TraderLabel>
+  <Military_M3_TraderText>One of Silas Vane's old contacts has arrived — a freelance arms dealer with connections to every black market in the sector.\n\nHe is carrying military-grade weapons, armor, medicine, combat drugs, and recruitable personnel. He accepts silver.\n\nSpend wisely. This is the last resupply before the storm hits.</Military_M3_TraderText>
+
+  <!-- M3 Wave Letters -->
+  <Military_M3_Wave1Label>Helix Scouts Detected</Military_M3_Wave1Label>
+  <Military_M3_Wave1Text>Forward sensors detect movement on the perimeter. A Helix scout team has been deployed to probe your defenses. They are testing you.\n\nThis is not the main assault. But it is coming.</Military_M3_Wave1Text>
+  <Military_M3_Wave2Label>Main Force Approaching</Military_M3_Wave2Label>
+  <Military_M3_Wave2Text>The scouts reported back. Helix Corporation is no longer probing. A full assault force is advancing on your position — heavily armed, heavily armored, and moving fast.\n\nThis is not the final wave. The Commander is watching. Waiting.</Military_M3_Wave2Text>
+  <Military_M3_Wave3Label>THE COMMANDER IS HERE</Military_M3_Wave3Label>
+  <Military_M3_Wave3Text>Director Kael Voss has taken the field personally. The Helix Commander is leading the final assault wave — the largest force they have ever deployed against you.\n\nHe is wearing power armor. He is carrying their best weapons. And he has a direct mandate from Helix Corporate to end this.\n\nKill the Commander and the offensive collapses. Fail, and everything you have built dies with you.</Military_M3_Wave3Text>
 
 </LanguageData>

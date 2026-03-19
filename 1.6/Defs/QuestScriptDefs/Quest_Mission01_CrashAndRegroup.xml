@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ScenPartDef for starting a quest at game start -->
+  <ScenPartDef>
+    <defName>Military_StartingQuest</defName>
+    <label>starting quest</label>
+    <scenPartClass>Military.ScenPart_StartingQuest</scenPartClass>
+    <category>Fixed</category>
+    <summaryPriority>90</summaryPriority>
+    <selectionWeight>0</selectionWeight>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <!--
+    Mission 1: Crash & Regroup
+    Auto-accepted, non-selectable quest.
+    Root generates all QuestParts in C# (QuestNode_Mission01).
+
+    Signal wiring:
+      InitiateSignal ─┬─ Opening letter
+                       ├─ Delay 1 500t → raid warning letter
+                       ├─ Delay 2 000t → raid incident (800pts, EdgeWalkIn)
+                       ├─ Delay 180 000t → successSignal
+                       └─ Death watch → failSignal
+
+      PhantomStrike.Mission01.Success → success letter, +8 kills, quest end (Success)
+      PhantomStrike.Mission01.Fail    → fail letter, quest end (Fail)
+      PhantomStrike.Mission02.Start   → global chain signal (fired after awards)
+  -->
+  <QuestScriptDef>
+    <defName>Quest_Mission01_CrashAndRegroup</defName>
+    <label>Mission 1: Crash &amp; Regroup</label>
+    <description>Hold position for 3 days while command establishes a comms link.</description>
+    <autoAccept>true</autoAccept>
+    <randomlySelectable>false</randomlySelectable>
+    <sendAvailableLetter>false</sendAvailableLetter>
+    <root Class="Military.QuestNode_Mission01" />
+  </QuestScriptDef>
+
+</Defs>

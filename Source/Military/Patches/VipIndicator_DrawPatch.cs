@@ -13,7 +13,7 @@ namespace Military
                 return;
 
             MilitaryStatComp comp = MilitaryUtility.GetComp(__instance);
-            if (comp == null || comp.vipBodyguardIds.Count == 0)
+            if (comp == null || comp.vipBodyguards.Count == 0)
                 return;
 
             // Only draw when zoomed in enough to see labels

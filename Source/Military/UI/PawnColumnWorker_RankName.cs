@@ -33,7 +33,7 @@ namespace Military
                         options.Add(new FloatMenuOption(MilitaryRanks.TranslatedName(rank), () =>
                         {
                             string oldRank = comp.rank;
-                            comp.rank = rank;
+                            MilitaryUtility.SetRank(pawn, rank);
                             if (!string.IsNullOrEmpty(oldRank) && MilitaryRanks.All.IndexOf(rank) > MilitaryRanks.All.IndexOf(oldRank))
                                 MilitaryUtility.SendPromotionLetter(pawn, rank);
                         }));

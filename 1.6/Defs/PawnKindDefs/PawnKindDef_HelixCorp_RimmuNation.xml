@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <PawnKindDef ParentName="PirateBase"
+    MayRequire="CP.RimmuNation.2.Clothing">
+    <defName>HelixCorp_Soldier_RN</defName>
+    <label>Helix eraser</label>
+    <race>Human</race>
+    <combatPower>100</combatPower>
+    <gearHealthRange>0.8~1.0</gearHealthRange>
+    <apparelMoney>600~1200</apparelMoney>
+    <apparelRequired>
+      <li>RNApparel_Balaclava_EXF</li>
+      <li>RNApparel_Pants_511Stryke</li>
+    </apparelRequired>
+    <apparelTags>
+      <li>IndustrialMilitaryAdvanced</li>
+    </apparelTags>
+    <apparelColor>(0.08, 0.08, 0.08)</apparelColor>
+    <apparelAllowHeadgearChance>0.9</apparelAllowHeadgearChance>
+    <weaponMoney>500~1200</weaponMoney>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>Gun</li>
+    </weaponTags>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>100~800</techHediffsMoney>
+    <techHediffsTags>
+      <li>Simple</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialResistanceRange>10~15</initialResistanceRange>
+    <initialWillRange>3~5</initialWillRange>
+    <biocodeWeaponChance>0.5</biocodeWeaponChance>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="PirateBase"
+    MayRequire="CP.RimmuNation.2.Clothing">
+    <defName>HelixCorp_HeavySoldier_RN</defName>
+    <label>Helix enforcer</label>
+    <race>Human</race>
+    <combatPower>200</combatPower>
+    <gearHealthRange>0.9~1.0</gearHealthRange>
+    <apparelMoney>1000~2500</apparelMoney>
+    <apparelRequired>
+      <li>RNApparel_Balaclava_EXF</li>
+      <li>RNApparel_FirstSpearAACV2_Multicam</li>
+      <li>RNApparel_Pants_511Stryke</li>
+    </apparelRequired>
+    <apparelTags>
+      <li>IndustrialMilitaryAdvanced</li>
+      <li>PowerArmor</li>
+    </apparelTags>
+    <apparelColor>(0.08, 0.08, 0.08)</apparelColor>
+    <apparelAllowHeadgearChance>1.0</apparelAllowHeadgearChance>
+    <weaponMoney>800~2000</weaponMoney>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>Gun</li>
+    </weaponTags>
+    <techHediffsChance>0.35</techHediffsChance>
+    <techHediffsMoney>200~1500</techHediffsMoney>
+    <techHediffsTags>
+      <li>Simple</li>
+      <li>ImplantEmpireCommon</li>
+      <li>Advanced</li>
+    </techHediffsTags>
+    <initialResistanceRange>15~20</initialResistanceRange>
+    <initialWillRange>5~8</initialWillRange>
+    <biocodeWeaponChance>0.8</biocodeWeaponChance>
+  </PawnKindDef>
+
+</Defs>
+

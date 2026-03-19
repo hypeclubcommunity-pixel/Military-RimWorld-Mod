@@ -43,7 +43,7 @@ namespace Military
                         comp.patrolWaypoints?.Clear();
                         pawn.jobs?.EndCurrentJob(Verse.AI.JobCondition.InterruptForced);
                     }
-                    else
+                    else if (hasWaypoints)
                     {
                         comp.isPatrolling = true;
                         // The CompTick will dispatch the patrol job on the next tick

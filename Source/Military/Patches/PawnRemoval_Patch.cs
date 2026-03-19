@@ -9,10 +9,10 @@ namespace Military
     {
         public static void TryHandlePawnRemoved(Pawn pawn)
         {
-            if (pawn == null || pawn.RaceProps == null || !pawn.RaceProps.Humanlike)
-                return;
+            if (Faction.OfPlayerSilentFail == null) return;
+            if (pawn?.Faction != Faction.OfPlayerSilentFail) return;
 
-            if (pawn.Faction != Faction.OfPlayer)
+            if (pawn.RaceProps == null || !pawn.RaceProps.Humanlike)
                 return;
 
             MilitaryStatComp comp = MilitaryUtility.GetComp(pawn);
